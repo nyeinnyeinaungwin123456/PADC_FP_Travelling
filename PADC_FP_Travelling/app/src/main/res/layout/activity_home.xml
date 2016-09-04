@@ -21,6 +21,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
+    
+
     <fragment
         android:id="@+id/fragment"
         android:name="com.padc.travelling.fragments.HomeFragment"
