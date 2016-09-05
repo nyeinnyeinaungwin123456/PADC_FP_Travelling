@@ -1,4 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_attractionplaces"
+            android:icon="@drawable/ic_rowing_black_24dp"
+            android:title="@string/attractionplaces"
+            android:checked="true"/>
+    </group>
+
+    <group android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_tourpackages"
+            android:icon="@drawable/ic_filter_frames_black_24dp"
+            android:title="@string/tourpackages"/>
+        </group>
+
+    <group android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_highway"
+            android:icon="@drawable/ic_time_to_leave_black_24dp"
+            android:title="@string/highway"/>
+        </group>
+
+    <group android:id="@+id/group4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_hotels"
+            android:icon="@drawable/ic_location_city_black_24dp"
+            android:title="@string/hotels"/>
+    </group>
+
+    <group android:id="@+id/group5"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_restaurants"
+            android:icon="@drawable/ic_store_mall_directory_black_24dp"
+            android:title="@string/restaurants"/>
+        </group>
+
+    <group android:id="@+id/group6"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_feedback"
+            android:icon="@drawable/ic_create_black_24dp"
+            android:title="@string/feedback"/>
+        </group>
+
+    <group android:id="@+id/group7"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_favourite"
+            android:icon="@drawable/ic_favorite_yellow_24dp"
+            android:title="@string/favourite"/>
+        </group>
+
+        <group android:id="@+id/group8"
+    android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_aboutus"
+            android:icon="@drawable/ic_speaker_group_black_24dp"
+            android:title="@string/aboutus"/>
+
+    </group>
+
 </menu>
