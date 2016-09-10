@@ -8,4 +8,16 @@
     <color name="secondary_text">#757575</color>
     <color name="white">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+
+    <!-- theme on white -->
+    <color name="text_white_ish">#EEE</color>
+    <color name="white_full">#FFF</color>
+
+    <!-- theme on black -->
+    <color name="text_black_ish">#111</color>
+    <color name="black_full">#F000</color>
+
+    <!-- theme adjacent color -->
+    <color name="primary_bright">#25CAF4</color>
+    <color name="accent_dark">#882061</color>
 </resources>
