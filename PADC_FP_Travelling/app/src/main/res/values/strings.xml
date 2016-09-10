@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PADC_FP_Travelling</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_attraction_detail">AttractionDetailActivity</string>
+    <string name="action_back">back</string>
+    <string name="action_share">share</string>
 </resources>
