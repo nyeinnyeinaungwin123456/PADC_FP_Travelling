@@ -1,4 +1,4 @@
-package com.padc.travelling.view;
+package com.padc.travelling.view.holders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
