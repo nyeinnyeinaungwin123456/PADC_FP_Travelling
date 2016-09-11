@@ -142,10 +142,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_highway: {
 
             }break;
-            case R.id.menu_hotels:{
-
-            }break;
-            case R.id.menu_restaurants:{
+            case R.id.menu_hotelandrestaurant:{
 
             }break;
             case R.id.menu_feedback:{
