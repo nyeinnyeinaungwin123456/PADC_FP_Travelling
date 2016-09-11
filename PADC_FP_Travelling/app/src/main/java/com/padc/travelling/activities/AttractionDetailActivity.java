@@ -2,7 +2,6 @@ package com.padc.travelling.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
@@ -70,5 +69,17 @@ public class AttractionDetailActivity extends AppCompatActivity {
         myShareIntent.setType("text*//*");
         myShareIntent.putExtra(Intent.EXTRA_TEXT, "Hello Share Action Provider!");
         return myShareIntent;
+    }
+
+    //Nyein go back to previous activity
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) // Press Back Icon
+        {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
