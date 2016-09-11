@@ -20,8 +20,11 @@ import android.widget.FrameLayout;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.TourPackageFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.TourPackageViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +32,7 @@ import butterknife.ButterKnife;
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AttractionPlacesViewHolder.ControllerAttractionPlaces{
+        AttractionPlacesViewHolder.ControllerAttractionPlaces, TourPackageViewHolder.ControllerTourPackage{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -136,6 +139,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             } break;
 
             case R.id.menu_tourpackages: {
+                navigateToTourPackage();
 
             } break;
             case R.id.menu_highway: {
@@ -182,10 +186,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 commit();
     }
 
+    private void navigateToTourPackage(){
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, TourPackageFragment.newInstance()).
+                commit();
+    }
+
     @Override
     public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
         Intent intent = new Intent(TravellingApp.getContext(), AttractionDetailActivity.class);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
 
     }
 }
