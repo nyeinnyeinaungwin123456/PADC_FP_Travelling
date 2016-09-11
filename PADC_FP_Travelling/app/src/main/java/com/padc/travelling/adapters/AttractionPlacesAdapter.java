@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
-import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.holders.AttractionPlacesViewHolder;
 
 import java.util.List;
 

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.padc.travelling.R;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
-import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.holders.AttractionPlacesViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,9 +31,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-
-    @BindView(R.id.tv_search_travel)
-    TextView tvSearchTravel;
 
     @BindView(R.id.fl_container)
     FrameLayout flContainer;

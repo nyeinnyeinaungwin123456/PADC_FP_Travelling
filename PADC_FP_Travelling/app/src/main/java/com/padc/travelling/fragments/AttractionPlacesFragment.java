@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.AttractionPlacesAdapter;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
-import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.holders.AttractionPlacesViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
