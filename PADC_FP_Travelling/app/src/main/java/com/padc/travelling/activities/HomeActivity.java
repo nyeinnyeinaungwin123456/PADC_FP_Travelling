@@ -1,11 +1,11 @@
 package com.padc.travelling.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private ShareActionProvider mShareActionProvider;
 
+    public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,8 +76,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                try{
+                    Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
+                    startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                e.printStackTrace();
+                }
             }
         });
     }
@@ -84,28 +93,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
-
-//        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-//        if(searchMenuItem != null){
-//
-//            MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
-//                @Override
-//                public boolean onMenuItemActionExpand(MenuItem item) {
-//                    tvSearchTravel.setVisibility(View.VISIBLE);
-//                    flContainer.setVisibility(View.INVISIBLE);
-//                    return true;
-//                }
-//
-//                @Override
-//                public boolean onMenuItemActionCollapse(MenuItem item) {
-//                    tvSearchTravel.setVisibility(View.INVISIBLE);
-//                    flContainer.setVisibility(View.VISIBLE);
-//                    return true;
-//                }
-//            });
-
-//        }
-
         return true;
     }
 
@@ -157,27 +144,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-//        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-//        drawerLayout.closeDrawer(GravityCompat.START);
-
         return true;
     }
-
-//    @Override
-//    public boolean onMenuItemActionExpand(MenuItem item) {
-//        tvSearchTravel.setVisibility(View.VISIBLE);
-//        flContainer.setVisibility(View.INVISIBLE);
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onMenuItemActionCollapse(MenuItem item) {
-//        tvSearchTravel.setVisibility(View.INVISIBLE);
-//        flContainer.setVisibility(View.VISIBLE);
-//
-//        return true;
-//    }
 
     private void navigateToAttractionPlaces(){
         getSupportFragmentManager().
@@ -195,13 +163,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
-        Intent intent = new Intent(TravellingApp.getContext(), AttractionDetailActivity.class);
+        Intent intent = AttractionDetailActivity.newIntent();
         startActivity(intent);
 
     }
 
+//    //TODO to add in favourit
+//    @Override
+//    public void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite) {
+//        setContentView(R.layout.list_item_attractionplaces);
+//
+//        ImageView iv_fovourite = (ImageView)findViewById(R.id.iv_favourite1);
+//        iv_fovourite.setImageResource(R.drawable.ic_favorite_black_24dp);
+//    }
+
     @Override
     public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
 
+        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackageVO.getTourpackagetitle());
+        startActivity(intent);
     }
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/small_margin"
+    android:scrollbars="vertical">
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_titlepackage"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="ၿမိတ္ခရီးသြား Package"-->
+        <!--android:layout_marginLeft="@dimen/small_margin"-->
+        <!--android:layout_marginTop="@dimen/medium_margin"-->
+        <!--android:textColor="@color/bright"/>-->
+
+    <ImageView
+        android:id="@+id/iv_tourpackagedetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heartstream"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/fab_margin"/>
+
+    <Button
+        android:id="@+id/btn_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="200000 MMK"
+        android:background="@android:color/transparent"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/medium_margin"
+        android:paddingTop="@dimen/medium_margin"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:layout_alignBottom="@+id/iv_tourpackagedetail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/iv_accomodation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_hotel_black_24dp"
+        android:layout_below="@+id/btn_price"
+        android:layout_marginTop="@dimen/medium_margin"/>
+
+    <TextView
+        android:id="@+id/tv_accomodation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="၃ ညအိပ္ ၄ ရက္ခရီး"
+        android:layout_below="@+id/btn_price"
+        android:layout_toRightOf="@+id/iv_accomodation"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textColor="@color/blue"/>
+
+    <ImageView
+        android:id="@+id/iv_places"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_rowing_black_24dp"
+        android:layout_below="@+id/iv_accomodation"
+        android:layout_marginTop="@dimen/fab_margin" />
+
+    <TextView
+        android:id="@+id/tv_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ေတာင္ႀကီး | အင္းေလး | ပင္းတယ"
+        android:layout_toRightOf="@+id/iv_places"
+        android:layout_below="@+id/tv_accomodation"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:paddingLeft="@dimen/medium_margin"
+        android:textColor="@color/blue"/>
+
+    <ImageView
+        android:id="@+id/iv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_event_note_black_24dp"
+        android:layout_below="@+id/iv_places"
+        android:layout_marginTop="@dimen/fab_margin"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="အမွတ္ (၁၀)၊ ရတနာလမ္း၊ ေျမနီကုန္း၊ စမ္းေခ်ာင္း။"
+        android:textColor="@color/blue"
+        android:layout_toRightOf="@+id/iv_address"
+        android:layout_below="@+id/tv_places"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:lineSpacingMultiplier="1.3"
+        android:layout_marginLeft="@dimen/medium_margin"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/margin_extralarge"
+        android:layout_below="@+id/iv_address"
+        android:background="@color/primary_light"/>
+
+    <TextView
+        android:id="@+id/tv_tourpackagedesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:textColor="@color/text_black_ish"
+        android:background="@color/white"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:text="ေတာင္ျကီး၊   ေလာကခ်မ္းသာစူဠာမဏိေစတီ၊ အေသာကေစတီ၊   ေတာင္ၾကီးျမိဳ ႔ေဈ း၊   ဟိုပံုဟတၠိပါလထမ့္စမ္းလိုဏ္ဂူ၊ ေမြေတာ္ကကၠဴေစတီမ်ား၊  ေဖာင္ေတာ္ဆိုက္ေစတီ၊ အေသာကေစတီ၊ သာသနာျပဳဝတ္မင္း၊ ကုသိနာရုံဘုရား၊ ေခါင္းတိုင္ေရပူစမ္း၊ အင္းေလးေဒသ၊ ယကၠန္းစင္၊ ေဖာင္ေတာ္ဦးဘုရား၊ အိမ္မက္ေပးဘုရား၊ ငဖယ္ေက်ာင္း၊ ေၾကာင္ခုန္ေက်ာင္း၊ ပင္းတယေရႊဥမင္လိႈဏ္ဂူ၊ လက္ဖက္ေျခာက္ဆိုင္၊ ဗူးသီးဘုရား၊ စံေက်ာင္းေတာ္ျမတ္၊ ျမင္းမထိသဘာဝလိုဏ္ဂူ၊ ထီးေတာ္သံုးဆင့္၊ ဥဏၰလံုးေမႊရွင္ဘုရား၊ နွစ္က်ိပ္ရွစ္ဆူဘုရား၊ ကေလာနွီးဘုရာ။"/>
+
+</RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

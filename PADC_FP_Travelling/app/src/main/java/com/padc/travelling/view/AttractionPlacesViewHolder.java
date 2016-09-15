@@ -47,9 +47,11 @@ public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implemen
     @Override
     public void onClick(View view) {
         mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, getPosition());
+//        mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, mAttractionPlacesVO.getFavourite());
     }
 
     public interface ControllerAttractionPlaces{
         void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position);
+//        void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite);
     }
 }

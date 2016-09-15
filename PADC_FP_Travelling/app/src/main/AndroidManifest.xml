@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.padc.travelling">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".TravellingApp"
         android:allowBackup="true"
@@ -27,6 +29,28 @@
             android:label="@string/title_activity_attraction_detail"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity
+            android:name=".activities.TourPackagePagerDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.CustomSearchActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <!--<activity-->
+            <!--android:name="activities.CustomSearchActivity"-->
+            <!--android:label="@string/msg_search_travel_guide">-->
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.SEARCH" />-->
+            <!--</intent-filter>-->
+
+            <!--<meta-data-->
+                <!--android:name="android.app.searchable"-->
+                <!--android:resource="@xml/searchable" />-->
+
+        <!--</activity>-->
 
     </application>
 

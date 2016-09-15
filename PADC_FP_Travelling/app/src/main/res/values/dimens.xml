@@ -10,6 +10,7 @@
     <dimen name="text_regular_2x">16sp</dimen>
     <dimen name="text_title">34sp</dimen>
     <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_extralarge"> 46dp </dimen>
     <dimen name="screen_title_size">22sp</dimen>
     <dimen name="small_margin"> 4dp </dimen>
     <dimen name="medium_margin"> 8dp </dimen>

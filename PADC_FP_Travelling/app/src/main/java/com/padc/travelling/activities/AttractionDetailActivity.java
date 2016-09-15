@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.padc.travelling.R;
+import com.padc.travelling.TravellingApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +26,11 @@ public class AttractionDetailActivity extends AppCompatActivity {
 
     private ShareActionProvider mShareActionProvider;
 
+    //Nyein static factory method
+    public static Intent newIntent(){
+        Intent intent = new Intent(TravellingApp.getContext(),AttractionDetailActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
