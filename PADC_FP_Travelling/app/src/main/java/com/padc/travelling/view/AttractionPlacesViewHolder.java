@@ -16,32 +16,14 @@ import butterknife.ButterKnife;
  */
 public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-   @BindView(R.id.iv_attractionplaces)
-    ImageView ivAttractionPlaces;
+    @BindView(R.id.iv_subattraction)
+    ImageView ivSubAttraction;
 
-    @BindView(R.id.tv_attractiontitle)
-    TextView tvAttractionTitle;
+    @BindView(R.id.tv_attractionsubtitle)
+    TextView tvAttractionSubTitle;
 
-    @BindView(R.id.tv_attractiondesc)
-    TextView tvAttractionDesc;
-
-    @BindView(R.id.iv_subattraction1)
-    ImageView ivSubAttraction1;
-
-    @BindView(R.id.tv_attractionsubtitle1)
-    TextView tvAttractionSubTitle1;
-
-    @BindView(R.id.tv_attractionsubdesc1)
-    TextView tvAttractionSubDesc1;
-
-    @BindView(R.id.iv_subattraction2)
-    ImageView ivSubAttraction2;
-
-    @BindView(R.id.tv_attractionsubtitle2)
-    TextView tvAttractionSubTitle2;
-
-    @BindView(R.id.tv_attractionsubdesc2)
-    TextView tvAttractionSubDesc2;
+    @BindView(R.id.tv_attractionsubdesc)
+    TextView tvAttractionSubDesc;
 
     AttractionPlacesVO mAttractionPlacesVO;
     ControllerAttractionPlaces mControllerAttractionPlaces;
@@ -56,26 +38,20 @@ public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implemen
 
     public void bindData(AttractionPlacesVO attractionPlacesVO){
         mAttractionPlacesVO = attractionPlacesVO;
-        ivAttractionPlaces.setImageResource(attractionPlacesVO.getTitlephoto());
-        ivSubAttraction1.setImageResource(attractionPlacesVO.getSubtitle1photo());
-        ivSubAttraction2.setImageResource(attractionPlacesVO.getSubtitle2photo());
-
-        tvAttractionTitle.setText(attractionPlacesVO.getTitle());
-        tvAttractionSubTitle1.setText(attractionPlacesVO.getSubtitle1());
-        tvAttractionSubTitle2.setText(attractionPlacesVO.getSubtitle2());
-
-        tvAttractionDesc.setText(attractionPlacesVO.getTitledesc());
-        tvAttractionSubDesc1.setText(attractionPlacesVO.getSubtitle1desc());
-        tvAttractionSubDesc2.setText(attractionPlacesVO.getSubtitle2desc());
+        ivSubAttraction.setImageResource(attractionPlacesVO.getSubtitle1photo());
+        tvAttractionSubTitle.setText(attractionPlacesVO.getSubtitle());
+        tvAttractionSubDesc.setText(attractionPlacesVO.getSubtitle1desc());
 
     }
 
     @Override
     public void onClick(View view) {
         mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, getPosition());
+//        mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, mAttractionPlacesVO.getFavourite());
     }
 
     public interface ControllerAttractionPlaces{
         void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position);
+//        void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite);
     }
 }

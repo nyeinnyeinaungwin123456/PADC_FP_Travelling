@@ -16,7 +16,7 @@
             android:id="@+id/menu_tourpackages"
             android:icon="@drawable/ic_filter_frames_primarydark_24dp"
             android:title="@string/tourpackages"/>
-        </group>
+    </group>
 
     <group android:id="@+id/group3"
         android:checkableBehavior="single">
@@ -24,23 +24,15 @@
             android:id="@+id/menu_highway"
             android:icon="@drawable/ic_time_to_leave_primarydark_24dp"
             android:title="@string/highway"/>
-        </group>
+    </group>
 
     <group android:id="@+id/group4"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_hotels"
+            android:id="@+id/menu_hotelandrestaurant"
             android:icon="@drawable/ic_location_city_primarydark_24dp"
-            android:title="@string/hotels"/>
+            android:title="@string/hotelandrestaurants"/>
     </group>
-
-    <group android:id="@+id/group5"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_restaurants"
-            android:icon="@drawable/ic_store_mall_directory_primarydark_24dp"
-            android:title="@string/restaurants"/>
-        </group>
 
     <group android:id="@+id/group6"
         android:checkableBehavior="single">
@@ -48,7 +40,7 @@
             android:id="@+id/menu_feedback"
             android:icon="@drawable/ic_create_primarydark_24dp"
             android:title="@string/feedback"/>
-        </group>
+    </group>
 
     <group android:id="@+id/group7"
         android:checkableBehavior="single">
@@ -56,10 +48,10 @@
             android:id="@+id/menu_favourite"
             android:icon="@drawable/ic_favorite_primarydark_24dp"
             android:title="@string/favourite"/>
-        </group>
+    </group>
 
-        <group android:id="@+id/group8"
-    android:checkableBehavior="single">
+    <group android:id="@+id/group8"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/menu_aboutus"
             android:icon="@drawable/ic_speaker_group_yellow_24dp"

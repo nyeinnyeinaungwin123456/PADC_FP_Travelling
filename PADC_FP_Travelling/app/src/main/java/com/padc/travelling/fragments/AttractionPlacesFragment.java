@@ -65,10 +65,9 @@ public class AttractionPlacesFragment extends Fragment {
         AttractionPlacesVO attractionPlacesVO;
 
         for(int i=0; i<20; i++) {
-            attractionPlacesVO = new AttractionPlacesVO(R.drawable.yangon_shwedagonpagoda, "ရန္ကုန္",
+            attractionPlacesVO = new AttractionPlacesVO(R.drawable.yangon_shwedagonpagoda, "ေရႊတိဂံုဘုရား",
                     "ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။",
-                    R.drawable.yangon_shwedagonpagoda, "ေရႊတိဂံုဘုရား", "ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။",
-                    R.drawable.dala, "ဒလ", "ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။");
+            R.drawable.ic_favorite_border_black_24dp, R.drawable.ic_share_yellow_24dp);
             attractionPlacesVOList.add(attractionPlacesVO);
         }
     }

@@ -6,8 +6,11 @@
     <color name="accent">#FFC107</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
-    <color name="white">#FFFFFF</color>
+    <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="image_button_background">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
 
     <!-- theme on white -->
     <color name="text_white_ish">#EEE</color>
@@ -20,4 +23,10 @@
     <!-- theme adjacent color -->
     <color name="primary_bright">#25CAF4</color>
     <color name="accent_dark">#882061</color>
+
+    <color name="blue"> #003366 </color>
+    <color name="green_light"> #6dc066 </color>
+    <color name="green_dark"> #69ae69 </color>
+    <color name="red"> #ff4444 </color>
+    <color name="bright"> #ff00e7 </color>
 </resources>
