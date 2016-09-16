@@ -30,6 +30,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity android:name=".activities.RestaurantPagerDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <activity
             android:name=".activities.TourPackagePagerDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">

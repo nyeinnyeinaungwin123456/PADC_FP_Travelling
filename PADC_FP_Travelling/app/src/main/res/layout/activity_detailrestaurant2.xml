@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/small_margin"
+        android:scrollbars="vertical">
+
+        <ImageView
+            android:id="@+id/iv_tourpackagedetail"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/restauranttwo"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="@dimen/fab_margin"/>
+
+        <LinearLayout
+            android:id="@+id/linear_restaurant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignBottom="@+id/iv_tourpackagedetail"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            android:background="@android:color/holo_blue_dark"
+            android:paddingLeft="@dimen/small_margin"
+            android:paddingRight="@dimen/small_margin"
+            android:paddingTop="@dimen/medium_margin"
+            android:scrollbars="horizontal">
+
+            <Button
+                android:id="@+id/btn_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="သြားမဲ့အစီအစဥ္"
+                android:textSize="@dimen/text_small"
+                android:drawableTop="@drawable/ic_add_circle_outline_black_24dp"
+                android:textColor="@color/white"
+                android:background="@android:color/holo_blue_dark"/>
+
+            <Button
+                android:id="@+id/btn_favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="အႀကိဳက္ဆံုး"
+                android:textSize="@dimen/text_small"
+                android:drawableTop="@drawable/ic_favorite_border_black_24dp1"
+                android:textColor="@color/white"
+                android:background="@android:color/holo_blue_dark"/>
+
+            <Button
+                android:id="@+id/btn_share"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="မွ်ေ၀မယ္"
+                android:textSize="@dimen/text_small"
+                android:drawableTop="@drawable/ic_share_black_24dp1"
+                android:textColor="@color/white"
+                android:background="@android:color/holo_blue_dark"/>
+
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="ဖုန္းေခၚမယ္"
+                android:textSize="@dimen/text_small"
+                android:drawableTop="@drawable/ic_settings_phone_black_24dp"
+                android:textColor="@color/white"
+                android:background="@android:color/holo_blue_dark"/>
+
+        </LinearLayout>
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_restaurantname"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/linear_restaurant"-->
+            <!--android:textSize="@dimen/text_heading_1x"-->
+            <!--android:layout_marginTop="@dimen/fab_margin"-->
+            <!--android:text="ေရႊေတာင္တန္း"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/text_black_ish"/>-->
+
+        <ImageView
+            android:id="@+id/iv_accomodation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filter_1_black_24dp"
+            android:layout_below="@+id/linear_restaurant"
+            android:layout_marginTop="@dimen/fab_margin"/>
+
+        <TextView
+            android:id="@+id/tv_accomodation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="၂၀၀၀၀ က်ပ္"
+            android:layout_below="@+id/linear_restaurant"
+            android:layout_toRightOf="@+id/iv_accomodation"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/iv_places"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location_on_black_24dp"
+            android:layout_below="@+id/iv_accomodation"
+            android:layout_marginTop="@dimen/fab_margin" />
+
+        <TextView
+            android:id="@+id/tv_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ရန္ကုန္"
+            android:layout_toRightOf="@+id/iv_places"
+            android:layout_below="@+id/tv_accomodation"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:paddingLeft="@dimen/medium_margin"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/iv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_event_note_black_24dp"
+            android:layout_below="@+id/iv_places"
+            android:layout_marginTop="@dimen/fab_margin"/>
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="အမွတ္ (၁၀)၊ ရတနာလမ္း၊ ေျမနီကုန္း၊ စမ္းေခ်ာင္း။"
+            android:textColor="@color/blue"
+            android:layout_toRightOf="@+id/iv_address"
+            android:layout_below="@+id/tv_places"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginLeft="@dimen/medium_margin"/>
+
+        <ImageView
+            android:id="@+id/iv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_event_note_black_24dp"
+            android:layout_below="@+id/iv_address"
+            android:layout_marginTop="@dimen/margin_extralarge"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="မနက္ ၉ နာရီမွ ည ၁၂ နာရီ"
+            android:textColor="@color/blue"
+            android:layout_toRightOf="@+id/iv_time"
+            android:layout_below="@+id/tv_address"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginLeft="@dimen/medium_margin"/>
+
+        <!--<ImageView-->
+        <!--android:id="@+id/iv_call"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/ic_event_note_black_24dp"-->
+        <!--android:layout_below="@+id/iv_time"-->
+        <!--android:layout_marginTop="@dimen/fab_margin"/>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_call"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="မနက္ ၉ နာရီမွ ည ၁၂ နာရီ"-->
+        <!--android:textColor="@color/blue"-->
+        <!--android:layout_toRightOf="@+id/iv_call"-->
+        <!--android:layout_below="@+id/tv_time"-->
+        <!--android:layout_marginTop="@dimen/fab_margin"-->
+        <!--android:lineSpacingMultiplier="1.3"-->
+        <!--android:layout_marginLeft="@dimen/medium_margin"/>-->
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/margin_extralarge"
+            android:layout_below="@+id/iv_time"
+            android:background="@color/primary_light"/>
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:textColor="@color/text_black_ish"
+            android:background="@color/white"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:gravity="center_horizontal"
+            android:text="Rate this app"/>
+
+        <RatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:isIndicator="true"
+            android:backgroundTintMode="add"
+            android:layout_below="@+id/tv_rate"
+            android:gravity="center_horizontal"
+            android:layout_toRightOf="@+id/iv_restaturant"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/fab_margin" />
+
+    </RelativeLayout>
+
+</ScrollView>
