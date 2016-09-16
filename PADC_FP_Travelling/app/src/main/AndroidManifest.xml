@@ -19,6 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.AttractionDetailActivity"
+            android:label="@string/title_activity_attraction_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".activities.HighWayDetailActivity"
+            android:label="@string/title_activity_high_way_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activities.HotelDetailActivity"
+            android:label="@string/title_activity_hotel_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

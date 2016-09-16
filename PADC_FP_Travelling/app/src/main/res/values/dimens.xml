@@ -3,4 +3,36 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="detail_backdrop_height">256dp</dimen>
+    <dimen name="margin_medium_2">16dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="text_regular_2x">16sp</dimen>
+    <dimen name="text_title">34sp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="screen_title_size">20sp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+
+
+    <!--For Navigation Drawer-->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_text_size">20sp</dimen>
+    <dimen name="nav_image_height">40dp</dimen>
+    <dimen name="nav_text_height">20dp</dimen>
+
+    <!--Text Implementaion-->
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_regular">14sp</dimen>
+    <dimen name="text_regular_3x">20sp</dimen>
+    <dimen name="text_heading_1x">24sp</dimen>
+    <dimen name="text_heading_2x">32sp</dimen>
+    <dimen name="text_big">40sp</dimen>
+    <dimen name="text_big_2x">60sp</dimen>
+    <dimen name="text_big_3x">80sp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="padding_bottom_for_fab">80dp</dimen>
+
+    <dimen name="spacing">4dp</dimen>
 </resources>
