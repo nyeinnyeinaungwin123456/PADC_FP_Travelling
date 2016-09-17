@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.HomeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
+
+            <!--<EditText-->
+                <!--android:id="@+id/et_search_tourpacakge"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/margin_medium"-->
+                <!--android:layout_marginRight="@dimen/medium_margin"-->
+                <!--android:textSize="@dimen/text_regular4x"-->
+                <!--android:drawableRight="@drawable/ic_clear_black_24dp"-->
+                <!--android:hint="@string/msg_search_travel_guide"/>-->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="5dp">
+
+                <EditText
+                    android:id="@+id/et_search_tourpacakge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="22dp"
+                    android:textColor="@android:color/white"
+                    android:hint="@string/msg_search_travel_guide"
+                    android:maxWidth="50dp"
+                    android:textSize="@dimen/text_regular4x"
+                    android:singleLine="true" />
+                <!--android:drawableLeft="@android:drawable/ic_menu_search"-->
+
+                <Button
+                    android:id="@+id/btnclearsearch"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_gravity="right"
+                    android:background="@drawable/ic_clear_black_24dp" />
+
+            </FrameLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+<!--<RelativeLayout-->
+    <!--android:orientation="vertical" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:gravity="center_horizontal|center_vertical"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_margin="@dimen/medium_margin"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/searchInput"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="@string/msg_search_travel_guide"-->
+        <!--android:lineSpacingMultiplier="1.3"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="@dimen/text_heading_1x" >-->
+    <!--</TextView>-->
+
+<!--</RelativeLayout>-->
+    </android.support.design.widget.CoordinatorLayout>

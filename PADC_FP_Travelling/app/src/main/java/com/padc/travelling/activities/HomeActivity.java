@@ -1,12 +1,12 @@
 package com.padc.travelling.activities;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,24 +16,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.padc.travelling.R;
+import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.TourPackageFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.TourPackageViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+//import com.padc.travelling.fragments.AttractionPlacesFragment;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AttractionPlacesViewHolder.ControllerAttractionPlaces, MenuItemCompat.OnActionExpandListener{
+        AttractionPlacesViewHolder.ControllerAttractionPlaces, TourPackageViewHolder.ControllerTourPackage{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    @BindView(R.id.tv_search_travel)
-    TextView tvSearchTravel;
+//    @BindView(R.id.tv_search_travel)
+//    TextView tvSearchTravel;
 
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
@@ -42,6 +47,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
 
     private ShareActionProvider mShareActionProvider;
+
+    public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +60,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-               R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -69,8 +76,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                try{
+                    Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
+                    startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                e.printStackTrace();
+                }
             }
         });
     }
@@ -79,28 +93,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
-
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        if(searchMenuItem != null){
-
-            MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
-                @Override
-                public boolean onMenuItemActionExpand(MenuItem item) {
-                    tvSearchTravel.setVisibility(View.VISIBLE);
-                    flContainer.setVisibility(View.INVISIBLE);
-                    return true;
-                }
-
-                @Override
-                public boolean onMenuItemActionCollapse(MenuItem item) {
-                    tvSearchTravel.setVisibility(View.INVISIBLE);
-                    flContainer.setVisibility(View.VISIBLE);
-                    return true;
-                }
-            });
-
-        }
-
         return true;
     }
 
@@ -134,15 +126,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             } break;
 
             case R.id.menu_tourpackages: {
+                navigateToTourPackage();
 
             } break;
             case R.id.menu_highway: {
 
             }break;
-            case R.id.menu_hotels:{
-
-            }break;
-            case R.id.menu_restaurants:{
+            case R.id.menu_hotelandrestaurant:{
 
             }break;
             case R.id.menu_feedback:{
@@ -154,37 +144,44 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-//        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-//        drawerLayout.closeDrawer(GravityCompat.START);
-
-        return true;
-    }
-
-    @Override
-    public boolean onMenuItemActionExpand(MenuItem item) {
-        tvSearchTravel.setVisibility(View.VISIBLE);
-        flContainer.setVisibility(View.INVISIBLE);
-
-        return true;
-    }
-
-    @Override
-    public boolean onMenuItemActionCollapse(MenuItem item) {
-        tvSearchTravel.setVisibility(View.INVISIBLE);
-        flContainer.setVisibility(View.VISIBLE);
-
         return true;
     }
 
     private void navigateToAttractionPlaces(){
-    getSupportFragmentManager().
-            beginTransaction().
-            replace(R.id.fl_container, AttractionPlacesFragment.newInstance()).
-            commit();
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, AttractionPlacesFragment.newInstance()).
+                commit();
+    }
+
+    private void navigateToTourPackage(){
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, TourPackageFragment.newInstance()).
+                commit();
     }
 
     @Override
     public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
+        Intent intent = AttractionDetailActivity.newIntent();
+        startActivity(intent);
 
+    }
+
+//    //TODO to add in favourit
+//    @Override
+//    public void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite) {
+//        setContentView(R.layout.list_item_attractionplaces);
+//
+//        ImageView iv_fovourite = (ImageView)findViewById(R.id.iv_favourite1);
+//        iv_fovourite.setImageResource(R.drawable.ic_favorite_black_24dp);
+//    }
+
+    @Override
+    public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
+
+        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackageVO.getTourpackagetitle());
+        startActivity(intent);
     }
 }
