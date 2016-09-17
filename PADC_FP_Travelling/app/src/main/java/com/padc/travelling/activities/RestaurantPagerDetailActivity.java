@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Nyein Nyein on 9/13/2016.
  */
-public class TourPackagePagerDetailActivity extends AppCompatActivity {
+public class RestaurantPagerDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar_restaurantdetail)
     Toolbar toolbarRestaurant;
@@ -38,7 +38,7 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
     public static Intent newIntent(String tourpackagetitle)
     {
 //        String temp = tv
-        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        Intent intent = new Intent(TravellingApp.getContext(), RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_TOURPACKAGE_TITLE,tourpackagetitle);
 //        intent.putExtra(PUT_IE_TOURPACKAGE_TITLE,temp);
         return intent;
@@ -76,7 +76,7 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
 //            public void onClick(View view) {
 //                String number =null;
 //                if(view.getId() == R.id.btn_call){
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(TourPackagePagerDetailActivity.this);
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(RestaurantPagerDetailActivity.this);
 //                    builder.setAdapter(adpPhone, new DialogInterface.OnClickListener() {
 //                        @Override
 //                        public void onClick(DialogInterface dialogInterface, int i) {

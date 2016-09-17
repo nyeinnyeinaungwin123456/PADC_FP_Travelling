@@ -220,7 +220,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
 
 //        Testing
-        Intent intent = new Intent(TravellingApp.getContext(),TourPackagePagerDetailActivity.class);
+        Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
         startActivity(intent);
     }
