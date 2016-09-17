@@ -32,7 +32,7 @@ import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
-import com.padc.travelling.fragments.RestaurantFragment;
+import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
@@ -205,7 +205,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void navigateToRestaurant(){
         getSupportFragmentManager().
                 beginTransaction().
-                replace(R.id.fl_container, RestaurantFragment.newInstance()).
+                replace(R.id.fl_container, RestaurantandHotelTabFragment.newInstance()).
                 commit();
     }
 

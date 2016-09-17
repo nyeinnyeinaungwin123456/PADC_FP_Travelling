@@ -13,9 +13,10 @@
     <ImageView
         android:id="@+id/iv_tourpackagedetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/heartstream"
+        android:layout_height="240dp"
+        android:src="@drawable/restaurantone"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/fab_margin"/>
 
     <LinearLayout
