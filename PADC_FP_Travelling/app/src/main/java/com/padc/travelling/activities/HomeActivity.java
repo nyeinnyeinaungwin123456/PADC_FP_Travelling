@@ -215,6 +215,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
+
         Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
         startActivity(intent);

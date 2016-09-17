@@ -38,9 +38,8 @@
             android:name=".activities.TourPackagePagerDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".activities.CustomSearchActivity"/>
 
-        <activity android:name=".activities.CustomSearchActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

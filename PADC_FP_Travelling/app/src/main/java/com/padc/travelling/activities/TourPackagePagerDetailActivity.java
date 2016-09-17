@@ -69,7 +69,7 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle !=null) {
             String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_TOURPACKAGE_TITLE);
-            tvTourPackageTitle.setText(tourpackagetitle);
+        tvTourPackageTitle.setText(tourpackagetitle);
         }
 
         TourPackageDetailAdapter tourPackageDetailAdapter = new TourPackageDetailAdapter();

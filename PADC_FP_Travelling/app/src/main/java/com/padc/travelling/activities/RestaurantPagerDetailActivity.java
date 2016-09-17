@@ -1,18 +1,24 @@
 package com.padc.travelling.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.adapters.RestaurantDetailAdapter;
+import com.padc.travelling.adapters.TourPackageDetailAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,13 +28,16 @@ import butterknife.ButterKnife;
  */
 public class RestaurantPagerDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar_restaurantdetail)
-    Toolbar toolbarRestaurant;
+    @BindView(R.id.toolbar_tourpackage)
+    Toolbar toolbarPackage;
 
-    @BindView(R.id.tv_restaurant_title)
+    @BindView(R.id.tv_tourpackage_title)
     TextView tvTourPackageTitle;
 
-//    ArrayAdapter<String> adpPhone ;
+    @BindView(R.id.btn_call)
+    Button btnCall;
+
+    ArrayAdapter<String> adpPhone ;
 
 //    public static String temp = tvTourPackageTitle.getText().toString();
 
@@ -38,7 +47,7 @@ public class RestaurantPagerDetailActivity extends AppCompatActivity {
     public static Intent newIntent(String tourpackagetitle)
     {
 //        String temp = tv
-        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        Intent intent = new Intent(TravellingApp.getContext(), RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_TOURPACKAGE_TITLE,tourpackagetitle);
 //        intent.putExtra(PUT_IE_TOURPACKAGE_TITLE,temp);
         return intent;
@@ -47,10 +56,10 @@ public class RestaurantPagerDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pager_restaurnt);
+        setContentView(R.layout.activity_pager_tourpackage);
         ButterKnife.bind(this,this);
 
-        setSupportActionBar(toolbarRestaurant);
+        setSupportActionBar(toolbarPackage);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
@@ -59,38 +68,39 @@ public class RestaurantPagerDetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle !=null) {
-            String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_RESTAURANT_TITLE);
+            String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_TOURPACKAGE_TITLE);
             tvTourPackageTitle.setText(tourpackagetitle);
         }
 
-        RestaurantDetailAdapter restaurantDetailAdapter = new RestaurantDetailAdapter();
-        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_restaurant);
-        viewPager.setAdapter(restaurantDetailAdapter);
+        TourPackageDetailAdapter tourPackageDetailAdapter = new TourPackageDetailAdapter();
+        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_tourpackage);
+        viewPager.setAdapter(tourPackageDetailAdapter);
         viewPager.setCurrentItem(0);
 
-//        String strings [] = {"09799718769", "09449249546", "09973436843"};
-//        adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
-//
-//        btnCall.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String number =null;
-//                if(view.getId() == R.id.btn_call){
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(TourPackagePagerDetailActivity.this);
-//                    builder.setAdapter(adpPhone, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            Intent callIntent = new Intent(Intent.ACTION_CALL);
-//                            callIntent.setData(Uri.parse("tel:"+adpPhone.getItem(i)));
-//                            startActivity(callIntent);
-//                        }
-//                    });
-//
-//                    builder.setTitle("Choose One");
-//                    builder.show();
-//                }
-//            }
-//        });
+        String strings [] = {"09799718769", "09449249546", "09973436843"};
+        adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number =null;
+                if(view.getId() == R.id.btn_call){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RestaurantPagerDetailActivity.this);
+                    builder.setAdapter(adpPhone, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent callIntent = new Intent(Intent.ACTION_CALL);
+                            callIntent.setData(Uri.parse("tel:"+adpPhone.getItem(i)));
+                            startActivity(callIntent);
+                        }
+                    });
+
+                    builder.setTitle("Choose One");
+                    builder.show();
+                }
+            }
+        });
+
     }
 
     @Override
