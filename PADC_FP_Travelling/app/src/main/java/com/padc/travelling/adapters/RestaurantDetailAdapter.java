@@ -1,6 +1,5 @@
 package com.padc.travelling.adapters;
 
-import android.support.v4.view.PagerAdapter;
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;

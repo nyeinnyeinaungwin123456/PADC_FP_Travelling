@@ -25,7 +25,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
@@ -37,6 +37,10 @@ import com.padc.travelling.fragments.TourPackageFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;
+import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
+import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.RestaurnatViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -153,9 +157,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }break;
 
             case R.id.menu_hotelandrestaurant:{
-
-            navigateToRestaurant();
+                navigateToRestaurant();
             }break;
+
             case R.id.menu_feedback:{
 
             }break;
@@ -205,6 +209,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 commit();
     }
 
+
     @Override
     public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
 
@@ -213,13 +218,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
+
     @Override
     public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
 
+//        Testing
         Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
         startActivity(intent);
-
     }
 
     @Override
