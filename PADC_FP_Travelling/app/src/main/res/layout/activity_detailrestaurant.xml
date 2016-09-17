@@ -16,12 +16,7 @@
         android:layout_height="240dp"
         android:src="@drawable/restaurantone"
         android:adjustViewBounds="true"
-<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
         android:scaleType="centerCrop" />
-=======
-        android:scaleType="centerCrop"
-        android:layout_marginTop="@dimen/fab_margin"/>
->>>>>>> -detail implementation
 
     <LinearLayout
         android:id="@+id/linear_restaurant"

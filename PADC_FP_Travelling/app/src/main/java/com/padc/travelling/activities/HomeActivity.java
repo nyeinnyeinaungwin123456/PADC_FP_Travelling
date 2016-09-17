@@ -33,10 +33,7 @@ import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
 import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
-<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
 import com.padc.travelling.fragments.TourPackageFragment;
-=======
->>>>>>> -detail implementation
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;
@@ -219,7 +216,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
 
-//        Testing
         Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
         intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
         startActivity(intent);

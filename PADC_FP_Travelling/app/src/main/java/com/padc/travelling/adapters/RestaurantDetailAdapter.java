@@ -1,6 +1,6 @@
 package com.padc.travelling.adapters;
 
-<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
+import android.support.v4.view.PagerAdapter;
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -21,11 +21,11 @@ public class RestaurantDetailAdapter extends PagerAdapter {
         return 3;
     }
 
-    public Object instantiateItem(View collection, int position){
-        LayoutInflater inflater = (LayoutInflater)collection.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public Object instantiateItem(View collection, int position) {
+        LayoutInflater inflater = (LayoutInflater) collection.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         int resId = 0;
 
-        switch (position){
+        switch (position) {
             case 0:
                 resId = R.layout.activity_detailrestaurant;
                 break;
@@ -40,28 +40,22 @@ public class RestaurantDetailAdapter extends PagerAdapter {
 
         }
         View view = inflater.inflate(resId, null);
-        ((ViewPager)collection).addView(view, 0);
+        ((ViewPager) collection).addView(view, 0);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ((ViewPager)container).removeView((View)object);
+        ((ViewPager) container).removeView((View) object);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((View)object);
+        return view == ((View) object);
     }
 
     @Override
     public Parcelable saveState() {
         return null;
     }
-=======
-/**
- * Created by Nyein Nyein on 9/17/2016.
- */
-public class RestaurantDetailAdapter {
->>>>>>> -detail implementation
 }
