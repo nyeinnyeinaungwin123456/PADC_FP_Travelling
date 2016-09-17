@@ -18,6 +18,10 @@
     <!--<string name="travelmyanmarsite"> www.travelmyanmar.com </string>-->
 
     <string name="lbl_search"> Search </string>
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
     <string name="msg_search_travel_guide"> TourPackage မ်ားရွာပါ </string>
+=======
+    <string name="msg_search_travel_guide"> သင္ရွာေဖြလိုေသာ ခရီးစဥ္မ်ားကုိ ၿမိဳ႕အလိုက္ရွာေဖြႏုိင္ပါသည္ </string>
+>>>>>>> -detail implementation
     <string name="restaurant"> စားေသာက္ဆိုင္မ်ား </string>
 </resources>

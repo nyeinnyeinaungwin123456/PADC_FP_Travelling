@@ -33,7 +33,10 @@ import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
 import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
 import com.padc.travelling.fragments.TourPackageFragment;
+=======
+>>>>>>> -detail implementation
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;

@@ -38,13 +38,20 @@ public class RestaurantandHotelTabFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         restaurantandHotelPagerAdapter = new RestaurantandHotelPagerAdapter(getActivity().getSupportFragmentManager());
+        restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
 
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
         restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
 
         //        TODO
 //        to add hotel fragment
         restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
 
+=======
+        //        TODO
+//        to add hotel fragment
+        restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
+>>>>>>> -detail implementation
     }
 
     @Nullable

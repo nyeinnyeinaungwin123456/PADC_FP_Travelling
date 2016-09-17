@@ -1,5 +1,6 @@
 package com.padc.travelling.adapters;
 
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -57,4 +58,10 @@ public class RestaurantDetailAdapter extends PagerAdapter {
     public Parcelable saveState() {
         return null;
     }
+=======
+/**
+ * Created by Nyein Nyein on 9/17/2016.
+ */
+public class RestaurantDetailAdapter {
+>>>>>>> -detail implementation
 }

@@ -77,6 +77,7 @@
 
         </LinearLayout>
 
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
         <!--<TextView-->
             <!--android:id="@+id/tv_restaurantname"-->
             <!--android:layout_width="wrap_content"-->
@@ -87,13 +88,29 @@
             <!--android:text="ေရႊေတာင္တန္း"-->
             <!--android:textStyle="bold"-->
             <!--android:textColor="@color/text_black_ish"/>-->
+=======
+        <TextView
+            android:id="@+id/tv_restaurantname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_restaurant"
+            android:textSize="@dimen/text_heading_1x"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:text="ေရႊေတာင္တန္း"
+            android:textStyle="bold"
+            android:textColor="@color/text_black_ish"/>
+>>>>>>> -detail implementation
 
         <ImageView
             android:id="@+id/iv_accomodation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_filter_1_black_24dp"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_below="@+id/linear_restaurant"
+=======
+            android:layout_below="@+id/tv_restaurantname"
+>>>>>>> -detail implementation
             android:layout_marginTop="@dimen/fab_margin"/>
 
         <TextView
@@ -101,7 +118,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="၂၀၀၀၀ က်ပ္"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_below="@+id/linear_restaurant"
+=======
+            android:layout_below="@+id/tv_restaurantname"
+>>>>>>> -detail implementation
             android:layout_toRightOf="@+id/iv_accomodation"
             android:layout_marginLeft="@dimen/medium_margin"
             android:layout_marginTop="@dimen/fab_margin"
@@ -142,7 +163,11 @@
             android:textColor="@color/blue"
             android:layout_toRightOf="@+id/iv_address"
             android:layout_below="@+id/tv_places"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_marginTop="@dimen/medium_margin"
+=======
+            android:layout_marginTop="@dimen/fab_margin"
+>>>>>>> -detail implementation
             android:lineSpacingMultiplier="1.3"
             android:layout_marginLeft="@dimen/medium_margin"/>
 
@@ -162,7 +187,11 @@
             android:textColor="@color/blue"
             android:layout_toRightOf="@+id/iv_time"
             android:layout_below="@+id/tv_address"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_marginTop="@dimen/medium_margin"
+=======
+            android:layout_marginTop="@dimen/fab_margin"
+>>>>>>> -detail implementation
             android:lineSpacingMultiplier="1.3"
             android:layout_marginLeft="@dimen/medium_margin"/>
 
@@ -190,7 +219,11 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_marginTop="@dimen/margin_extralarge"
+=======
+            android:layout_marginTop="@dimen/fab_margin"
+>>>>>>> -detail implementation
             android:layout_below="@+id/iv_time"
             android:background="@color/primary_light"/>
 
@@ -201,6 +234,10 @@
             android:layout_below="@+id/view"
             android:layout_marginTop="@dimen/fab_margin"
             android:textColor="@color/text_black_ish"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
+=======
+            android:background="@color/white"
+>>>>>>> -detail implementation
             android:lineSpacingMultiplier="1.2"
             android:layout_marginBottom="@dimen/medium_margin"
             android:gravity="center_horizontal"
@@ -208,6 +245,7 @@
 
         <RatingBar
             android:id="@+id/rating"
+<<<<<<< d80acb20e2f15149a287273d04fdf49daf68eadf
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
@@ -218,6 +256,18 @@
             android:gravity="center_horizontal"
             android:layout_toRightOf="@+id/iv_restaturant"
             android:layout_gravity="center_horizontal"
+=======
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_extralarge"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:stepSize="0.3"
+            android:rating="@android:integer/config_shortAnimTime"
+            android:isIndicator="true"
+            android:backgroundTintMode="add"
+            android:layout_below="@+id/tv_rate"
+            android:layout_toRightOf="@+id/iv_restaturant"
+>>>>>>> -detail implementation
             android:layout_marginTop="@dimen/fab_margin" />
 
     </RelativeLayout>
