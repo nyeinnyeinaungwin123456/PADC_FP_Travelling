@@ -59,4 +59,13 @@
 
     </group>
 
+    <group android:id="@+id/group9"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_touropia"
+            android:icon="@drawable/ic_explore_black_24dp"
+            android:title="@string/touropia"/>
+
+    </group>
+
 </menu>
