@@ -201,7 +201,6 @@
             android:layout_below="@+id/view"
             android:layout_marginTop="@dimen/fab_margin"
             android:textColor="@color/text_black_ish"
-            android:background="@color/white"
             android:lineSpacingMultiplier="1.2"
             android:layout_marginBottom="@dimen/medium_margin"
             android:gravity="center_horizontal"

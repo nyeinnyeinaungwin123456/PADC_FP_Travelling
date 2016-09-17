@@ -16,8 +16,7 @@
         android:layout_height="240dp"
         android:src="@drawable/restaurantone"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="@dimen/fab_margin"/>
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:id="@+id/linear_restaurant"
@@ -76,17 +75,6 @@
             android:background="@android:color/holo_blue_dark"/>
 
     </LinearLayout>
-
-    <!--<TextView-->
-        <!--android:id="@+id/tv_restaurantname"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/linear_restaurant"-->
-        <!--android:textSize="@dimen/text_heading_1x"-->
-        <!--android:layout_marginTop="@dimen/fab_margin"-->
-        <!--android:text="ေရႊေတာင္တန္း"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textColor="@color/text_black_ish"/>-->
 
     <ImageView
         android:id="@+id/iv_accomodation"
@@ -171,22 +159,21 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="@dimen/margin_extralarge"
         android:layout_below="@+id/iv_time"
+        android:layout_marginTop="@dimen/fab_margin"
         android:background="@color/primary_light"/>
-
 
     <TextView
     android:id="@+id/tv_rate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_below="@+id/view"
     android:layout_marginTop="@dimen/fab_margin"
     android:textColor="@color/text_black_ish"
     android:lineSpacingMultiplier="1.2"
     android:layout_marginBottom="@dimen/medium_margin"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/view"
-    android:text="Rate this app"/>
+        android:text="Rate This App"/>
 
     <RatingBar
         android:id="@+id/rating"
@@ -200,10 +187,7 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/fab_margin" />
-    <!--style="?android:attr/ratingBarStyleSmall"-->
-    <!--android:rating="@android:integer/config_shortAnimTime"-->
-    <!--android:rating="4.5"-->
-<!--</RelativeLayout>-->
+
 </RelativeLayout>
 
 </ScrollView>
