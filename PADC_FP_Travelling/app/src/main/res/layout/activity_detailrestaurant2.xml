@@ -76,31 +76,13 @@
 
         </LinearLayout>
 
-<<<<<<< da9eac70acaf92ac091102294d4df709294c69e7
-=======
-        <!--<TextView-->
-            <!--android:id="@+id/tv_restaurantname"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/linear_restaurant"-->
-            <!--android:textSize="@dimen/text_heading_1x"-->
-            <!--android:layout_marginTop="@dimen/fab_margin"-->
-            <!--android:text="ေရႊေတာင္တန္း"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textColor="@color/text_black_ish"/>-->
->>>>>>> - final implementation of list_item_restaurant
-
         <ImageView
             android:id="@+id/iv_accomodation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_filter_1_black_24dp"
             android:layout_below="@+id/linear_restaurant"
-<<<<<<< da9eac70acaf92ac091102294d4df709294c69e7
             android:layout_marginTop="@dimen/fab_margin" />
-=======
-            android:layout_marginTop="@dimen/fab_margin"/>
->>>>>>> - final implementation of list_item_restaurant
 
         <TextView
             android:id="@+id/tv_accomodation"
