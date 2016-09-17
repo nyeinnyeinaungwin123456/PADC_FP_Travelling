@@ -58,6 +58,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
 
+    public static String IE_RESTAURANT_TITLE = "restauranttitle";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -219,6 +221,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 //        Testing
         Intent intent = new Intent(TravellingApp.getContext(),TourPackagePagerDetailActivity.class);
+        intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
         startActivity(intent);
     }
 
