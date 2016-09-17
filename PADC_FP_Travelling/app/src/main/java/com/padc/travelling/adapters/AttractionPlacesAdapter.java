@@ -1,7 +1,5 @@
 package com.padc.travelling.adapters;
 
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +32,8 @@ public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlac
     public AttractionPlacesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = mInflater.inflate(R.layout.list_item_attractionplaces, parent, false);
-        CardView cardView = (CardView)view.findViewById(R.id.cardview);
-        cardView.setCardBackgroundColor(Color.TRANSPARENT);
+//        CardView cardView = (CardView)view.findViewById(R.id.cardview);
+//        cardView.setCardBackgroundColor(Color.TRANSPARENT);
 
         return new AttractionPlacesViewHolder(view, mControllerAttractionPlaces);
 

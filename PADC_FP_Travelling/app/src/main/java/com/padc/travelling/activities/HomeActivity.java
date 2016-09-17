@@ -149,11 +149,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_highway: {
                 navigateToHighWay();
             }break;
+
             case R.id.menu_hotels:{
                 navigateToHotel();
 
             }break;
-            case R.id.menu_restaurants:{
+            case R.id.menu_restaurants: {
+
+            }break;
+            case R.id.menu_hotelandrestaurant:{
+
+
 
             }break;
             case R.id.menu_feedback:{

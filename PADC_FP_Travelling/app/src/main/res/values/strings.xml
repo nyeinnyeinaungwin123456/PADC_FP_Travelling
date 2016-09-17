@@ -8,8 +8,7 @@
     <string name="attractionplaces"> အထင္ကရေနရာမ်ား </string>
     <string name="tourpackages"> မိမိသြားလိုေသာ ခရီးစဥ္ </string>
     <string name="highway"> အေ၀းေျပးခရီးစဥ္မ်ား </string>
-    <string name="hotels"> ဟိုတယ္မ်ား </string>
-    <string name="restaurants"> စားေသာက္ဆိုင္မ်ား </string>
+    <string name="hotelandrestaurants"> ဟိုတယ္ႏွင့္စားေသာက္ဆိုင္မ်ား </string>
     <string name="feedback"> Feedback </string>
     <string name="favourite"> Favourite </string>
     <string name="aboutus"> About Us </string>
