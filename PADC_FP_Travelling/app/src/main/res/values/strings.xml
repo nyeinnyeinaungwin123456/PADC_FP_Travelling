@@ -21,5 +21,24 @@
     <string name="lbl_search"> Search </string>
     <string name="msg_search_travel_guide"> သင္ရွာေဖြလိုေသာ ခရီးစဥ္မ်ားကုိ ၿမိဳ႕အလိုက္ရွာေဖြႏုိင္ပါသည္ </string>
 
+    <!-- attraction detail -->
+    <string name="attraction_detail_title">ရွှေတိဂုံဘုရား</string>
+    <string name="item_category">သမိုင်းကြောင်းနှင့်ဆိုင်သော နေရာများ</string>
+    <string name="item_location">ရန်ကုန်</string>
+    <string name="search">မြေပုံတွင်ကြည့်ရန်</string>
+    <string name="item_description">ကမ္ဘာပေါ်ရှိ အမြင့်ဆုံး ဘုရားစေတီမှာ ၃၂၆-ပေရှိသော ရွှေတိဂုံ စေတီတော် ပင်ဖြစ်ပြီး ရန်ကုန်မြို့ရှိ သိင်္ဂုတ္တရ ကုန်းတော်ပေါ်တွင် တည်ရှိသည်။ လေးဆူ ဓာတ်ပုံ ရွှေတိဂုံ ဟုလည်း ခေါ်တွင်သည်။ စေတီအစ ရွှေတိဂုံက ဟုဆိုကြ သည်။</string>
+    <string name="title_activity_high_way_list">HighWayListActivity</string>
+
+    <string name="hotel_desc">Sitting majestically on eight acres of beautifully landscaped gardens, Sedona Hotel Yangon is a 20-minute drive away from the international airport and the bustling city centre.
+
+Within close proximity to the famous Shwedagon Pagoda and Inya Lake, this deluxe 5-star hotel in Yangon impresses with its local ethnic decor and architecture. We offer 366 newly-upgraded rooms and suites along with several dining options, as well as a new 29-storey Inya Wing extension with 431 well-appointed accommodations, along with a grand lobby and a high-end retail gallery. Additionally, we provide business travellers with exclusive club access for privacy, comfort and personalised service.
+
+Relish the multitude of flavours at our variety of restaurants in Yangon. Savour Italian fare at Orzo, Oriental cuisine at Du Fu, International buffet at D’Cuisine, or simply unwind at the classic Lobby Lounge.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_high_way_detail">HighWayDetailActivity</string>
+    <string name="high_way_bus_title">JJ Express</string>
+    <string name="title_activity_hotel_detail">HotelDetailActivity</string>
 
 </resources>

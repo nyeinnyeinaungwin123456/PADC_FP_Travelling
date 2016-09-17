@@ -21,8 +21,14 @@ import android.widget.TextView;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.HighwayCompanyVO;
+import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.HighWayListFragment;
+import com.padc.travelling.fragments.HotelFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.HighWayListViewHolder;
+import com.padc.travelling.view.HotelViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +36,9 @@ import butterknife.ButterKnife;
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AttractionPlacesViewHolder.ControllerAttractionPlaces{
+        AttractionPlacesViewHolder.ControllerAttractionPlaces
+        ,HighWayListViewHolder.ControllerHighWayList
+        ,HotelViewHolder.ControllerHotel{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -64,7 +72,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState == null){
-
             navigateToAttractionPlaces();
         }
 
@@ -140,9 +147,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             } break;
             case R.id.menu_highway: {
-
+                navigateToHighWay();
             }break;
             case R.id.menu_hotels:{
+                navigateToHotel();
 
             }break;
             case R.id.menu_restaurants:{
@@ -161,6 +169,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //        drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    private void navigateToHotel() {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, HotelFragment.newInstance()).
+                commit();
+    }
+
+    private void navigateToHighWay() {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, HighWayListFragment.newInstance()).
+                commit();
     }
 
 //    @Override
@@ -191,5 +213,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(TravellingApp.getContext(), AttractionDetailActivity.class);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onTapHighWayList(HighwayCompanyVO highwayCompanyVO, int position) {
+        Intent intent = new Intent(TravellingApp.getContext(),HighWayDetailActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapHotel(HotelVO hotelVO, int position) {
+        Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
+        startActivity(intent);
     }
 }
