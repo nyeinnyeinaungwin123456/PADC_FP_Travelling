@@ -24,8 +24,12 @@
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
     </style>
 
-    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText"/>
     <item name="colorControlNormal">@color/white</item>
+    <style name="starsRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ic_star_border_black_24dp1</item>
+        <item name="android:minHeight">36dip</item>
+        <item name="android:maxHeight">36dip</item>
     </style>
 
 </resources>
