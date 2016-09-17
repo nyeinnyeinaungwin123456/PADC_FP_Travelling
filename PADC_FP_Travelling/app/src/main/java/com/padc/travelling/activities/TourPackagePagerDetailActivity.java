@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.adapters.RestaurantDetailAdapter;
 import com.padc.travelling.adapters.TourPackageDetailAdapter;
 
 import butterknife.BindView;
@@ -28,16 +29,13 @@ import butterknife.ButterKnife;
  */
 public class TourPackagePagerDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar_tourpackage)
-    Toolbar toolbarPackage;
+    @BindView(R.id.toolbar_restaurantdetail)
+    Toolbar toolbarRestaurant;
 
-    @BindView(R.id.tv_tourpackage_title)
+    @BindView(R.id.tv_restaurant_title)
     TextView tvTourPackageTitle;
 
-    @BindView(R.id.btn_call)
-    Button btnCall;
-
-    ArrayAdapter<String> adpPhone ;
+//    ArrayAdapter<String> adpPhone ;
 
 //    public static String temp = tvTourPackageTitle.getText().toString();
 
@@ -56,10 +54,10 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pager_tourpackage);
+        setContentView(R.layout.activity_pager_restaurnt);
         ButterKnife.bind(this,this);
 
-        setSupportActionBar(toolbarPackage);
+        setSupportActionBar(toolbarRestaurant);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
@@ -72,34 +70,34 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
         tvTourPackageTitle.setText(tourpackagetitle);
         }
 
-        TourPackageDetailAdapter tourPackageDetailAdapter = new TourPackageDetailAdapter();
-        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_tourpackage);
-        viewPager.setAdapter(tourPackageDetailAdapter);
+        RestaurantDetailAdapter restaurantDetailAdapter = new RestaurantDetailAdapter();
+        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_restaurant);
+        viewPager.setAdapter(restaurantDetailAdapter);
         viewPager.setCurrentItem(0);
 
-        String strings [] = {"09799718769", "09449249546", "09973436843"};
-        adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
-
-        btnCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String number =null;
-                if(view.getId() == R.id.btn_call){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(TourPackagePagerDetailActivity.this);
-                    builder.setAdapter(adpPhone, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("tel:"+adpPhone.getItem(i)));
-                            startActivity(callIntent);
-                        }
-                    });
-
-                    builder.setTitle("Choose One");
-                    builder.show();
-                }
-            }
-        });
+//        String strings [] = {"09799718769", "09449249546", "09973436843"};
+//        adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
+//
+//        btnCall.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String number =null;
+//                if(view.getId() == R.id.btn_call){
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(TourPackagePagerDetailActivity.this);
+//                    builder.setAdapter(adpPhone, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                            callIntent.setData(Uri.parse("tel:"+adpPhone.getItem(i)));
+//                            startActivity(callIntent);
+//                        }
+//                    });
+//
+//                    builder.setTitle("Choose One");
+//                    builder.show();
+//                }
+//            }
+//        });
     }
 
     @Override
