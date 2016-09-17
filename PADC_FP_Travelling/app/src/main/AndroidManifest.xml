@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.TourPackagePagerDetailActivity"/>
+        <activity android:name=".activities.TourPackagePagerDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

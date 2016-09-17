@@ -77,23 +77,23 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_restaurantname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_restaurant"
-        android:textSize="@dimen/text_heading_1x"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:text="ေရႊေတာင္တန္း"
-        android:textStyle="bold"
-        android:textColor="@color/text_black_ish"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_restaurantname"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/linear_restaurant"-->
+        <!--android:textSize="@dimen/text_heading_1x"-->
+        <!--android:layout_marginTop="@dimen/fab_margin"-->
+        <!--android:text="ေရႊေတာင္တန္း"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/text_black_ish"/>-->
 
     <ImageView
         android:id="@+id/iv_accomodation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_filter_1_black_24dp"
-        android:layout_below="@+id/tv_restaurantname"
+        android:layout_below="@+id/linear_restaurant"
         android:layout_marginTop="@dimen/fab_margin"/>
 
     <TextView
@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="၂၀၀၀၀ က်ပ္"
-        android:layout_below="@+id/tv_restaurantname"
+        android:layout_below="@+id/linear_restaurant"
         android:layout_toRightOf="@+id/iv_accomodation"
         android:layout_marginLeft="@dimen/medium_margin"
         android:layout_marginTop="@dimen/fab_margin"
@@ -142,7 +142,7 @@
         android:textColor="@color/blue"
         android:layout_toRightOf="@+id/iv_address"
         android:layout_below="@+id/tv_places"
-        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:lineSpacingMultiplier="1.3"
         android:layout_marginLeft="@dimen/medium_margin"/>
 
@@ -162,65 +162,48 @@
         android:textColor="@color/blue"
         android:layout_toRightOf="@+id/iv_time"
         android:layout_below="@+id/tv_address"
-        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:lineSpacingMultiplier="1.3"
         android:layout_marginLeft="@dimen/medium_margin"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_call"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/ic_event_note_black_24dp"-->
-        <!--android:layout_below="@+id/iv_time"-->
-        <!--android:layout_marginTop="@dimen/fab_margin"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/tv_call"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="မနက္ ၉ နာရီမွ ည ၁၂ နာရီ"-->
-        <!--android:textColor="@color/blue"-->
-        <!--android:layout_toRightOf="@+id/iv_call"-->
-        <!--android:layout_below="@+id/tv_time"-->
-        <!--android:layout_marginTop="@dimen/fab_margin"-->
-        <!--android:lineSpacingMultiplier="1.3"-->
-        <!--android:layout_marginLeft="@dimen/medium_margin"/>-->
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/margin_extralarge"
         android:layout_below="@+id/iv_time"
         android:background="@color/primary_light"/>
+
 
     <TextView
     android:id="@+id/tv_rate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@+id/view"
     android:layout_marginTop="@dimen/fab_margin"
     android:textColor="@color/text_black_ish"
-    android:background="@color/white"
     android:lineSpacingMultiplier="1.2"
     android:layout_marginBottom="@dimen/medium_margin"
         android:gravity="center_horizontal"
+        android:layout_below="@+id/view"
     android:text="Rate this app"/>
 
     <RatingBar
         android:id="@+id/rating"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_extralarge"
-        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:numStars="5"
-        android:stepSize="0.3"
-        android:rating="@android:integer/config_shortAnimTime"
+        android:stepSize="0.5"
         android:isIndicator="true"
         android:backgroundTintMode="add"
         android:layout_below="@+id/tv_rate"
-        android:layout_toRightOf="@+id/iv_restaturant"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/fab_margin" />
-
+    <!--style="?android:attr/ratingBarStyleSmall"-->
+    <!--android:rating="@android:integer/config_shortAnimTime"-->
+    <!--android:rating="4.5"-->
+<!--</RelativeLayout>-->
 </RelativeLayout>
 
 </ScrollView>
