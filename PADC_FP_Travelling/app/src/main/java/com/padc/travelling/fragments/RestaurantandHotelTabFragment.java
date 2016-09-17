@@ -42,7 +42,7 @@ public class RestaurantandHotelTabFragment extends Fragment {
 
         //        TODO
 //        to add hotel fragment
-        restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
+        restaurantandHotelPagerAdapter.addTab(HotelFragment.newInstance(),getString(R.string.hotel));
     }
 
     @Nullable

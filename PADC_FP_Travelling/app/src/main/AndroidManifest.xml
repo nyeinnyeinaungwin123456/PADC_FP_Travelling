@@ -40,6 +40,14 @@
         </activity>
         <activity android:name=".activities.CustomSearchActivity"/>
 
+        <activity
+            android:name=".activities.HighWayDetailActivity"
+            android:label="@string/title_activity_high_way_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activities.HotelDetailActivity"
+            android:label="@string/title_activity_hotel_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/high_way_card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_bus_company_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/express"
+            android:scaleType="centerCrop" />
+
+
+        <TextView
+            android:id="@+id/tv_bus_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JJ Express"
+            android:textSize="@dimen/text_regular_3x"
+            android:textAlignment="center"
+            android:textColor="@color/text_black_ish"
+            android:background="@color/text_gray2"
+            android:layout_below="@id/iv_bus_company_photo"
+            />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
