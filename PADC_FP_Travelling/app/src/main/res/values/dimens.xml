@@ -15,6 +15,7 @@
     <dimen name="small_margin"> 4dp </dimen>
     <dimen name="medium_margin"> 8dp </dimen>
 
+
     <!--For Navigation Drawer-->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
@@ -34,5 +35,6 @@
     <dimen name="text_big_3x">80sp</dimen>
     <dimen name="card_elevation">2dp</dimen>
     <dimen name="spacing">4dp</dimen>
+    <dimen name="button_text_size">14sp</dimen>
 
 </resources>

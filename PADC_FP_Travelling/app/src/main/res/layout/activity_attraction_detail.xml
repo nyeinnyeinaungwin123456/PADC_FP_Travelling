@@ -43,16 +43,6 @@
             app:layout_collapseMode="pin"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-            <TextView
-                android:id="@+id/tv_screen_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:textSize="@dimen/screen_title_size"
-                android:text="Mandalay"
-                />
-
         </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -69,12 +59,22 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_medium_2">
 
+            <TextView
+                android:id="@+id/tv_attraction_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mandalay"
+                android:textSize="32sp"
+                android:paddingBottom="8dp"
+                />
+
             <ImageView
                 android:id="@+id/iv_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_dns_black_24dp"
                 android:tint="@color/primary_text"
+                android:layout_below="@id/tv_attraction_title"
                 />
 
             <TextView
@@ -86,6 +86,7 @@
                 android:layout_marginLeft="32dp"
                 android:textSize="@dimen/text_regular_2x"
                 android:fontFamily="sans-serif-light"
+                android:layout_below="@id/tv_attraction_title"
                 />
 
             <ImageView
@@ -115,8 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search in Map"
+                android:textSize="@dimen/button_text_size"
                 android:layout_below="@id/tv_location"
-                android:layout_marginLeft="32dp"
                 />
 
             <TextView

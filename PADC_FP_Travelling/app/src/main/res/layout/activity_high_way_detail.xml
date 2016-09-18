@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipe_refresh_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<android.support.design.widget.CoordinatorLayout
 
-    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -93,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_highway_name"
-                    android:paddingLeft="8dp"
                     android:paddingTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_small"
                     android:src="@drawable/ic_home_black_24dp"
@@ -117,7 +111,6 @@
                     android:id="@+id/iv_phone_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
                     android:paddingTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_small"
                     android:src="@drawable/ic_phone_black_24dp"
@@ -144,7 +137,7 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_below="@id/iv_phone_icon"
-                    android:background="@color/text_black_ish"/>
+                    android:background="@color/divider"/>
 
                 <TextView
                     android:id="@+id/tv_available_paths"
@@ -169,17 +162,14 @@
         </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_highway_search"
+            android:id="@+id/fab_highway_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:tint="@color/icons"
             app:layout_anchor="@id/appbar_highway"
             app:layout_anchorGravity="bottom|end|right"
-            android:src="@drawable/ic_search_black_24dp1" />
+            android:src="@drawable/ic_favorite_black_24dp" />
 
     </android.support.design.widget.CoordinatorLayout>
-
-</android.support.v4.widget.SwipeRefreshLayout>
-
 

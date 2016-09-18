@@ -68,7 +68,7 @@ public class HighWayDetailActivity extends AppCompatActivity {
         rvPaths.setLayoutManager(layoutManager);
         rvPaths.setAdapter(pathsAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_highway_search);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_highway_fav);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
