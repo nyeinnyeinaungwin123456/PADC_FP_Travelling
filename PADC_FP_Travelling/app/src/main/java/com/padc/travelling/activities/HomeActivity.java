@@ -25,22 +25,20 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.FeedbackFragment;
 import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
 import com.padc.travelling.fragments.TourPackageFragment;
+import com.padc.travelling.fragments.TouropiaFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;
-import com.padc.travelling.fragments.AttractionPlacesFragment;
-import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
-import com.padc.travelling.view.AttractionPlacesViewHolder;
-import com.padc.travelling.view.RestaurnatViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -146,26 +144,36 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.menu_attractionplaces: {
                 navigateToAttractionPlaces();
-            } break;
+                break;
+            }
 
             case R.id.menu_tourpackages: {
                 navigateToTourPackage();
-
-            } break;
+                break;
+            }
             case R.id.menu_highway: {
-
-            }break;
+                break;
+            }
 
             case R.id.menu_hotelandrestaurant:{
                 navigateToRestaurant();
-            }break;
+                break;
+            }
 
             case R.id.menu_feedback:{
-
-            }break;
-            case R.id.menu_aboutus:{
-
+                navigateToFeedback();
+                break;
             }
+
+            case R.id.menu_aboutus:{
+                break;
+            }
+
+            case R.id.menu_touropia:{
+                navigateToTouropia();
+                break;
+            }
+
 
         }
 
@@ -209,6 +217,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 commit();
     }
 
+    public void navigateToFeedback(){
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, FeedbackFragment.newInstace()).
+                commit();
+    }
+
+    public void navigateToTouropia(){
+    getSupportFragmentManager().
+            beginTransaction().
+            replace(R.id.fl_container, TouropiaFragment.newInstance()).
+            commit();
+    }
 
     @Override
     public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
