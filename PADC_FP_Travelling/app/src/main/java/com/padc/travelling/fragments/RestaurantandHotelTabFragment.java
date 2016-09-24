@@ -39,7 +39,6 @@ public class RestaurantandHotelTabFragment extends Fragment {
 
         restaurantandHotelPagerAdapter = new RestaurantandHotelPagerAdapter(getActivity().getSupportFragmentManager());
         restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
-
         //        TODO
 //        to add hotel fragment
         restaurantandHotelPagerAdapter.addTab(HotelFragment.newInstance(),getString(R.string.hotel));

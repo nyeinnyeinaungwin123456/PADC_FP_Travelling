@@ -139,7 +139,7 @@
                 android:text="Search in Map"
                 android:textSize="@dimen/button_text_size"
                 android:layout_below="@id/tv_hotel_detail_phone"
-                />
+                android:layout_marginLeft="32dp"/>
 
             <TextView
                 android:id="@+id/tv_hotel_desc"

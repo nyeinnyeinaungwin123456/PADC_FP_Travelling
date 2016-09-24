@@ -1,9 +1,11 @@
 package com.padc.travelling.data.vos;
 
+import java.io.Serializable;
+
 /**
  * Created by Nyein Nyein on 9/7/2016.
  */
-public class AttractionPlacesVO {
+public class AttractionPlacesVO implements Serializable{
 
     private Integer subtitle1photo;
     private String subtitle;
