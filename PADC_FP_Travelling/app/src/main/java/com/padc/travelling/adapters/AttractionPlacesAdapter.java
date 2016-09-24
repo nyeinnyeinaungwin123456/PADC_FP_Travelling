@@ -20,6 +20,7 @@ public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlac
     private LayoutInflater mInflater;
     private List<AttractionPlacesVO> mAttractionPlacesVOList;
     private AttractionPlacesViewHolder.ControllerAttractionPlaces mControllerAttractionPlaces;
+    View view;
 
     public AttractionPlacesAdapter(List<AttractionPlacesVO> attractionPlacesVOList, AttractionPlacesViewHolder.ControllerAttractionPlaces controllerAttractionPlaces) {
 
@@ -31,7 +32,7 @@ public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlac
     @Override
     public AttractionPlacesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = mInflater.inflate(R.layout.list_item_attractionplaces, parent, false);
+         view = mInflater.inflate(R.layout.list_item_attractionplaces, parent, false);
 //        CardView cardView = (CardView)view.findViewById(R.id.cardview);
 //        cardView.setCardBackgroundColor(Color.TRANSPARENT);
 
@@ -41,6 +42,10 @@ public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlac
 
     @Override
     public void onBindViewHolder(AttractionPlacesViewHolder holder, int position) {
+
+//        if(position == mAttractionPlacesVOList.size()-1){
+//            view.setPadding(80,80,80,80);
+//        }
 
     holder.bindData(mAttractionPlacesVOList.get(position));
     }

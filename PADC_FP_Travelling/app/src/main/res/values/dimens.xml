@@ -33,5 +33,7 @@
     <dimen name="text_big_2x">60sp</dimen>
     <dimen name="text_big_3x">80sp</dimen>
     <dimen name="card_elevation">2dp</dimen>
+    <dimen name="spacing">4dp</dimen>
+
 
 </resources>
