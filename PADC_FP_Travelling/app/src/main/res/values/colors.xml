@@ -23,11 +23,11 @@
     <!-- theme adjacent color -->
     <color name="primary_bright">#25CAF4</color>
     <color name="accent_dark">#882061</color>
+    <color name="text_gray2">#E0E0E0</color>
 
     <color name="blue"> #003366 </color>
     <color name="green_light"> #6dc066 </color>
     <color name="green_dark"> #69ae69 </color>
     <color name="red"> #ff4444 </color>
     <color name="bright"> #ff00e7 </color>
-    <color name="text_gray2">#E0E0E0</color>
 </resources>

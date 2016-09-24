@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +14,6 @@ import android.widget.RelativeLayout;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-
-import com.padc.travelling.R;
 import com.padc.travelling.adapters.HighWayListAdapter;
 import com.padc.travelling.components.SpacesItemDecoration;
 import com.padc.travelling.data.vos.HighwayCompanyVO;

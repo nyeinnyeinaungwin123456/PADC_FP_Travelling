@@ -30,7 +30,8 @@
             android:background="@color/text_gray2"
             android:layout_below="@id/iv_bus_company_photo"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

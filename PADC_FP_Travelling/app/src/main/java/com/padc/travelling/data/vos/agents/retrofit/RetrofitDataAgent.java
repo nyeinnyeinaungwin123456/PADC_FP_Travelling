@@ -2,6 +2,7 @@ package com.padc.travelling.data.vos.agents.retrofit;
 
 import android.util.Log;
 
+import com.padc.travelling.data.vos.HotelsDataAgent;
 import com.padc.travelling.data.vos.agents.TourPackageDataAgent;
 import com.padc.travelling.data.vos.model.TourPackageModel;
 import com.padc.travelling.data.vos.responses.TourPackageListResponse;
@@ -11,7 +12,7 @@ import com.padc.travelling.utils.TravellingConstants;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
+//import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,21 +22,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by aung on 7/9/16.
  */
-public class RetrofitDataAgent implements TourPackageDataAgent {
+public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent {
 
     private static RetrofitDataAgent objInstance;
 
     private final TourPackageApi theApi;
 
     private RetrofitDataAgent() {
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        //httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .addInterceptor(httpLoggingInterceptor)
+                //.addInterceptor(httpLoggingInterceptor)
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -86,4 +87,8 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
     }
 
 
+    @Override
+    public void loadHotels() {
+
+    }
 }

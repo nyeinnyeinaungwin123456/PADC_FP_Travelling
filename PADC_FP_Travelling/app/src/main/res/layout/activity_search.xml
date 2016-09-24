@@ -31,29 +31,19 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:padding="5dp"
-                android:layout_marginRight="@dimen/fab_margin">
+                android:padding="5dp">
 
-                <!--<EditText-->
-                    <!--android:id="@+id/et_search_tourpacakge"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="22dp"-->
-                    <!--android:textColor="@android:color/white"-->
-                    <!--android:hint="@string/msg_search_travel_guide"-->
-                    <!--android:maxWidth="50dp"-->
-                    <!--android:textSize="@dimen/text_regular4x"-->
-                    <!--android:singleLine="true" />-->
-                <!--&lt;!&ndash;android:drawableLeft="@android:drawable/ic_menu_search"&ndash;&gt;-->
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_search_tourpacakge"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="65dp"
-                    android:ems="10" />
+                    android:layout_marginBottom="22dp"
+                    android:textColor="@android:color/white"
+                    android:hint="@string/msg_search_travel_guide"
+                    android:maxWidth="50dp"
+                    android:textSize="@dimen/text_regular4x"
+                    android:singleLine="true" />
+                <!--android:drawableLeft="@android:drawable/ic_menu_search"-->
 
                 <Button
                     android:id="@+id/btnclearsearch"

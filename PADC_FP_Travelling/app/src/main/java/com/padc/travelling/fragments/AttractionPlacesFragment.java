@@ -28,8 +28,6 @@ public class AttractionPlacesFragment extends Fragment {
     private AttractionPlacesAdapter attractionPlacesAdapter;
     private AttractionPlacesViewHolder.ControllerAttractionPlaces mControllerAttracionPlaces;
 
-    public static final String IE_ATTRACTIONLIST = "attractionlist";
-
     //static factory method
     public static AttractionPlacesFragment newInstance(){
         AttractionPlacesFragment fragment =  new AttractionPlacesFragment();
@@ -71,8 +69,6 @@ public class AttractionPlacesFragment extends Fragment {
                     "ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။",
             R.drawable.ic_favorite_border_black_24dp, R.drawable.ic_share_yellow_24dp);
             attractionPlacesVOList.add(attractionPlacesVO);
-
         }
-
     }
 }

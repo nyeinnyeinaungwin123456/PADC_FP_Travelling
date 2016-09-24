@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
+
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -87,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_highway_name"
-                    android:paddingLeft="8dp"
                     android:paddingTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_small"
                     android:src="@drawable/ic_home_black_24dp"
@@ -111,7 +111,6 @@
                     android:id="@+id/iv_phone_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
                     android:paddingTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_small"
                     android:src="@drawable/ic_phone_black_24dp"
@@ -173,3 +172,4 @@
             android:src="@drawable/ic_favorite_black_24dp" />
 
     </android.support.design.widget.CoordinatorLayout>
+

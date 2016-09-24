@@ -1,4 +1,5 @@
 package com.padc.travelling.activities;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ public class HighWayDetailActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TravellingApp.getContext());
         rvPaths.setLayoutManager(layoutManager);
         rvPaths.setAdapter(pathsAdapter);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_highway_fav);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

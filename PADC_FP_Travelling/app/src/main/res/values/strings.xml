@@ -12,7 +12,6 @@
     <string name="feedback"> Feedback </string>
     <string name="favourite"> Favourite </string>
     <string name="aboutus"> About Us </string>
-    <string name="touropia"> Touropia </string>
     <string name="navigation_drawer_open"> Open Navigation Drawer </string>
     <string name="navigation_drawer_close"> Close Navigation Drawer </string>
     <string name="travelmyanmar"> Travel Myanmar </string>
@@ -22,14 +21,13 @@
     <string name="msg_search_travel_guide"> TourPackage မ်ားရွာပါ </string>
     <string name="restaurant"> စားေသာက္ဆိုင္မ်ား </string>
 
-    <string name="title_activity_high_way_detail">HighWayDetailActivity</string>
-    <string name="title_activity_hotel_detail">HotelDetailActivity</string>
     <string name="hotel_desc">Sitting majestically on eight acres of beautifully landscaped gardens, Sedona Hotel Yangon is a 20-minute drive away from the international airport and the bustling city centre.
-    Within close proximity to the famous Shwedagon Pagoda and Inya Lake, this deluxe 5-star hotel in Yangon impresses with its local ethnic decor and architecture. We offer 366 newly-upgraded rooms and suites along with several dining options, as well as a new 29-storey Inya Wing extension with 431 well-appointed accommodations, along with a grand lobby and a high-end retail gallery. Additionally, we provide business travellers with exclusive club access for privacy, comfort and personalised service.
+
+Within close proximity to the famous Shwedagon Pagoda and Inya Lake, this deluxe 5-star hotel in Yangon impresses with its local ethnic decor and architecture. We offer 366 newly-upgraded rooms and suites along with several dining options, as well as a new 29-storey Inya Wing extension with 431 well-appointed accommodations, along with a grand lobby and a high-end retail gallery. Additionally, we provide business travellers with exclusive club access for privacy, comfort and personalised service.
 
 Relish the multitude of flavours at our variety of restaurants in Yangon. Savour Italian fare at Orzo, Oriental cuisine at Du Fu, International buffet at D’Cuisine, or simply unwind at the classic Lobby Lounge.</string>
-
-    <string name="hotel"> ဟိုတယ္မ်ား </string>
-    <string name="action_send_email"> Send Email </string>
+    <string name="hotel">Hotel</string>
+    <string name="title_activity_high_way_detail">HighWayDetailActivity</string>
+    <string name="title_activity_hotel_detail">HotelDetailActivity</string>
 
 </resources>

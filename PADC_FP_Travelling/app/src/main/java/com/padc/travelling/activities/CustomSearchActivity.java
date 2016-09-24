@@ -1,6 +1,5 @@
 package com.padc.travelling.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -12,9 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.padc.travelling.R;
-import com.padc.travelling.TravellingApp;
 import com.padc.travelling.adapters.TourPackageAdapter;
-import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.data.vos.TourPackageVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +25,8 @@ import butterknife.ButterKnife;
  */
 public class CustomSearchActivity extends AppCompatActivity {
 
-    @BindView(R.id.autoCompleteTextView)
-    TextView autoCompleteTextView;
+    @BindView(R.id.et_search_tourpacakge)
+    TextView etSearch;
 
     @BindView(R.id.toolbar_search)
     Toolbar toolbarSearch;
@@ -33,13 +34,9 @@ public class CustomSearchActivity extends AppCompatActivity {
     @BindView(R.id.btnclearsearch)
     Button btnClear;
 
-    TourPackageAdapter adapter;
-    AttractionPlacesFragment attractFragment = new AttractionPlacesFragment();
+    private List<TourPackageVO> mTourPackageVOList = new ArrayList<>();
 
-    public static Intent newIntent(){
-        Intent intentToCustomSearchActivity = new Intent(TravellingApp.getContext(), CustomSearchActivity.class);
-        return intentToCustomSearchActivity;
-    }
+    TourPackageAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,15 +51,10 @@ public class CustomSearchActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-//        String[] countries = getResources().getStringArray(R.array.list_of_countries);
-//        String countries = attractFragment.prepareAttractionPlacesData().toString();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,countries);
-//        autoCompleteTextView.setAdapter(adapter);
-
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                autoCompleteTextView.setText("");
+                etSearch.setText("");
             }
         });
 

@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
+//import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
+//@Generated("org.jsonschema2pojo")
 public class TourPackage {
 
     @SerializedName("package-id")

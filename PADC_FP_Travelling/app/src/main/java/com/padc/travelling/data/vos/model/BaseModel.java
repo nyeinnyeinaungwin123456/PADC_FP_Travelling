@@ -3,9 +3,9 @@ package com.padc.travelling.data.vos.model;
 import com.padc.travelling.data.vos.agents.TourPackageDataAgent;
 import com.padc.travelling.data.vos.agents.retrofit.RetrofitDataAgent;
 
-import de.greenrobot.event.EventBus;
+//import de.greenrobot.event.EventBus;
 
-//import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.EventBus;
 
 
 /**

@@ -23,7 +23,7 @@
         android:textStyle="bold"
         android:layout_toRightOf="@+id/iv_subattraction"
         android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginLeft="@dimen/fab_margin"/>
+        android:layout_marginLeft="@dimen/small_margin"/>
 
     <TextView
         android:id="@+id/tv_attractionsubdesc"

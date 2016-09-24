@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_medium">
+    android:layout_margin="@dimen/small_margin">
+
+    <ImageView
+        android:id="@+id/iv_tourpackage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dala"/>
 
     <TextView
         android:id="@+id/tv_tourpackagetitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mandalay"
-        android:textSize="@dimen/text_heading_1x"
-        android:textColor="@color/primary_text"
-        />
+        android:text="Shwe Da Gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/text_white_ish"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_heading_1x"/>
 
-    <com.padc.travelling.components.DynamicHeightImageView
-        android:id="@+id/iv_tourpackage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/yangon_shwedagonpagoda"
-        android:layout_marginTop="@dimen/margin_small"
-        />
 
-    <!--<TextView-->
-        <!--android:id="@+id/tv_attraction_desc"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Mandalay was the last Royal Capital of Myanmar and is located nearly 700 km north of Yangon between the mighty Ayeyarwaddy River and the Shan plateau. Mandalay is considered the centre ... Read More"-->
-        <!--android:fontFamily="sans-serif-light"-->
-        <!--android:lineSpacingMultiplier="1.2"-->
-        <!--android:maxLines="4"-->
-        <!--android:ellipsize="end"-->
-        <!--android:layout_marginTop="@dimen/margin_small"-->
-        <!--android:textSize="@dimen/text_regular"-->
-        <!--android:textColor="@color/primary_text"-->
-        <!--/>-->
-
-</LinearLayout>
+</RelativeLayout>

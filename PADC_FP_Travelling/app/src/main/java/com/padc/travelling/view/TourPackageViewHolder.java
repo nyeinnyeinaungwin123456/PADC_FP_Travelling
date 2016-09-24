@@ -1,14 +1,12 @@
 package com.padc.travelling.view;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.TourPackageVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +22,7 @@ public class TourPackageViewHolder extends RecyclerView.ViewHolder implements Vi
     @BindView(R.id.tv_tourpackagetitle)
     TextView tvTourPackageTitle;
 
-        TourPackage mTourPackage;
+        TourPackageVO mTourPackageVO;
         ControllerTourPackage mControllerTourPackage;
 
     public TourPackageViewHolder(View itemView, ControllerTourPackage controllerTourPackage) {
@@ -35,29 +33,20 @@ public class TourPackageViewHolder extends RecyclerView.ViewHolder implements Vi
         mControllerTourPackage = controllerTourPackage;
         }
 
-public void bindData(TourPackage tourPackage){
-    mTourPackage = tourPackage;
+public void bindData(TourPackageVO tourPackageVO){
+    mTourPackageVO = tourPackageVO;
 
-    tvTourPackageTitle.setText(tourPackage.getPackageName());
-
-    String imageUrl = tourPackage.getPhotos()[0];
-    Log.d("Img", " "+imageUrl);
-
-    Glide.with(ivTourPackage.getContext())
-            .load(imageUrl)
-            .centerCrop()
-            .placeholder(R.drawable.placeholder)
-            .error(R.drawable.placeholder)
-            .into(ivTourPackage);
+    ivTourPackage.setImageResource(tourPackageVO.getTourpackagephoto());
+    tvTourPackageTitle.setText(tourPackageVO.getTourpackagetitle());
 
         }
 
 @Override
 public void onClick(View view) {
-    mControllerTourPackage.onTapTourpackage(mTourPackage,ivTourPackage);
+    mControllerTourPackage.onTapTourpackage(mTourPackageVO, getPosition());
         }
 
 public interface ControllerTourPackage{
-    void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage);
+    void onTapTourpackage(TourPackageVO tourPackageVO, int position);
 }
 }
