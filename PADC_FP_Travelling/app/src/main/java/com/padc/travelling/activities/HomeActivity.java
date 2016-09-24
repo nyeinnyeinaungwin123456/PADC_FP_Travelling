@@ -12,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -29,25 +28,35 @@ import android.widget.ImageView;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.HighwayCompanyVO;
+import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.data.vos.RestaurantVO;
-import com.padc.travelling.data.vos.TourPackageVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
 import com.padc.travelling.fragments.FeedbackFragment;
+import com.padc.travelling.fragments.HighWayListFragment;
 import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
 import com.padc.travelling.fragments.TourPackageFragment;
 import com.padc.travelling.fragments.TouropiaFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
+import com.padc.travelling.view.HighWayListViewHolder;
+import com.padc.travelling.view.HotelViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
         AttractionPlacesViewHolder.ControllerAttractionPlaces, TourPackageViewHolder.ControllerTourPackage,
-        RestaurnatViewHolder.ControllerRestaurant{
+        RestaurnatViewHolder.ControllerRestaurant,
+        HighWayListViewHolder.ControllerHighWayList,
+        HotelViewHolder.ControllerHotel
+{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -63,6 +72,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
+    private List<AttractionPlacesVO> attractionPlacesVOList = new ArrayList<>();
 
     public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
     public static String IE_RESTAURANT_TITLE = "restauranttitle";
@@ -97,8 +107,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
 
                 try{
                     Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
@@ -152,6 +160,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.menu_highway: {
+                navigateToHighWay();
                 break;
             }
 
@@ -194,6 +203,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 commit();
     }
 
+    private void navigateToHighWay() {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, HighWayListFragment.newInstance()).
+                commit();
+    }
+
+
     @Override
     public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
         Intent intent = AttractionDetailActivity.newIntent();
@@ -231,14 +248,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             commit();
     }
 
-    @Override
-    public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
-
-        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
-        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackageVO.getTourpackagetitle());
-        startActivity(intent);
-    }
-
 
     @Override
     public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
@@ -272,5 +281,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         wmlp.y = 100;
 //        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show();
+    }
+
+    @Override
+    public void onTapHighWayList(HighwayCompanyVO highwayCompanyVO, int position) {
+        Intent intent = new Intent(TravellingApp.getContext(),HighWayDetailActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onTapHotel(HotelVO hotelVO, int position) {
+        Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
+        startActivity(intent);
+
+    }
+
+
+    @Override
+    public void onTapTourpackage(com.padc.travelling.data.vos.TourPackage tourPackage, ImageView ivTourPackage) {
+        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
+        startActivity(intent);
     }
 }
