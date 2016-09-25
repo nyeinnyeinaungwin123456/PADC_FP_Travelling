@@ -1,12 +1,15 @@
 package com.padc.travelling.view;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.data.vos.RestaurantVO;
+import com.padc.travelling.data.vos.RestaurantsVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +28,7 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
     @BindView(R.id.iv_setting)
     ImageView ivSetting;
 
-    RestaurantVO mRestaurantVO;
+    RestaurantsVO mRestaurantVO;
     ControllerRestaurant mControllerRestaurant;
 
     public RestaurnatViewHolder(View itemView, ControllerRestaurant controllerRestaurant) {
@@ -38,12 +41,22 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
         mControllerRestaurant = controllerRestaurant;
     }
 
-    public void bindData(RestaurantVO restaurantVO){
+    public void bindData(RestaurantsVO restaurantVO){
 
         mRestaurantVO = restaurantVO;
-        ivRestaurant.setImageResource(restaurantVO.getRestaurantImage());
-        tvRestaurantName.setText(restaurantVO.getRestaurantTile());
-        ivSetting.setImageResource(restaurantVO.getRestaurantImgSetting());
+        tvRestaurantName.setText(restaurantVO.getName());
+
+        String imageUrl = mRestaurantVO.getPhotos()[0];
+        Log.d("Img", " " + imageUrl);
+
+        Glide.with(ivRestaurant.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(ivRestaurant);
+
+        //ivSetting.setImageResource(restaurantVO.getRestaurantImgSetting());
 
     }
 
@@ -60,7 +73,7 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
 
 
     public interface ControllerRestaurant{
-        void onTapRestaurnat(RestaurantVO restaurantVO, int position);
+        void onTapRestaurnat(RestaurantsVO restaurantVO, int position);
         void onTapSetting(ImageView ivsetting);
     }
 }

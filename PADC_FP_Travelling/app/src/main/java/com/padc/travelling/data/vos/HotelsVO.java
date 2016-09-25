@@ -3,12 +3,12 @@ package com.padc.travelling.data.vos;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dellpc on 24-Sep-16.
+ * Created by dellpc on 25-Sep-16.
  */
 public class HotelsVO {
 
     @SerializedName("hotel-id")
-    private int hotelId;
+    private long hotelId;
 
     @SerializedName("hotel-name")
     private String hotelName;
@@ -28,19 +28,20 @@ public class HotelsVO {
     @SerializedName("location")
     private LocationVO location;
 
-    private static HotelsVO objInstance;
-
     public HotelsVO() {
     }
 
-    public static HotelsVO getObjInstance(){
-        if(objInstance==null){
-            objInstance = new HotelsVO();
-        }
-        return objInstance;
+    public HotelsVO(long hotelId, String hotelName, String description, String[] photos, String directionToHotel, String[] phoneNumbers, LocationVO location) {
+        this.hotelId = hotelId;
+        this.hotelName = hotelName;
+        this.description = description;
+        this.photos = photos;
+        this.directionToHotel = directionToHotel;
+        this.phoneNumbers = phoneNumbers;
+        this.location = location;
     }
 
-    public int getHotelId() {
+    public long getHotelId() {
         return hotelId;
     }
 

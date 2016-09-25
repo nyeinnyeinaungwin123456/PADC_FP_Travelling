@@ -3,9 +3,9 @@ package com.padc.travelling.data.vos.model;
 import com.padc.travelling.data.vos.agents.TourPackageDataAgent;
 import com.padc.travelling.data.vos.agents.retrofit.RetrofitDataAgent;
 
-//import de.greenrobot.event.EventBus;
+import de.greenrobot.event.EventBus;
 
-import org.greenrobot.eventbus.EventBus;
+//import org.greenrobot.eventbus.EventBus;
 
 
 /**
@@ -15,7 +15,7 @@ public abstract class BaseModel {
 
     private static final int INIT_DATA_AGENT_RETROFIT = 1;
 
-    protected TourPackageDataAgent dataAgent;
+    protected RetrofitDataAgent dataAgent;
 
     public BaseModel() {
         initDataAgent(INIT_DATA_AGENT_RETROFIT);

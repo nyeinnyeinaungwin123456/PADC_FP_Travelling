@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.RestaurantVO;
+import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
 import java.util.List;
@@ -20,10 +21,10 @@ import java.util.List;
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<RestaurantVO> mRestaurantVOList;
+    private List<RestaurantsVO> mRestaurantVOList;
     private RestaurnatViewHolder.ControllerRestaurant mControllerRestaurant;
 
-    public RestaurantAdapter(List<RestaurantVO> mRestaurantVOList, RestaurnatViewHolder.ControllerRestaurant controllerRestaurant) {
+    public RestaurantAdapter(List<RestaurantsVO> mRestaurantVOList, RestaurnatViewHolder.ControllerRestaurant controllerRestaurant) {
         mInflater = LayoutInflater.from(TravellingApp.getContext());
         this.mRestaurantVOList = mRestaurantVOList;
         this.mControllerRestaurant = controllerRestaurant;
@@ -50,6 +51,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder
 //        });
 
         return new RestaurnatViewHolder(view, mControllerRestaurant);
+    }
+
+    public void setNewData(List<RestaurantsVO> restaurantsVOList){
+        mRestaurantVOList.clear();
+        mRestaurantVOList = restaurantsVOList;
+        notifyDataSetChanged();
+
     }
 
     @Override

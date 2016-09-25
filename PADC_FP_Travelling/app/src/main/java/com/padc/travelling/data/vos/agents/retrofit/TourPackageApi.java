@@ -1,5 +1,7 @@
 package com.padc.travelling.data.vos.agents.retrofit;
 
+import com.padc.travelling.data.vos.responses.HotelsListResponse;
+import com.padc.travelling.data.vos.responses.RestaurantsListResponse;
 import com.padc.travelling.data.vos.responses.TourPackageListResponse;
 import com.padc.travelling.utils.TravellingConstants;
 
@@ -18,5 +20,15 @@ public interface TourPackageApi {
     Call<TourPackageListResponse> loadTourPackage(
             @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
 
+    @FormUrlEncoded
+    @POST(TravellingConstants.API_GETHOTELS_LIST)
+    Call<HotelsListResponse> loadHotels(
+            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+
+
+    @FormUrlEncoded
+    @POST(TravellingConstants.API_GET_RESTAURANT_LIST)
+    Call<RestaurantsListResponse> loadRestaurants(
+            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
 
 }

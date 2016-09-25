@@ -3,9 +3,9 @@ package com.padc.travelling.data.vos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-//import javax.annotation.Generated;
+import javax.annotation.Generated;
 
-//@Generated("org.jsonschema2pojo")
+@Generated("org.jsonschema2pojo")
 public class City {
 
     @SerializedName("city-id")

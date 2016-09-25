@@ -3,12 +3,12 @@ package com.padc.travelling.data.vos;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dellpc on 24-Sep-16.
+ * Created by dellpc on 25-Sep-16.
  */
 public class StateVO {
 
     @SerializedName("state-id")
-    private int stateId;
+    private long stateId;
 
     @SerializedName("name")
     private String name;
@@ -16,19 +16,16 @@ public class StateVO {
     @SerializedName("description")
     private String description;
 
-    private static StateVO objInstance;
-
     public StateVO() {
     }
 
-    public static StateVO getInstance(){
-        if(objInstance==null){
-            objInstance = new StateVO();
-        }
-        return objInstance;
+    public StateVO(long stateId, String name, String description) {
+        this.stateId = stateId;
+        this.name = name;
+        this.description = description;
     }
 
-    public int getStateId() {
+    public long getStateId() {
         return stateId;
     }
 

@@ -10,9 +10,9 @@ import com.padc.travelling.data.vos.TourPackage;
 import java.util.ArrayList;
 import java.util.List;
 
-//import de.greenrobot.event.EventBus;
+import de.greenrobot.event.EventBus;
 
-import org.greenrobot.eventbus.EventBus;
+//import org.greenrobot.eventbus.EventBus;
 //import org.greenrobot.eventbus.EventBus;
 
 /**
