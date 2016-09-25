@@ -31,6 +31,7 @@ import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.HighwayCompanyVO;
 import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.data.vos.RestaurantVO;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
 import com.padc.travelling.fragments.FeedbackFragment;
 import com.padc.travelling.fragments.HighWayListFragment;
@@ -299,7 +300,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
 
     @Override
-    public void onTapTourpackage(com.padc.travelling.data.vos.TourPackage tourPackage, ImageView ivTourPackage) {
+    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
         Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
         intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
         startActivity(intent);

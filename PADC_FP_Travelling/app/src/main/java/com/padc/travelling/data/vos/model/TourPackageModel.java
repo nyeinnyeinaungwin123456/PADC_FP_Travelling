@@ -5,7 +5,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.events.DataEvent;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import java.util.ArrayList;
 import java.util.List;

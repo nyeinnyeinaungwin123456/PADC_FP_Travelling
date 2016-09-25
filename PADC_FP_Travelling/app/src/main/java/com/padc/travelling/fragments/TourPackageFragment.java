@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.TourPackageAdapter;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.data.vos.agents.retrofit.RetrofitDataAgent;
 import com.padc.travelling.data.vos.events.DataEvent;
 import com.padc.travelling.data.vos.model.TourPackageModel;

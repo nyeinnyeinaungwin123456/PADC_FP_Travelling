@@ -1,12 +1,15 @@
 
-package com.padc.travelling.data.vos;
+package com.padc.travelling.data.vos.hotelVOs;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.padc.travelling.data.vos.tourpackageVOs.CityHotels;
+import com.padc.travelling.data.vos.tourpackageVOs.StateHotels;
+
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
-public class Location {
+public class LocationHotels {
 
     @SerializedName("lat")
     @Expose
@@ -19,10 +22,10 @@ public class Location {
     private String address;
     @SerializedName("city")
     @Expose
-    private City city;
+    private CityHotels city;
     @SerializedName("state")
     @Expose
-    private State state;
+    private StateHotels state;
 
     /**
      * 
@@ -65,7 +68,7 @@ public class Location {
      * @return
      *     The city
      */
-    public City getCity() {
+    public CityHotels getCity() {
         return city;
     }
 
@@ -74,7 +77,7 @@ public class Location {
      * @param city
      *     The city
      */
-    public void setCity(City city) {
+    public void setCity(CityHotels city) {
         this.city = city;
     }
 
@@ -83,7 +86,7 @@ public class Location {
      * @return
      *     The state
      */
-    public State getState() {
+    public StateHotels getState() {
         return state;
     }
 
@@ -92,7 +95,7 @@ public class Location {
      * @param state
      *     The state
      */
-    public void setState(State state) {
+    public void setState(StateHotels state) {
         this.state = state;
     }
 

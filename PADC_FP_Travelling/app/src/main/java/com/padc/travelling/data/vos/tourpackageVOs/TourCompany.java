@@ -1,5 +1,5 @@
 
-package com.padc.travelling.data.vos;
+package com.padc.travelling.data.vos.tourpackageVOs;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

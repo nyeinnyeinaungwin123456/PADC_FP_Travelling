@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
