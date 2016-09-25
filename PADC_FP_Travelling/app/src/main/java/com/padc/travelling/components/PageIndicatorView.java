@@ -3,6 +3,7 @@ package com.padc.travelling.components;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View;
 
 import com.padc.travelling.utils.ScreenUtils;
@@ -31,6 +32,16 @@ public class PageIndicatorView extends View {
         super(context);
 
         this.init();
+    }
+
+    public PageIndicatorView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+    }
+
+    public PageIndicatorView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+
     }
 
     private void init() {

@@ -1,5 +1,6 @@
 package com.padc.travelling.data.vos.agents.retrofit;
 
+import com.padc.travelling.data.vos.responses.AttractionPlacesListResponse;
 import com.padc.travelling.data.vos.responses.TourPackageListResponse;
 import com.padc.travelling.utils.TravellingConstants;
 
@@ -11,11 +12,16 @@ import retrofit2.http.POST;
 /**
  * Created by aung on 7/9/16.
  */
-public interface TourPackageApi {
+public interface TravellingApi {
 
     @FormUrlEncoded
     @POST(TravellingConstants.API_GET_TOURPACKAGE_LIST)
     Call<TourPackageListResponse> loadTourPackage(
+            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+
+    @FormUrlEncoded
+    @POST(TravellingConstants.API_GET_ATTRACTIONPLACES_LIST)
+    Call<AttractionPlacesListResponse> loadAttractionPlaces(
             @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
 
 

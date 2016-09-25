@@ -1,7 +1,7 @@
 package com.padc.travelling.data.vos.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import java.util.ArrayList;
 

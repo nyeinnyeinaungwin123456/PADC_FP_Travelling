@@ -6,4 +6,6 @@ package com.padc.travelling.data.vos.agents;
 public interface TourPackageDataAgent {
     void loadTourPackage();
 
+    void loadAttractionPlaces();
+
 }

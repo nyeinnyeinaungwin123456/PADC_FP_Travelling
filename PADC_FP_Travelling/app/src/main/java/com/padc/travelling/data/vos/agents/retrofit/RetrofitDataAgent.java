@@ -3,7 +3,9 @@ package com.padc.travelling.data.vos.agents.retrofit;
 import android.util.Log;
 
 import com.padc.travelling.data.vos.agents.TourPackageDataAgent;
+import com.padc.travelling.data.vos.model.AttractionsModel;
 import com.padc.travelling.data.vos.model.TourPackageModel;
+import com.padc.travelling.data.vos.responses.AttractionPlacesListResponse;
 import com.padc.travelling.data.vos.responses.TourPackageListResponse;
 import com.padc.travelling.utils.CommonInstances;
 import com.padc.travelling.utils.TravellingConstants;
@@ -25,7 +27,7 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
 
     private static RetrofitDataAgent objInstance;
 
-    private final TourPackageApi theApi;
+    private final TravellingApi theApi;
 
     private RetrofitDataAgent() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -38,13 +40,21 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit retrofittourpackage = new Retrofit.Builder()
                 .baseUrl(TravellingConstants.TOURPACKAGE_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(CommonInstances.getGsonInstance()))
                 .client(okHttpClient)
                 .build();
 
-        theApi = retrofit.create(TourPackageApi.class);
+        theApi = retrofittourpackage.create(TravellingApi.class);
+
+//        Retrofit retrofitattraction = new Retrofit.Builder()
+//                .baseUrl(TravellingConstants.ATTRACTION_BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create(CommonInstances.getGsonInstance()))
+//                .client(okHttpClient)
+//                .build();
+//
+//        theApi = retrofitattraction.create(TravellingApi.class);
     }
 
     public static RetrofitDataAgent getInstance() {
@@ -54,6 +64,7 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
         return objInstance;
     }
 
+    //TourPackage
     @Override
     public void loadTourPackage() {
         Call<TourPackageListResponse> loadTourPackageCall = theApi.loadTourPackage(TravellingConstants.ACCESS_TOKEN);
@@ -67,7 +78,7 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
                     Log.e("RetrofitDataAgent", "onResponse Success");
                     TourPackageListResponse tourpackageListResponse = response.body();
                     if (tourpackageListResponse == null) {
-                        TourPackageModel.getInstance().notifyErrorInLoadingAttractions(response.message());
+                        TourPackageModel.getInstance().notifyErrorInLoadingTravel(response.message());
                     } else {
                         TourPackageModel.getInstance().notifyTourPackageLoaded(tourpackageListResponse.getTourPackageList());
                     }
@@ -79,8 +90,43 @@ public class RetrofitDataAgent implements TourPackageDataAgent {
             @Override
             public void onFailure(Call<TourPackageListResponse> call, Throwable throwable) {
                 throwable.printStackTrace();
-                TourPackageModel.getInstance().notifyErrorInLoadingAttractions(throwable.getMessage());
+                TourPackageModel.getInstance().notifyErrorInLoadingTravel(throwable.getMessage());
                 Log.e("RetrofitDataAgent", "onResponse Fail");
+            }
+        });
+    }
+
+    //AttractionPlaces
+    @Override
+    public void loadAttractionPlaces() {
+        Call<AttractionPlacesListResponse> loadAttractoinPlacesCall = theApi.loadAttractionPlaces(TravellingConstants.ACCESS_TOKEN);
+        loadAttractoinPlacesCall.enqueue(new Callback<AttractionPlacesListResponse>() {
+            @Override
+
+            public void onResponse(Call<AttractionPlacesListResponse> call, Response<AttractionPlacesListResponse> response) {
+
+                Log.e("RetrofitAttraction", "onResponse");
+                if (response.isSuccessful()) {
+                    Log.e("RetrofitDataAgent", "onResponse Success");
+                    AttractionPlacesListResponse attractionplacesListResponse = response.body();
+                    if (attractionplacesListResponse == null) {
+                        AttractionsModel.getInstance().notifyErrorInLoadingTravel(response.message());
+                    } else {
+                        AttractionsModel.getInstance().notifyAttractionPlacesLoaded(attractionplacesListResponse.getAttractionPlacesList());
+                    }
+                } else {
+                    Log.e("RetrofitAttraction", "onResponse Fail");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AttractionPlacesListResponse> call, Throwable throwable) {
+                throwable.printStackTrace();
+                AttractionsModel.getInstance().notifyErrorInLoadingTravel(throwable.getMessage());
+                Log.e("RetrofitAttraction", "onResponse Fail");
+
+                String message = throwable.getMessage();
+                Log.d("failure", message);
             }
         });
     }

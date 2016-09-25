@@ -1,43 +1,60 @@
 package com.padc.travelling.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
+import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AttractionDetailActivity extends AppCompatActivity {
+public class AttractionDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R.id.tv_toolbar_attraction)
+    TextView tvToolbarAttraction;
+
     @BindView(R.id.appbar)
     AppBarLayout mAppBar;
+
+    @BindView(R.id.iv_attraction)
+    ImageView ivAttraction;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbar;
 
     private ShareActionProvider mShareActionProvider;
+    private String mAttractionTitle;
+
+    public static final String IE_ATTRACTION_TITLE = "attraction_title";
 
     //Nyein static factory method
-    public static Intent newIntent(){
+    public static Intent newIntent(String attractionTitle){
         Intent intent = new Intent(TravellingApp.getContext(),AttractionDetailActivity.class);
+        intent.putExtra(IE_ATTRACTION_TITLE, attractionTitle);
         return intent;
     }
 
@@ -54,6 +71,15 @@ public class AttractionDetailActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        mAttractionTitle = getIntent().getStringExtra(IE_ATTRACTION_TITLE);
+        getSupportLoaderManager().initLoader(TravellingConstants.ATTRACTION_DETAIL_LOADER, null, this);
+
+//        Bundle bundle = getIntent().getExtras();
+//        if(bundle !=null) {
+//            String attactionplacesname = (String)bundle.getString(HomeActivity.IE_ATTRACTIONPLACES_NAME);
+//            tvToolbarAttraction.setText(attactionplacesname);
+//        }
 
         mAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -76,6 +102,13 @@ public class AttractionDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit);
     }
 
     @Override
@@ -112,6 +145,24 @@ public class AttractionDetailActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this,
+                TravelMyanmarContract.AttractionEntry.buildAttractionUriWithTitle(mAttractionTitle),
+                null,
+                null,
+                null,
+                null
+        );
+    }
 
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
 }

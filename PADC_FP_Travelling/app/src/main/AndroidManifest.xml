@@ -54,6 +54,29 @@
             android:label="@string/title_activity_hotel_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <provider
+        android:name="com.padc.travelling.data.vos.persistances.TravelMyanmarProvider"
+        android:authorities="com.padc.travelling"
+        android:exported="false"
+        android:syncable="true" />
+
+
+        <!--<provider-->
+            <!--android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="com.padc.travelling.fileprovider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths"></meta-data>-->
+        <!--</provider>-->
+
     </application>
+
+    <!--<provider-->
+        <!--android:name=".data.vos.persistances.TravelMyanmarProvider"-->
+        <!--android:authorities="@string/content_authority"-->
+        <!--android:exported="false"-->
+        <!--android:syncable="true" />-->
 
 </manifest>

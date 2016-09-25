@@ -8,6 +8,7 @@ import android.content.Context;
  */
 public class TravellingApp extends Application {
 
+    public static final String TAG = "MyanmarAttractionsApp";
     private static Context context;
 
     @Override

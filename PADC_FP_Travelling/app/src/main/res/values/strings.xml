@@ -32,4 +32,6 @@ Relish the multitude of flavours at our variety of restaurants in Yangon. Savour
     <string name="hotel"> ဟိုတယ္မ်ား </string>
     <string name="action_send_email"> Send Email </string>
 
+    <string name="content_authority">com.padc.travelling</string>
+
 </resources>

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.view.TourPackageViewHolder;
 
 import java.util.ArrayList;
@@ -55,6 +55,7 @@ public class TourPackageAdapter extends RecyclerView.Adapter<TourPackageViewHold
 
     public void setNewData(List<TourPackage> tourPackageVOList){
         mTourPackageVOList.clear();
+//        mTourPackageVOList = tourPackageVOList;
         mTourPackageVOList.addAll(tourPackageVOList);
         notifyDataSetChanged();
 
