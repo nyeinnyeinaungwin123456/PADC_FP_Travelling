@@ -4,6 +4,7 @@ package com.padc.travelling.view;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.data.vos.HighwayCompanyVO;

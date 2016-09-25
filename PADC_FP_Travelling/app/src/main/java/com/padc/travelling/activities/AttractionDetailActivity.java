@@ -2,9 +2,12 @@ package com.padc.travelling.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
@@ -22,7 +25,13 @@ import butterknife.ButterKnife;
 public class AttractionDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    Toolbar mToolbar;
+
+    @BindView(R.id.appbar)
+    AppBarLayout mAppBar;
+
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout mCollapsingToolbar;
 
     private ShareActionProvider mShareActionProvider;
 
@@ -37,7 +46,7 @@ public class AttractionDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attraction_detail);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
 
         final ActionBar actionBar = getSupportActionBar();
@@ -45,6 +54,19 @@ public class AttractionDetailActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        mAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (mCollapsingToolbar.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(mCollapsingToolbar)) {
+                    //toolbar is collapsed here
+                    //write your code here
+                    //mToolbar.setTitle("Mandalay");
+                }
+            }
+        });
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -88,4 +110,8 @@ public class AttractionDetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }

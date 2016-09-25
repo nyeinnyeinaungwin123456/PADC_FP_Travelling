@@ -7,7 +7,6 @@ public class TravellingConstants {
 
     //Loader ID
     public static final int HOTEL_DETAIL_LOADER = 2;
-
     public static final String IMAGE_ROOT_TOURPACKAGE = "http://aungpyaephyo.xyz/padc-fp/travel-guide/";
     public static final String TOURPACKAGE_BASE_URL = "http://aungpyaephyo.xyz/padc-fp/travel-guide/";
     public static final String API_GET_TOURPACKAGE_LIST ="GetTourPackages.php";

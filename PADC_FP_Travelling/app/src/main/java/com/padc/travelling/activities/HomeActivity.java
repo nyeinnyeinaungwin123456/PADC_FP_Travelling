@@ -58,6 +58,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         HotelViewHolder.ControllerHotel
 {
 
+
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
@@ -189,6 +190,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
+
     private void navigateToAttractionPlaces(){
         getSupportFragmentManager().
                 beginTransaction().
@@ -287,14 +289,12 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public void onTapHighWayList(HighwayCompanyVO highwayCompanyVO, int position) {
         Intent intent = new Intent(TravellingApp.getContext(),HighWayDetailActivity.class);
         startActivity(intent);
-
     }
 
     @Override
     public void onTapHotel(HotelVO hotelVO, int position) {
         Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
         startActivity(intent);
-
     }
 
 

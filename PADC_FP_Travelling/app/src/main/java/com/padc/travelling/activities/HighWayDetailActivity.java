@@ -1,22 +1,25 @@
 package com.padc.travelling.activities;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.adapters.HotelAdapter;
 import com.padc.travelling.adapters.PathsAdapter;
 import com.padc.travelling.data.vos.PathsVO;
 
@@ -63,8 +66,7 @@ public class HighWayDetailActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TravellingApp.getContext());
         rvPaths.setLayoutManager(layoutManager);
         rvPaths.setAdapter(pathsAdapter);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_highway_search);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_highway_fav);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,6 +1,14 @@
 package com.padc.travelling.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +24,7 @@ import android.view.View;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.HotelVO;
+import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -21,6 +21,7 @@
     <string name="lbl_search"> Search </string>
     <string name="msg_search_travel_guide"> TourPackage မ်ားရွာပါ </string>
     <string name="restaurant"> စားေသာက္ဆိုင္မ်ား </string>
+
     <string name="title_activity_high_way_detail">HighWayDetailActivity</string>
     <string name="title_activity_hotel_detail">HotelDetailActivity</string>
     <string name="hotel_desc">Sitting majestically on eight acres of beautifully landscaped gardens, Sedona Hotel Yangon is a 20-minute drive away from the international airport and the bustling city centre.
