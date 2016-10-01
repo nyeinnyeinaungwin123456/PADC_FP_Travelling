@@ -10,6 +10,7 @@ import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -197,4 +198,5 @@ public class AttractionPlaces {
         images.toArray(imageArray);
         return imageArray;
     }
+
 }

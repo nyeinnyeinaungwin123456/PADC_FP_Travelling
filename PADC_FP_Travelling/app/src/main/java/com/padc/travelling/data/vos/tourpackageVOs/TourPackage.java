@@ -13,7 +13,6 @@ import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
@@ -197,7 +196,7 @@ public class TourPackage {
             tourpackageCVs[index] = tourpackage.parseToContentValues();
 
             //Bulk insert into attraction_images.
-            TourPackage.saveTourPackageImages(tourpackage.getPackageName(), tourpackage.getPhotos());
+            TourPackage.saveTourPackageImage(tourpackage.getPackageName(), tourpackage.getPhotos());
         }
 
         //Bulk insert into attractions.
@@ -206,14 +205,14 @@ public class TourPackage {
         Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
     }
 
-    private static void saveTourPackageImages(String name, String[] photos) {
-        ContentValues[] tourpackageImagesCVs = new ContentValues[photos.length];
-        for (int index = 0; index < photos.length; index++) {
-            String photo = photos[index];
+    private static void saveTourPackageImage(String title, String[] images) {
+        ContentValues[] tourpackageImagesCVs = new ContentValues[images.length];
+        for (int index = 0; index < images.length; index++) {
+            String image = images[index];
 
             ContentValues cv = new ContentValues();
-            cv.put(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_TOURPACKAGE_NAME, name);
-            cv.put(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_PHOTOS, photo);
+            cv.put(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_TOURPACKAGE_NAME, title);
+            cv.put(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_PHOTOS, image);
 
             tourpackageImagesCVs[index] = cv;
         }
@@ -221,17 +220,13 @@ public class TourPackage {
         Context context = TravellingApp.getContext();
         int insertCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.TourpackagePhotoEntry.CONTENT_URI, tourpackageImagesCVs);
 
-        Log.d(TravellingApp.TAG, "Bulk inserted into tourpackage table : " + insertCount);
+        Log.d(TravellingApp.TAG, "Bulk inserted into attraction_images table : " + insertCount);
     }
 
     private ContentValues parseToContentValues() {
         ContentValues cv = new ContentValues();
         cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_NAME, packageName);
-        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC, description);
-        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE, estimatePricePerPerson);
-//        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_SUBDESTINATION, subDestinations<>);
-        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_TOTALDAY, totalDays);
-//        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_TOURCOMPANY, tourCompany);
+        cv.put(TravelMyanmarContract.AttractionEntry.COLUMN_DESC, description);
         return cv;
     }
 
@@ -241,26 +236,24 @@ public class TourPackage {
         tourpackage.description = data.getString(data.getColumnIndex(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC));
         tourpackage.estimatePricePerPerson = data.getInt(data.getColumnIndex(TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE));
         tourpackage.totalDays = data.getString(data.getColumnIndex(TravelMyanmarContract.TourpackageEntry.COLUMN_TOTALDAY));
-
-//        tourpackage.photos = data.getString(data.getColumnIndex(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC));
         return tourpackage;
     }
 
-    public static String[] loadTourPackagePhotosByName(String name) {
+    public static String[] loadTourPackagePhotobyName(String name) {
         Context context = TravellingApp.getContext();
-        ArrayList<String> photos = new ArrayList<>();
+        ArrayList<String> images = new ArrayList<>();
 
         Cursor cursor = context.getContentResolver().query(TravelMyanmarContract.TourpackagePhotoEntry.buildTourpackagePhotoUriWithName(name),
                 null, null, null, null);
 
         if(cursor != null && cursor.moveToFirst()) {
             do {
-                photos.add(cursor.getString(cursor.getColumnIndex(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_PHOTOS)));
+                images.add(cursor.getString(cursor.getColumnIndex(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_PHOTOS)));
             } while (cursor.moveToNext());
         }
 
-        String[] imageArray = new String[photos.size()];
-        photos.toArray(imageArray);
+        String[] imageArray = new String[images.size()];
+        images.toArray(imageArray);
         return imageArray;
     }
 

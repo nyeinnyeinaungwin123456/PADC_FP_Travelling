@@ -1,10 +1,14 @@
 package com.padc.travelling.data.vos.model;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.events.DataEvent;
+import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.utils.TravellingConstants;
 
@@ -54,6 +58,9 @@ public class TourPackageModel extends BaseModel {
     public void setStoredData(List<TourPackage> tourpackageList) {
         tourpackageVOList = tourpackageList;
     }
+
+
+
 
     public TourPackage getTourPackageByName(String tourpackageName) {
         for (TourPackage tourpackage : tourpackageVOList) {

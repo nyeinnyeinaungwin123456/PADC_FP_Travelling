@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.adapters.TourPackageAdapter;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.data.vos.agents.retrofit.RetrofitDataAgent;
 import com.padc.travelling.data.vos.events.DataEvent;
 import com.padc.travelling.data.vos.model.TourPackageModel;
@@ -168,7 +169,7 @@ public class TourPackageFragment extends Fragment implements LoaderManager.Loade
         if (data != null && data.moveToFirst()) {
             do {
                 TourPackage tourpackage = TourPackage.parseFromCursor(data);
-                tourpackage.setPhotos(TourPackage.loadTourPackagePhotosByName(tourpackage.getPackageName()));
+                tourpackage.setPhotos(TourPackage.loadTourPackagePhotobyName(tourpackage.getPackageName()));
                 tourpackageList.add(tourpackage);
             } while (data.moveToNext());
         }

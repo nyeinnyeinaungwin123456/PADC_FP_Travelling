@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import retrofit2.http.HEAD;
+
 /**
  * Created by aung on 7/10/16.
  */
@@ -54,8 +56,8 @@ public class TravelMyanmarProvider extends ContentProvider {
     //TOURPACKAGE
     public static final int TOURPACKAGE = 300;
     public static final int TOURPACKAGE_PHOTO = 400;
-    public static final int TOURPACKAGE_DESTINATIONPHOTO = 1400;
-    public static final int TOURPACKAGE_ATTRACTIONPLACEPHOTO = 1500;
+//    public static final int TOURPACKAGE_DESTINATIONPHOTO = 1400;
+//    public static final int TOURPACKAGE_ATTRACTIONPLACEPHOTO = 1500;
 
     private static final String sTourpackageNameSelection = TravelMyanmarContract.TourpackageEntry.COLUMN_NAME + " = ?";
     private static final String sTourpackagePhotoSelectionWithName = TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_TOURPACKAGE_NAME + " = ?";
@@ -107,6 +109,7 @@ public class TravelMyanmarProvider extends ContentProvider {
                         null,
                         sortOrder);
                 break;
+
 
 //            //HOTEL
 //            case HOTEL:
@@ -252,6 +255,7 @@ public class TravelMyanmarProvider extends ContentProvider {
                 if (!TextUtils.isEmpty(tourpackageName)) {
                     selection = sTourpackageNameSelection;
                     selectionArgs = new String[]{tourpackageName};
+
                 }
                 queryCursor = mTravelMyanmarDBHelper.getReadableDatabase().query(TravelMyanmarContract.TourpackageEntry.TABLE_NAME,
                         projection,
@@ -267,15 +271,16 @@ public class TravelMyanmarProvider extends ContentProvider {
                 if (tourpackagephotoName != null) {
                     selection = sTourpackagePhotoSelectionWithName;
                     selectionArgs = new String[]{tourpackagephotoName};
+
+                    queryCursor = mTravelMyanmarDBHelper.getReadableDatabase().query(TravelMyanmarContract.TourpackagePhotoEntry.TABLE_NAME,
+                            projection,
+                            selection,
+                            selectionArgs,
+                            null,
+                            null,
+                            sortOrder);
+                    break;
                 }
-                queryCursor = mTravelMyanmarDBHelper.getReadableDatabase().query(TravelMyanmarContract.TourpackagePhotoEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortOrder);
-                break;
 
 //            case TOURPACKAGE_DESTINATIONPHOTO:
 //                String destinationphotoId = TravelMyanmarContract.TourpackageDestinationPhotoEntry.getDestinationNameFromParam(uri);
@@ -306,9 +311,6 @@ public class TravelMyanmarProvider extends ContentProvider {
 //                        null,
 //                        sortOrder);
 //                break;
-
-
-//            TODO
 
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
@@ -363,12 +365,12 @@ public class TravelMyanmarProvider extends ContentProvider {
                 return TravelMyanmarContract.TourpackageEntry.DIR_TYPE;
             case TOURPACKAGE_PHOTO:
                 return TravelMyanmarContract.TourpackagePhotoEntry.DIR_TYPE;
+
 //            case TOURPACKAGE_DESTINATIONPHOTO:
 //                return TravelMyanmarContract.TourpackageDestinationPhotoEntry.DIR_TYPE;
 //            case TOURPACKAGE_ATTRACTIONPLACEPHOTO:
 //                return TravelMyanmarContract.TourpackageAttractionPlacePhotoEntry.DIR_TYPE;
 
-            //TODO
 
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
@@ -403,6 +405,7 @@ public class TravelMyanmarProvider extends ContentProvider {
                 }
                 break;
             }
+
 
 //            //HOTEL
 //            case HOTEL: {
@@ -595,7 +598,7 @@ public class TravelMyanmarProvider extends ContentProvider {
         //TOURPACKAGE
         uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_TOURPACKAGE, TOURPACKAGE);
         uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_TOURPACKAGE_PHOTOS, TOURPACKAGE_PHOTO);
-        //TODO
+
 
         return uriMatcher;
     }
@@ -632,6 +635,7 @@ public class TravelMyanmarProvider extends ContentProvider {
                 return TravelMyanmarContract.TourpackageEntry.TABLE_NAME;
             case TOURPACKAGE_PHOTO:
                 return TravelMyanmarContract.TourpackagePhotoEntry.TABLE_NAME;
+
 
             //TODO
 

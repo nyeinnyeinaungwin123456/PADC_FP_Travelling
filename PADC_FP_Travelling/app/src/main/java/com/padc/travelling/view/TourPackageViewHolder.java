@@ -26,6 +26,12 @@ public class TourPackageViewHolder extends RecyclerView.ViewHolder implements Vi
     @BindView(R.id.tv_tourpackagetitle)
     TextView tvTourPackageTitle;
 
+//    @BindView(R.id.tv_price)
+//    TextView tvPrice;
+//
+//    @BindView(R.id.tv_totaldays)
+//    TextView tvTodayDays;
+
     @BindView(R.id.cardview_tourpackage)
     CardView cvTourPackage;
 
@@ -46,6 +52,8 @@ public void bindData(TourPackage tourPackage){
     mTourPackage = tourPackage;
 
     tvTourPackageTitle.setText(tourPackage.getPackageName());
+//    tvPrice.setText(tourPackage.getEstimatePricePerPerson());
+//    tvTodayDays.setText(tourPackage.getTotalDays());
 
     String imageUrl = tourPackage.getPhotos()[0];
     Log.d("Tourpackage Img", " "+imageUrl);

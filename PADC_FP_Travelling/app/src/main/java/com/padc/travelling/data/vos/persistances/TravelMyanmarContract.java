@@ -40,71 +40,7 @@ public class TravelMyanmarContract {
     public static final String PATH_TOURPACKAGE_DESTINATIONPHOTO = "destination_photos";
     public static final String PATH_TOURPACKAGE_ATTRACTIONPLACEPHOTO = "attractionplace_photos";
 
-    //For Attraction Places
-    public static final class AttractionEntry implements BaseColumns {
-        public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ATTRACTION).build();
 
-        public static final String DIR_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION;
-
-        public static final String ITEM_TYPE =
-                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION;
-
-        public static final String TABLE_NAME = "attractions";
-
-//        public static final String COLUMN_ID = "id";
-        public static final String COLUMN_TITLE = "title";
-        public static final String COLUMN_DESC = "desc";
-
-        public static Uri buildAttractionUri(long id) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions/1
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
-
-        public static Uri buildAttractionUriWithTitle(String attractiontitle) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions?title="Yangon"
-            return CONTENT_URI.buildUpon()
-                    .appendQueryParameter(COLUMN_TITLE, attractiontitle)
-                    .build();
-        }
-
-        public static String getTitleFromParam(Uri uri) {
-            return uri.getQueryParameter(COLUMN_TITLE);
-        }
-    }
-
-    public static final class AttractionImageEntry implements BaseColumns {
-        public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ATTRACTION_IMAGES).build();
-
-        public static final String DIR_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION_IMAGES;
-
-        public static final String ITEM_TYPE =
-                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION_IMAGES;
-
-        public static final String TABLE_NAME = "attraction_images";
-
-        public static final String COLUMN_ATTRACTION_TITLE = "attraction_title";
-        public static final String COLUMN_IMAGE = "image";
-
-        public static Uri buildAttractionImageUri(long id) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
-
-        public static Uri buildAttractionImageUriWithTitle(String attractionTitle) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
-            return CONTENT_URI.buildUpon()
-                    .appendQueryParameter(COLUMN_ATTRACTION_TITLE, attractionTitle)
-                    .build();
-        }
-
-        public static String getAttractionTitleFromParam(Uri uri) {
-            return uri.getQueryParameter(COLUMN_ATTRACTION_TITLE);
-        }
-    }
 
 //    //For Hotel
 //    public static final class HotelEntry implements BaseColumns {
@@ -409,6 +345,75 @@ public class TravelMyanmarContract {
 //        }
 //    }
 
+
+    //For Attraction Places
+    public static final class AttractionEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ATTRACTION).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION;
+
+        public static final String TABLE_NAME = "attractions";
+
+        //        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_DESC = "desc";
+
+        public static Uri buildAttractionUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+
+        //To Ask
+        public static Uri buildAttractionUriWithTitle(String attractiontitle) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions?title="Yangon"
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_TITLE, attractiontitle)
+                    .build();
+        }
+
+        public static String getTitleFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_TITLE);
+        }
+    }
+
+    public static final class AttractionImageEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ATTRACTION_IMAGES).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION_IMAGES;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ATTRACTION_IMAGES;
+
+        public static final String TABLE_NAME = "attraction_images";
+
+        public static final String COLUMN_ATTRACTION_TITLE = "attraction_title";
+        public static final String COLUMN_IMAGE = "image";
+
+        public static Uri buildAttractionImageUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static Uri buildAttractionImageUriWithTitle(String attractionTitle) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_ATTRACTION_TITLE, attractionTitle)
+                    .build();
+        }
+
+        public static String getAttractionTitleFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_ATTRACTION_TITLE);
+        }
+    }
+
     //TOURPACKAGE
     public static final class TourpackageEntry implements BaseColumns {
         public static final Uri CONTENT_URI =
@@ -430,6 +435,7 @@ public class TravelMyanmarContract {
         public static final String COLUMN_SUBDESTINATION = "subdestinations";
         public static final String COLUMN_TOURCOMPANY = "tourcompany";
 
+
         public static Uri buildTourpackageUri(long id) {
             //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions/1
             return ContentUris.withAppendedId(CONTENT_URI, id);
@@ -443,6 +449,7 @@ public class TravelMyanmarContract {
         }
 
         public static String getNameFromParam(Uri uri) {
+
             return uri.getQueryParameter(COLUMN_NAME);
         }
     }
@@ -460,6 +467,8 @@ public class TravelMyanmarContract {
         public static final String TABLE_NAME = "tourpackage_photos";
 
         public static final String COLUMN_TOURPACKAGE_NAME = "packagename";
+        public static final String COLUMN_TOURPACKAGE_ID = "tourpackage_id";
+
         public static final String COLUMN_PHOTOS = "photos";
 
         public static Uri buildTourpackagePhotoUri(long id) {
@@ -478,6 +487,8 @@ public class TravelMyanmarContract {
             return uri.getQueryParameter(COLUMN_TOURPACKAGE_NAME);
         }
     }
+
+
 
 //    public static final class TourpackageDestinationPhotoEntry implements BaseColumns {
 //        public static final Uri CONTENT_URI =
@@ -540,6 +551,18 @@ public class TravelMyanmarContract {
 //
 //        public static String getAttractionIdFromParam(Uri uri) {
 //            return uri.getQueryParameter(COLUMN_TOURPACKAGE_NAME);
+//        }
+//    }
+
+//        public static Uri buildTourpackagePhotoUriWithId(String tourpackageId) {
+//            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+//            return CONTENT_URI.buildUpon()
+//                    .appendQueryParameter(COLUMN_TOURPACKAGE_ID, tourpackageId)
+//                    .build();
+//        }
+//
+//        public static String getTourpackageIdFromParam(Uri uri) {
+//            return uri.getQueryParameter(COLUMN_TOURPACKAGE_ID);
 //        }
 //    }
 

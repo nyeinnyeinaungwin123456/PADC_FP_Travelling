@@ -1,6 +1,7 @@
 package com.padc.travelling.data.vos.events;
 
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
+
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import java.util.ArrayList;

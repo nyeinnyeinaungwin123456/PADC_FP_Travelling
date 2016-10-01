@@ -49,8 +49,8 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
     @BindView(R.id.tv_price)
     TextView tvPrice;
 
-    @BindView(R.id.tv_accomodation)
-    TextView tvAccomodation;
+    @BindView(R.id.tv_totaldays)
+    TextView tvTotalDays;
 
     @BindView(R.id.tv_places)
     TextView tvPlaces;
@@ -171,7 +171,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
             mTourpackage = TourPackage.parseFromCursor(data);
-            mTourpackage.setPhotos(TourPackage.loadTourPackagePhotosByName(mTourpackage.getPackageName()));
+            mTourpackage.setPhotos(TourPackage.loadTourPackagePhotobyName(mTourpackage.getPackageName()));
 
             bindData(mTourpackage);
         }
@@ -187,7 +187,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
         tvTourpackageDesc.setText(tourpackage.getDescription());
         tvTourPackageTitle.setText(mTourpackageName);
         tvPrice.setText(String.valueOf(tourpackage.getEstimatePricePerPerson()));
-        tvAccomodation.setText(tourpackage.getTotalDays());
+        tvTotalDays.setText(tourpackage.getTotalDays());
         tvPlaces.setText(tourpackage.getPackageName());
 
         /*
