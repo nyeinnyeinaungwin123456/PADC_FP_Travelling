@@ -49,7 +49,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.http.HEAD;
 
 
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
@@ -307,7 +306,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction) {
         Intent intent = AttractionDetailActivity.newIntent(attractionPlaces.getPlaceTitle());
-        intent.putExtra(IE_ATTRACTIONPLACES_NAME,attractionPlaces.getPlaceTitle());
+//        intent.putExtra(IE_ATTRACTIONPLACES_NAME,attractionPlaces.getPlaceTitle());
         startActivity(intent);
     }
 }

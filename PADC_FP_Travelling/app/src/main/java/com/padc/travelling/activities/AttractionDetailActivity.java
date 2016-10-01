@@ -21,8 +21,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
 import com.padc.travelling.utils.TravellingConstants;
 
@@ -43,11 +45,18 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
     @BindView(R.id.iv_attraction)
     ImageView ivAttraction;
 
+    @BindView(R.id.tv_attraction_title)
+    TextView tvAttractionTitle;
+
+    @BindView(R.id.tv_attraction_desc)
+    TextView tvAttractionDesc;
+
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbar;
 
     private ShareActionProvider mShareActionProvider;
     private String mAttractionTitle;
+    private AttractionPlaces mAttractionPlaces;
 
     public static final String IE_ATTRACTION_TITLE = "attraction_title";
 
@@ -62,7 +71,7 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attraction_detail);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this,this);
         setSupportActionBar(mToolbar);
 
 
@@ -158,11 +167,60 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data != null && data.moveToFirst()) {
+            mAttractionPlaces = AttractionPlaces.parseFromCursor(data);
+            mAttractionPlaces.setPlaceImage(AttractionPlaces.loadAttractionImagesByTitle(mAttractionPlaces.getPlaceTitle()));
 
+            bindData(mAttractionPlaces);
+        }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    private void bindData(AttractionPlaces attractionplaces) {
+
+//        tvAttractionTitle.setText(attractionplaces.getPlaceTitle());
+        tvAttractionDesc.setText(attractionplaces.getPlaceDesc());
+//        tvTotalDays.setText(tourpackage.getTotalDays());
+//        tvPlaces.setText(tourpackage.getPackageName());
+
+
+        String imageUrl = TravellingConstants.IMAGE_ROOT_ATTRACTION + attractionplaces.getPlaceImage()[0];
+        Glide.with(ivAttraction.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(ivAttraction);
+
+
+//        piTourpackageImgSlider.setNumPage(tourpackage.getPhotos().length);
+//
+//        TourPackageImageAdapter pagerAdapter = new TourPackageImageAdapter(tourpackage.getPhotos());
+//        pagerTourpackageImg.setAdapter(pagerAdapter);
+//        pagerTourpackageImg.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+////                GAUtils.getInstance().sendAppAction(GAUtils.ACTION_SWIPE_IMAGE_VIEW_PAGER,
+////                        mAttractionTitle);
+//
+//                piTourpackageImgSlider.setCurrentPage(position);
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+
+        mCollapsingToolbar.setTitle(mAttractionTitle);
     }
 }
