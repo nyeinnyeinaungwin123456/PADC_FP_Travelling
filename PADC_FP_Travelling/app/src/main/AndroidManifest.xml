@@ -54,6 +54,12 @@
             android:label="@string/title_activity_hotel_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <provider
+            android:name="com.padc.travelling.data.vos.persistances.TravelMyanmarProvider"
+            android:authorities="com.padc.travelling"
+            android:exported="false"
+            android:syncable="true" />
+
     </application>
 
 </manifest>

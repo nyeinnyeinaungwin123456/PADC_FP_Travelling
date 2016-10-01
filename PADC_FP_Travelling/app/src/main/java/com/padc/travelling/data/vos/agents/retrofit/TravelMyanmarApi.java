@@ -1,5 +1,6 @@
 package com.padc.travelling.data.vos.agents.retrofit;
 
+import com.padc.travelling.data.vos.responses.AttractionPlacesListResponse;
 import com.padc.travelling.data.vos.responses.BusComponiesResponse;
 import com.padc.travelling.data.vos.responses.HotelsListResponse;
 import com.padc.travelling.data.vos.responses.RestaurantsListResponse;
@@ -16,10 +17,10 @@ import retrofit2.http.POST;
  */
 public interface TravelMyanmarApi {
 
-    @FormUrlEncoded
-    @POST(TravellingConstants.API_GET_TOURPACKAGE_LIST)
-    Call<TourPackageListResponse> loadTourPackage(
-            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+//    @FormUrlEncoded
+//    @POST(TravellingConstants.API_GET_TOURPACKAGE_LIST)
+//    Call<TourPackageListResponse> loadTourPackage(
+//            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
 
     @FormUrlEncoded
     @POST(TravellingConstants.API_GETHOTELS_LIST)
@@ -36,5 +37,16 @@ public interface TravelMyanmarApi {
     @POST(TravellingConstants.API_GET_BUSCOMPONIES_LIST)
     Call<BusComponiesResponse> loadBusComponies(
             @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+
+    @FormUrlEncoded
+    @POST(TravellingConstants.API_GET_TOURPACKAGE_LIST)
+    Call<TourPackageListResponse> loadTourPackage(
+            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+
+    @FormUrlEncoded
+    @POST(TravellingConstants.API_GET_ATTRACTIONPLACES_LIST)
+    Call<AttractionPlacesListResponse> loadAttractionPlaces(
+            @Field(TravellingConstants.PARAM_ACCESS_TOKEN) String param);
+
 
 }

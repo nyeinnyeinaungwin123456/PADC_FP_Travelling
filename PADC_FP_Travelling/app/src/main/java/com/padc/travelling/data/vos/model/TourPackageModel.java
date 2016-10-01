@@ -5,10 +5,12 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.events.DataEvent;
-import com.padc.travelling.data.vos.TourPackage;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
+import com.padc.travelling.utils.TravellingConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import de.greenrobot.event.EventBus;
 
@@ -23,6 +25,7 @@ public class TourPackageModel extends BaseModel {
     public static final String BROADCAST_DATA_LOADED = "BROADCAST_DATA_LOADED";
 
     public List<TourPackage> tourpackageVOList;
+    //    public List<Tour> attractionplacesVOList;
     private static TourPackageModel tourpackageModel;
 //    public static final String DUMMY_ATTRACTION_LIST = "myanmar_attractions.json";
 
@@ -41,11 +44,19 @@ public class TourPackageModel extends BaseModel {
         return tourpackageModel;
     }
 
+    //TourPackage List
     public List<TourPackage> getTourPackageList() {
 
         return tourpackageVOList;
 
     }
+
+    public void setStoredData(List<TourPackage> tourpackageList) {
+        tourpackageVOList = tourpackageList;
+    }
+
+
+
 
     public TourPackage getTourPackageByName(String tourpackageName) {
         for (TourPackage tourpackage : tourpackageVOList) {
@@ -56,36 +67,32 @@ public class TourPackageModel extends BaseModel {
         return null;
     }
 
-    public void notifyErrorInLoadingAttractions(String message) {
+    public void notifyErrorInLoadingTravel(String message) {
 
     }
 
     public void notifyTourPackageLoaded(List<TourPackage> tourpackageList) {
         //Notify that the data is ready - using LocalBroadcast
         tourpackageVOList = tourpackageList;
-        broadcastAttractionLoadedWithEventBus();
+        TourPackage.saveTourPackage(tourpackageVOList);
+//        broadcastTourpackageLoadedWithEventBus();
         //keep the data in persistent layer.
 //        MealOrderVO.saveAttractions(mAttractionList);
 
     }
 
-//        private List<MealOrderVO> initializeMealOrderList(){
-//
-//        List<MealOrderVO> mealorderList = new ArrayList<>();
-//
-//        try{
-//            String dummyAttractiontList = JsonUtils.getInstance().loadDummyData(DUMMY_ATTRACTION_LIST);
-//            Type listType = new TypeToken<List<AttractionVO>>() {
-//            }.getType();
-//
-//            attractList = CommonInstances.getGsonInstance().fromJson(dummyAttractiontList, listType);
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return attractList;
-//    }
+    public String getRandomAttractionImage() {
+        if (tourpackageVOList == null || tourpackageVOList.size() == 0) {
+            return null;
+        }
+
+        Random random = new Random();
+        int randomInt = random.nextInt(tourpackageVOList.size());
+
+        TourPackage tourpackage = tourpackageVOList.get(randomInt);
+        return TravellingConstants.IMAGE_ROOT_TOURPACKAGE + tourpackage.getPhotos()[tourpackage.getPhotos().length - 1];
+    }
+
 
     private void broadcastAttractionLoadedWithLocalBroadcastManager() {
         Intent intent = new Intent(BROADCAST_DATA_LOADED);
@@ -93,7 +100,7 @@ public class TourPackageModel extends BaseModel {
         LocalBroadcastManager.getInstance(TravellingApp.getContext()).sendBroadcast(intent);
     }
 
-    private void broadcastAttractionLoadedWithEventBus() {
+    private void broadcastTourpackageLoadedWithEventBus() {
         EventBus.getDefault().post(new DataEvent.TourPackageDataLoadedEvent("extra-in-broadcast", tourpackageVOList));
     }
 

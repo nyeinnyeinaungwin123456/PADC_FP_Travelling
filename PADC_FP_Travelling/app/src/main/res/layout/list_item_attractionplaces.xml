@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/medium_margin">
 
     <ImageView
-        android:id="@+id/iv_subattraction"
+        android:id="@+id/iv_attraction"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="@dimen/small_margin"
@@ -14,25 +14,25 @@
         android:src="@drawable/yangon_shwedagonpagoda"/>
 
     <TextView
-        android:id="@+id/tv_attractionsubtitle"
+        android:id="@+id/tv_attractiontitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shwe Da Gone Pagoda"
         android:textSize="@dimen/fab_margin"
         android:textColor="@color/primary_dark"
         android:textStyle="bold"
-        android:layout_toRightOf="@+id/iv_subattraction"
+        android:layout_toRightOf="@+id/iv_attraction"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginLeft="@dimen/fab_margin"/>
 
     <TextView
-        android:id="@+id/tv_attractionsubdesc"
+        android:id="@+id/tv_attractiondesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။"
-        android:layout_toRightOf="@+id/iv_subattraction"
+        android:layout_toRightOf="@+id/iv_attraction"
         android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_below="@+id/tv_attractionsubtitle"
+        android:layout_below="@+id/tv_attractiontitle"
         android:ellipsize="end"
         android:textColor="@color/text_black_ish"
         android:maxLines="2"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_share_yellow_24dp"
         android:layout_marginTop="@dimen/fab_margin"
-        android:layout_below="@+id/tv_attractionsubdesc"
+        android:layout_below="@+id/tv_attractiondesc"
         android:layout_alignParentRight="true"/>
 
     <ImageView
@@ -55,7 +55,7 @@
     android:src="@drawable/ic_favorite_border_black_24dp"
     android:layout_marginTop="@dimen/fab_margin"
     android:layout_marginRight="@dimen/fab_margin"
-    android:layout_below="@+id/tv_attractionsubdesc"
+    android:layout_below="@+id/tv_attractiondesc"
     android:layout_toLeftOf="@+id/iv_share1"/>
 
 
@@ -67,59 +67,6 @@
         android:layout_below="@+id/iv_share1"
         android:background="@color/primary_light"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_subattraction2"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_marginTop="@dimen/small_margin"-->
-        <!--android:layout_marginLeft="@dimen/small_margin"-->
-        <!--android:layout_below="@+id/view_title2"-->
-        <!--android:src="@drawable/dala"/>-->
 
-    <!--<TextView-->
-        <!--android:id="@+id/tv_attractionsubtitle2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Shwe Da Gone Pagoda"-->
-        <!--android:textSize="@dimen/fab_margin"-->
-        <!--android:textColor="@color/primary_dark"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_below="@+id/view_title2"-->
-        <!--android:layout_toRightOf="@+id/iv_subattraction2"-->
-        <!--android:layout_marginTop="@dimen/small_margin"-->
-        <!--android:layout_marginLeft="@dimen/small_margin"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/tv_attractionsubdesc2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="ကမာၻေပၚရွိ အျမင့္ဆံုး ဘုရားေစတီမွာ ၃၂၆-ေပရွိေသာ ေရႊတိဂံု ေစတီေတာ္ ပင္ျဖစ္ၿပီး ရန္ကုန္ၿမိဳ႕ရွိ သိဂၤုတၱရ ကုန္းေတာ္ေပၚတြင္ တည္ရွိသည္။ ေလးဆူ ဓာတ္ပံု ေရႊတိဂံု ဟုလည္း ေခၚတြင္သည္။ ေစတီအစ ေရႊတိဂံုက ဟုဆိုၾက သည္။"-->
-        <!--android:layout_toRightOf="@+id/iv_subattraction1"-->
-        <!--android:layout_marginLeft="@dimen/fab_margin"-->
-        <!--android:layout_below="@+id/tv_attractionsubtitle2"-->
-        <!--android:ellipsize="end"-->
-        <!--android:textColor="@color/text_black_ish"-->
-        <!--android:maxLines="2"-->
-        <!--android:textSize="@dimen/text_small"-->
-        <!--android:layout_marginTop="@dimen/small_margin"/>-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_share2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/ic_share_yellow_24dp"-->
-        <!--android:layout_marginTop="@dimen/fab_margin"-->
-        <!--android:layout_below="@+id/tv_attractionsubdesc2"-->
-        <!--android:layout_alignParentRight="true"/>-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_favourite2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/ic_favorite_yellow_24dp"-->
-        <!--android:layout_marginTop="@dimen/fab_margin"-->
-        <!--android:layout_marginRight="@dimen/fab_margin"-->
-        <!--android:layout_below="@+id/tv_attractionsubdesc2"-->
-        <!--android:layout_toLeftOf="@+id/iv_share1"/>-->
 </RelativeLayout>
 

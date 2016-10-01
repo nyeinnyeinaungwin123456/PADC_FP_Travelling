@@ -29,9 +29,10 @@ import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
-import com.padc.travelling.data.vos.HighwayCompanyVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
 import com.padc.travelling.fragments.FeedbackFragment;
 import com.padc.travelling.fragments.HighWayListFragment;
@@ -214,12 +215,12 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    @Override
-    public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
-        Intent intent = AttractionDetailActivity.newIntent();
-        startActivity(intent);
-
-    }
+//    @Override
+//    public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
+//        Intent intent = AttractionDetailActivity.newIntent();
+//        startActivity(intent);
+//
+//    }
 
 //    //TODO to add in favourit
 //    @Override
@@ -296,16 +297,34 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    @Override
-    public void onTapTourpackage(com.padc.travelling.data.vos.TourPackage tourPackage, ImageView ivTourPackage) {
-        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
-        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
-        startActivity(intent);
-    }
+//    @Override
+//    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
+//        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+//        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
+//        startActivity(intent);
+//    }
 
     @Override
     public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
         Intent intent = HighWayDetailActivity.newIntent(busComponiesVO);
         startActivity(intent);
+    }
+
+    @Override
+    public void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction) {
+        Intent intent = AttractionDetailActivity.newIntent(attractionPlaces.getPlaceTitle());
+//        intent.putExtra(IE_ATTRACTIONPLACES_NAME,attractionPlaces.getPlaceTitle());
+        startActivity(intent);
+
+
+    }
+
+    @Override
+    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
+//        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        Intent intent = TourPackagePagerDetailActivity.newIntent(tourPackage.getPackageName());
+//        intent.putExtra(IE_TOURPACKAGE_NAME, tourPackage.getPackageName());
+        startActivity(intent);
+
     }
 }

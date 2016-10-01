@@ -3,9 +3,11 @@ package com.padc.travelling.data.vos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")

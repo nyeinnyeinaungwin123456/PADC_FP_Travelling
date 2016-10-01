@@ -42,7 +42,7 @@ public class AttractionsModel extends BaseModel {
     }
 
     public void loadAttractions() {
-        dataAgent.loadAttractionPlaces();
+        dataAgent.loadAttraction();
     }
 
     //AttractionPlaces List
