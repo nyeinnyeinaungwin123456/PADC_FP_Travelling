@@ -230,12 +230,13 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
     //TOURPACKAGE TABLE
     private static final String SQL_CREATE_TOURPACKAGE_TABLE = "CREATE TABLE " + TravelMyanmarContract.TourpackageEntry.TABLE_NAME + " (" +
             TravelMyanmarContract.TourpackageEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TravelMyanmarContract.TourpackageEntry.COLUMN_ID + " TEXT NOT NULL, " +
+            TravelMyanmarContract.TourpackageEntry.COLUMN_ID + " INTEGER, " +
             TravelMyanmarContract.TourpackageEntry.COLUMN_NAME + " TEXT NOT NULL, " +
             TravelMyanmarContract.TourpackageEntry.COLUMN_DESC + " TEXT NOT NULL, " +
+            TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE + " TEXT NOT NULL, " +
             TravelMyanmarContract.TourpackageEntry.COLUMN_TOTALDAY + " TEXT NOT NULL, " +
-            TravelMyanmarContract.TourpackageEntry.COLUMN_SUBDESTINATION + " TEXT NOT NULL, " +
-            TravelMyanmarContract.TourpackageEntry.COLUMN_TOURCOMPANY + " TEXT NOT NULL, " +
+            TravelMyanmarContract.TourpackageEntry.COLUMN_SUBDESTINATION + " TEXT, " +
+            TravelMyanmarContract.TourpackageEntry.COLUMN_TOURCOMPANY + " TEXT, " +
 
             " UNIQUE (" + TravelMyanmarContract.TourpackageEntry.COLUMN_ID + ") ON CONFLICT IGNORE" +
             " );";

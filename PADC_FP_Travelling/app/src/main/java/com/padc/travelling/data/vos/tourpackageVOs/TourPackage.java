@@ -226,7 +226,10 @@ public class TourPackage {
     private ContentValues parseToContentValues() {
         ContentValues cv = new ContentValues();
         cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_NAME, packageName);
-        cv.put(TravelMyanmarContract.AttractionEntry.COLUMN_DESC, description);
+        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC, description);
+        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_TOTALDAY, totalDays);
+        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE, estimatePricePerPerson);
+//        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC, description);
         return cv;
     }
 
