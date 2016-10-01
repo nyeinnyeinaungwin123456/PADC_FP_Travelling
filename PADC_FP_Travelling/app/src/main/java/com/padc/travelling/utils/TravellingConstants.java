@@ -12,6 +12,7 @@ public class TravellingConstants {
     public static final String API_GET_TOURPACKAGE_LIST ="GetTourPackages.php";
     public static final String API_GET_RESTAURANT_LIST = "GetRestaurants.php";
     public static final String API_GETHOTELS_LIST = "GetHotels.php";
+    public static final String API_GET_BUSCOMPONIES_LIST = "GetBuses.php";
     public static final String PARAM_ACCESS_TOKEN = "access_token";
     public static final String ACCESS_TOKEN = "b002c7e1a528b7cb460933fc2875e916";
     public static final String URI_TO_OPEN_IN_MAP = "http://maps.google.com/maps?daddr=";

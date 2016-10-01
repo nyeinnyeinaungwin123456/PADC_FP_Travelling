@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.RestaurantAdapter;
-import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.data.vos.events.DataEvent;
 import com.padc.travelling.data.vos.model.RestaurantsModel;
@@ -103,11 +102,6 @@ public class RestaurantFragment extends Fragment {
 
     public void prepareRestaurantData(){
 
-        /*RestaurantVO restaurantVO;
 
-        for(int i=0; i<20; i++) {
-            restaurantVO = new RestaurantVO(R.drawable.heartstream,"YKKO",R.drawable.ic_more_vert_black_24dp);
-            restaurantVOList.add(restaurantVO);
-        }*/
     }
 }

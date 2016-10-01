@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
 
 import butterknife.BindView;

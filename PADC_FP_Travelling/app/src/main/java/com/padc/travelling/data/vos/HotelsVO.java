@@ -3,15 +3,15 @@ package com.padc.travelling.data.vos;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dellpc on 25-Sep-16.
+ * Created by TY on 9/22/2016.
  */
 public class HotelsVO {
 
     @SerializedName("hotel-id")
-    private long hotelId;
+    private int hotel_id;
 
     @SerializedName("hotel-name")
-    private String hotelName;
+    private String hotel_name;
 
     @SerializedName("description")
     private String description;
@@ -20,33 +20,33 @@ public class HotelsVO {
     private String[] photos;
 
     @SerializedName("direction-to-hotel")
-    private String directionToHotel;
+    private String direction_to_hotel;
 
     @SerializedName("phone-numbers")
     private String[] phoneNumbers;
 
     @SerializedName("location")
-    private LocationVO location;
+    private LocationVO locationVO;
 
     public HotelsVO() {
     }
 
-    public HotelsVO(long hotelId, String hotelName, String description, String[] photos, String directionToHotel, String[] phoneNumbers, LocationVO location) {
-        this.hotelId = hotelId;
-        this.hotelName = hotelName;
+    public HotelsVO(int hotel_id, String hotel_name, String description, String[] photos, String direction_to_hotel, String[] phoneNumbers, LocationVO locationVO) {
+        this.hotel_id = hotel_id;
+        this.hotel_name = hotel_name;
         this.description = description;
         this.photos = photos;
-        this.directionToHotel = directionToHotel;
+        this.direction_to_hotel = direction_to_hotel;
         this.phoneNumbers = phoneNumbers;
-        this.location = location;
+        this.locationVO = locationVO;
     }
 
-    public long getHotelId() {
-        return hotelId;
+    public int getHotel_id() {
+        return hotel_id;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public String getHotel_name() {
+        return hotel_name;
     }
 
     public String getDescription() {
@@ -57,15 +57,15 @@ public class HotelsVO {
         return photos;
     }
 
-    public String getDirectionToHotel() {
-        return directionToHotel;
+    public String getDirection_to_hotel() {
+        return direction_to_hotel;
     }
 
     public String[] getPhoneNumbers() {
         return phoneNumbers;
     }
 
-    public LocationVO getLocation() {
-        return location;
+    public LocationVO getLocationVO() {
+        return locationVO;
     }
 }

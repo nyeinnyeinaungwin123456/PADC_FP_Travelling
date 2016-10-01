@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.data.vos.HotelsVO;
 
 import butterknife.BindView;
@@ -46,8 +45,8 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     public void bindData(HotelsVO hotelVO) {
         mHotelVO = hotelVO;
-        tvHotelName.setText(mHotelVO.getHotelName());
-        tvHotelAddress.setText(mHotelVO.getLocation().getAddress());
+        tvHotelName.setText(mHotelVO.getHotel_name());
+        tvHotelAddress.setText(mHotelVO.getLocationVO().getAddress());
         tvHotelPhone.setText(mHotelVO.getPhoneNumbers()[0]);
 
         String imageUrl = mHotelVO.getPhotos()[0];

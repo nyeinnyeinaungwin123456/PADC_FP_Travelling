@@ -1,7 +1,6 @@
 package com.padc.travelling.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.HotelAdapter;
-import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.events.DataEvent;
 import com.padc.travelling.data.vos.model.HotelsModel;
@@ -74,12 +72,7 @@ public class HotelFragment extends Fragment {
     }
 
     private void prepareData() {
-        /*HotelVO hotelVO;
 
-        for(int i=0; i<8; i++) {
-            hotelVO = new HotelVO("Sedona Hotel Yangon",R.drawable.sedona_hotel_mandalay,"Kabar Aye Pagoda Rd, Yangon","01 860 5377");
-            hotelVOList.add(hotelVO);
-        }*/
     }
 
 

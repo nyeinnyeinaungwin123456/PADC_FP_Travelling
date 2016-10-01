@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.RestaurantVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
@@ -37,18 +36,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder
         CardView cardView = (CardView)view.findViewById(R.id.cardview_restaurant);
         cardView.setCardBackgroundColor(Color.TRANSPARENT);
 
-//        RestaurnatViewHolder vh = new RestaurnatViewHolder(view, new RestaurnatViewHolder.ControllerRestaurant() {
 //
-//            @Override
-//            public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
-//                Log.d("RESTAURANT", "is at : "+position);
-//            }
-//
-//            @Override
-//            public void onTapSetting(ImageView ivsetting) {
-//            Log.d("ImageSetting", "is : "+ivsetting);
-//            }
-//        });
 
         return new RestaurnatViewHolder(view, mControllerRestaurant);
     }

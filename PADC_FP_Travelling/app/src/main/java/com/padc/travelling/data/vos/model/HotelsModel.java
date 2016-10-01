@@ -36,20 +36,20 @@ public class HotelsModel extends BaseModel {
         return hotelsModel;
     }
 
-    public List<HotelsVO> getTourPackageList() {
+    public List<HotelsVO> getHotelsList() {
         return hotelsVOList;
     }
 
-    public HotelsVO getTourPackageByName(String hotelsName) {
+    public HotelsVO getHotelsByName(String hotelsName) {
         for (HotelsVO hotels : hotelsVOList) {
-            if (hotels.getHotelName().equals(hotelsName)) {
+            if (hotels.getHotel_name().equals(hotelsName)) {
                 return hotels;
             }
         }
         return null;
     }
 
-    public void notifyErrorInLoadingAttractions(String message) {
+    public void notifyErrorInLoadingHotels(String message) {
 
     }
 

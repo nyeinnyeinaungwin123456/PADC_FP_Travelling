@@ -42,14 +42,14 @@ public class CustomSearchActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this,this);
 
         setSupportActionBar(toolbarSearch);
         final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
+        if (actionBar != null){
             actionBar.setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -61,7 +61,7 @@ public class CustomSearchActivity extends AppCompatActivity {
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 autoCompleteTextView.setText("");
             }
         });
@@ -69,12 +69,11 @@ public class CustomSearchActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) // Press Back Icon
         {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

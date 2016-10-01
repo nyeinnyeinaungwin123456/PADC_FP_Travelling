@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HighwayCompanyVO;
 import com.padc.travelling.view.HighWayListViewHolder;
 
@@ -19,10 +20,10 @@ public class HighWayListAdapter extends RecyclerView.Adapter<HighWayListViewHold
 
 
     private LayoutInflater mInflater;
-    private List<HighwayCompanyVO> mHighwayCompanyVOList;
+    private List<BusComponiesVO> mHighwayCompanyVOList;
     private HighWayListViewHolder.ControllerHighWayList mControllerHighWayList;
 
-    public HighWayListAdapter(List<HighwayCompanyVO> highwayCompanyVOList, HighWayListViewHolder.ControllerHighWayList controllerHighWayList) {
+    public HighWayListAdapter(List<BusComponiesVO> highwayCompanyVOList, HighWayListViewHolder.ControllerHighWayList controllerHighWayList) {
 
         mInflater = LayoutInflater.from(TravellingApp.getContext());
         mHighwayCompanyVOList = highwayCompanyVOList;
@@ -44,5 +45,12 @@ public class HighWayListAdapter extends RecyclerView.Adapter<HighWayListViewHold
     @Override
     public int getItemCount() {
         return mHighwayCompanyVOList.size();
+    }
+
+    public void setNewData(List<BusComponiesVO> busComponiesVOList){
+        mHighwayCompanyVOList.clear();
+        mHighwayCompanyVOList = busComponiesVOList;
+        notifyDataSetChanged();
+
     }
 }

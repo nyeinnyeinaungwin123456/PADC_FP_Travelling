@@ -3,15 +3,15 @@ package com.padc.travelling.data.vos;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dellpc on 25-Sep-16.
+ * Created by TY on 9/22/2016.
  */
 public class LocationVO {
 
     @SerializedName("lat")
     private double lat;
 
-    @SerializedName("lng")
-    private double lng;
+    @SerializedName("lug")
+    private double lug;
 
     @SerializedName("address")
     private String address;
@@ -22,12 +22,13 @@ public class LocationVO {
     @SerializedName("state")
     private StateVO state;
 
+
     public LocationVO() {
     }
 
-    public LocationVO(long lat, long lng, String address, CityVO city, StateVO state) {
+    public LocationVO(double lat, double lug, String address, CityVO city, StateVO state) {
         this.lat = lat;
-        this.lng = lng;
+        this.lug = lug;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -37,8 +38,8 @@ public class LocationVO {
         return lat;
     }
 
-    public double getLng() {
-        return lng;
+    public double getLug() {
+        return lug;
     }
 
     public String getAddress() {

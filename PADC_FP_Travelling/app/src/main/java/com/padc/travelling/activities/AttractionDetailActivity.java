@@ -42,7 +42,7 @@ public class AttractionDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attraction_detail);
         ButterKnife.bind(this);
@@ -55,10 +55,10 @@ public class AttractionDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        mAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        mAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener(){
             @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (mCollapsingToolbar.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(mCollapsingToolbar)) {
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset){
+                if (mCollapsingToolbar.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(mCollapsingToolbar)){
                     //toolbar is collapsed here
                     //write your code here
                     //mToolbar.setTitle("Mandalay");
@@ -79,13 +79,13 @@ public class AttractionDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_attraction_detail, menu);
 
         MenuItem shareItem = menu.findItem(R.id.action_share);
 
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        if (mShareActionProvider != null) {
+        if (mShareActionProvider != null){
             mShareActionProvider.setShareIntent(createShareIntent());
         }
 
@@ -102,12 +102,11 @@ public class AttractionDetailActivity extends AppCompatActivity {
     //Nyein go back to previous activity
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) // Press Back Icon
         {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

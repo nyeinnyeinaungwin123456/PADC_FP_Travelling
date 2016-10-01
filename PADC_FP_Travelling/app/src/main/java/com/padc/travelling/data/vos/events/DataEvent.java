@@ -1,5 +1,6 @@
 package com.padc.travelling.data.vos.events;
 
+import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.data.vos.TourPackage;
@@ -46,6 +47,25 @@ public class DataEvent {
 
         public List<HotelsVO> getHotelsList() {
             return hotelsList;
+        }
+    }
+
+    public static class BusComponiesDataLoadedEvent{
+        public String extraMessage;
+        public List<BusComponiesVO> busComponiesVOsList = new ArrayList<>();
+
+        public BusComponiesDataLoadedEvent(String extraMessage, List<BusComponiesVO> busComponiesVOsList) {
+            this.extraMessage = extraMessage;
+            this.busComponiesVOsList = busComponiesVOsList;
+        }
+
+
+        public String getExtraMessage() {
+            return extraMessage;
+        }
+
+        public List<BusComponiesVO> getBusComponiesVOsList() {
+            return busComponiesVOsList;
         }
     }
 

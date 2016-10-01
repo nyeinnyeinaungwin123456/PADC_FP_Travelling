@@ -27,7 +27,7 @@ public class TourPackageAdapter extends RecyclerView.Adapter<TourPackageViewHold
     public TourPackageAdapter(List<TourPackage> tourPackageVOList, TourPackageViewHolder.ControllerTourPackage controllerTourPackage) {
 
         mInflater = LayoutInflater.from(TravellingApp.getContext());
-        mTourPackageVOList = new ArrayList<>();
+        mTourPackageVOList = tourPackageVOList;
         mControllerTourPackage = controllerTourPackage;
     }
 

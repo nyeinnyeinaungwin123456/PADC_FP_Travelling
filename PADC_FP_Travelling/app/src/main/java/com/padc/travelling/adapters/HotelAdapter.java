@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.HotelVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.view.HotelViewHolder;
 

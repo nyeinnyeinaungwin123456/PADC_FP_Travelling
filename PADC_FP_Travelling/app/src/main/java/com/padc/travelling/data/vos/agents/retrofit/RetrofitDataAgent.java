@@ -2,12 +2,15 @@ package com.padc.travelling.data.vos.agents.retrofit;
 
 import android.util.Log;
 
+import com.padc.travelling.data.vos.agents.BusComponiesDataAgent;
 import com.padc.travelling.data.vos.agents.HotelsDataAgent;
 import com.padc.travelling.data.vos.agents.RestaurantsDataAgent;
 import com.padc.travelling.data.vos.agents.TourPackageDataAgent;
+import com.padc.travelling.data.vos.model.BusComponiesModel;
 import com.padc.travelling.data.vos.model.HotelsModel;
 import com.padc.travelling.data.vos.model.RestaurantsModel;
 import com.padc.travelling.data.vos.model.TourPackageModel;
+import com.padc.travelling.data.vos.responses.BusComponiesResponse;
 import com.padc.travelling.data.vos.responses.HotelsListResponse;
 import com.padc.travelling.data.vos.responses.RestaurantsListResponse;
 import com.padc.travelling.data.vos.responses.TourPackageListResponse;
@@ -27,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by aung on 7/9/16.
  */
-public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent,RestaurantsDataAgent {
+public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent,RestaurantsDataAgent,BusComponiesDataAgent {
 
     private static RetrofitDataAgent objInstance;
 
@@ -104,7 +107,7 @@ public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent,R
                     Log.e("RetrofitDataAgent", "onResponse Success(Hotel)");
                     HotelsListResponse hotelsListResponse = response.body();
                     if(hotelsListResponse == null){
-                        HotelsModel.getInstance().notifyErrorInLoadingAttractions(response.message());
+                        HotelsModel.getInstance().notifyErrorInLoadingHotels(response.message());
                     }else{
                         HotelsModel.getInstance().notifyHotelsLoaded(hotelsListResponse.getHotelsList());
                     }
@@ -117,7 +120,7 @@ public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent,R
             @Override
             public void onFailure(Call<HotelsListResponse> call, Throwable throwable) {
                 throwable.printStackTrace();
-                HotelsModel.getInstance().notifyErrorInLoadingAttractions(throwable.getMessage());
+                HotelsModel.getInstance().notifyErrorInLoadingHotels(throwable.getMessage());
                 Log.e("RetrofitDataAgent", "onResponse Fail(Hotel)");
             }
         });
@@ -151,6 +154,36 @@ public class RetrofitDataAgent implements TourPackageDataAgent,HotelsDataAgent,R
                 throwable.printStackTrace();
                 RestaurantsModel.getInstance().notifyErrorInLoadingRestaurants(throwable.getMessage());
                 Log.e("RetrofitDataAgent", "onResponse Fail(Restaurant)");
+            }
+        });
+    }
+
+    @Override
+    public void loadBusComponies() {
+        Call<BusComponiesResponse> loadBusComponiesResponseCall = theApi.loadBusComponies(TravellingConstants.ACCESS_TOKEN);
+        loadBusComponiesResponseCall.enqueue(new Callback<BusComponiesResponse>() {
+            @Override
+            public void onResponse(Call<BusComponiesResponse> call, Response<BusComponiesResponse> response) {
+                Log.e("RetrofitDataAgent", "onResponse");
+
+                if (response.isSuccessful()) {
+                    Log.e("RetrofitDataAgent", "onResponse Success(Buses)");
+                    BusComponiesResponse busComponiesResponse = response.body();
+                    if(busComponiesResponse == null){
+                        BusComponiesModel.getInstance().notifyErrorInLoadingBusComponies(response.message());
+                    }else{
+                        BusComponiesModel.getInstance().notifyBusComponiesLoaded(busComponiesResponse.getBusComponiesList());
+                    }
+                }else {
+                    Log.e("RetrofitDataAgent", "onResponse Fail(Buses)");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BusComponiesResponse> call, Throwable throwable) {
+                throwable.printStackTrace();
+                BusComponiesModel.getInstance().notifyErrorInLoadingBusComponies(throwable.getMessage());
+                Log.e("RetrofitDataAgent", "onResponse Fail(Buses)");
             }
         });
     }

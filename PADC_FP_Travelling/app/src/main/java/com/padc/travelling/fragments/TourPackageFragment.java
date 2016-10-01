@@ -55,12 +55,12 @@ public class TourPackageFragment extends Fragment {
         mControllerTourPackage = (TourPackageViewHolder.ControllerTourPackage) context;
     }
 
-    public TourPackageFragment() {
+    public TourPackageFragment(){
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_tourpackage, container, false);
         ButterKnife.bind(this,view);
 
