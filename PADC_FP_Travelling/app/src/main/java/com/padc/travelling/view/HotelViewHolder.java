@@ -1,12 +1,14 @@
 package com.padc.travelling.view;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.HotelVO;
+import com.padc.travelling.data.vos.HotelsVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +30,7 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @BindView(R.id.tv_hotel_phone)
     TextView tvHotelPhone;
 
-    HotelVO mHotelVO;
+    HotelsVO mHotelVO;
     ControllerHotel mControllerHotel;
 
 
@@ -41,13 +43,21 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
         mControllerHotel = controllerHotel;
     }
 
-    public void bindData(HotelVO hotelVO) {
+    public void bindData(HotelsVO hotelVO) {
         mHotelVO = hotelVO;
-        tvHotelName.setText(mHotelVO.getTvHotelName());
-        tvHotelAddress.setText(mHotelVO.getTvHotelAddress());
-        tvHotelPhone.setText(mHotelVO.getTvHotelPhone());
+        tvHotelName.setText(mHotelVO.getHotel_name());
+        tvHotelAddress.setText(mHotelVO.getLocationVO().getAddress());
+        tvHotelPhone.setText(mHotelVO.getPhoneNumbers()[0]);
 
-        ivHotelImage.setImageResource(mHotelVO.getIvHotelImage());
+        String imageUrl = mHotelVO.getPhotos()[0];
+        Log.d("Img", " " + imageUrl);
+
+        Glide.with(ivHotelImage.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(ivHotelImage);
     }
 
     @Override
@@ -56,6 +66,6 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
     }
 
     public interface ControllerHotel{
-        void onTapHotel(HotelVO hotelVO, int position);
+        void onTapHotel(HotelsVO hotelVO, int position);
     }
 }

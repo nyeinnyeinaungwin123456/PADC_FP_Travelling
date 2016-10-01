@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.TourPackageVO;
+import com.padc.travelling.data.vos.TourPackage;
 import com.padc.travelling.view.TourPackageViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //import com.padc.travelling.view.holders.TourPackageViewHolder;
@@ -20,10 +21,10 @@ import java.util.List;
 public class TourPackageAdapter extends RecyclerView.Adapter<TourPackageViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<TourPackageVO> mTourPackageVOList;
+    private List<TourPackage> mTourPackageVOList = new ArrayList<>();
     private TourPackageViewHolder.ControllerTourPackage mControllerTourPackage;
 
-    public TourPackageAdapter(List<TourPackageVO> tourPackageVOList, TourPackageViewHolder.ControllerTourPackage controllerTourPackage) {
+    public TourPackageAdapter(List<TourPackage> tourPackageVOList, TourPackageViewHolder.ControllerTourPackage controllerTourPackage) {
 
         mInflater = LayoutInflater.from(TravellingApp.getContext());
         mTourPackageVOList = tourPackageVOList;
@@ -46,11 +47,15 @@ public class TourPackageAdapter extends RecyclerView.Adapter<TourPackageViewHold
 
     @Override
     public int getItemCount() {
+        if (mTourPackageVOList == null) {
+            return 0;
+        }
         return mTourPackageVOList.size();
     }
 
-    public void setNewData(List<TourPackageVO> tourPackageVOList){
-        mTourPackageVOList = tourPackageVOList;
+    public void setNewData(List<TourPackage> tourPackageVOList){
+        mTourPackageVOList.clear();
+        mTourPackageVOList.addAll(tourPackageVOList);
         notifyDataSetChanged();
 
     }

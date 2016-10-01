@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.PathsVO;
+import com.padc.travelling.data.vos.RoutesVO;
 import com.padc.travelling.view.PathsViewHolder;
 
 import java.util.List;
@@ -18,11 +18,11 @@ import java.util.List;
 public class PathsAdapter extends RecyclerView.Adapter<PathsViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<PathsVO> mPathsVOList;
+    private List<RoutesVO> mRoutesVOList;
 
-    public PathsAdapter(List<PathsVO> mPathsVOList) {
+    public PathsAdapter(List<RoutesVO> mRoutesVOList) {
         this.mInflater = LayoutInflater.from(TravellingApp.getContext());
-        this.mPathsVOList = mPathsVOList;
+        this.mRoutesVOList = mRoutesVOList;
     }
 
     @Override
@@ -34,11 +34,11 @@ public class PathsAdapter extends RecyclerView.Adapter<PathsViewHolder> {
 
     @Override
     public void onBindViewHolder(PathsViewHolder holder, int position) {
-        holder.bindData(mPathsVOList.get(position));
+        holder.bindData(mRoutesVOList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mPathsVOList.size();
+        return mRoutesVOList.size();
     }
 }

@@ -2,7 +2,6 @@ package com.padc.travelling.data.vos;
 
 import com.google.gson.annotations.SerializedName;
 import com.padc.travelling.R;
-
 /**
  * Created by TY on 9/14/2016.
  */

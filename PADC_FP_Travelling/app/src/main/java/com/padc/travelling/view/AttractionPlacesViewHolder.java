@@ -36,6 +36,7 @@ public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implemen
         mControllerAttractionPlaces = controllerAttractionPlaces;
     }
 
+
     public void bindData(AttractionPlacesVO attractionPlacesVO){
         mAttractionPlacesVO = attractionPlacesVO;
         ivSubAttraction.setImageResource(attractionPlacesVO.getSubtitle1photo());

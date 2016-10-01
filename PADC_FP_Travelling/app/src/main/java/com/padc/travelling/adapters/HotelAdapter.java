@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.HotelVO;
+import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.view.HotelViewHolder;
 
 import java.util.List;
@@ -18,10 +18,10 @@ import java.util.List;
 public class HotelAdapter extends RecyclerView.Adapter<HotelViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<HotelVO> mHotelVOList;
+    private List<HotelsVO> mHotelVOList;
     private HotelViewHolder.ControllerHotel mControllerHotel;
 
-    public HotelAdapter(List<HotelVO> mHotelVOList, HotelViewHolder.ControllerHotel mControllerHotel) {
+    public HotelAdapter(List<HotelsVO> mHotelVOList, HotelViewHolder.ControllerHotel mControllerHotel) {
         this.mInflater = LayoutInflater.from(TravellingApp.getContext());
         this.mHotelVOList = mHotelVOList;
         this.mControllerHotel = mControllerHotel;
@@ -43,4 +43,12 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelViewHolder> {
     public int getItemCount() {
         return mHotelVOList.size();
     }
+
+    public void setNewData(List<HotelsVO> hotelsVOList){
+        mHotelVOList.clear();
+        mHotelVOList = hotelsVOList;
+        notifyDataSetChanged();
+
+    }
+
 }

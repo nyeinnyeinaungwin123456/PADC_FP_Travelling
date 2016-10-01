@@ -12,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -25,39 +24,41 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HighwayCompanyVO;
-import com.padc.travelling.data.vos.HotelVO;
-import com.padc.travelling.data.vos.RestaurantVO;
-import com.padc.travelling.data.vos.TourPackageVO;
+import com.padc.travelling.data.vos.HotelsVO;
+import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
+import com.padc.travelling.fragments.FeedbackFragment;
 import com.padc.travelling.fragments.HighWayListFragment;
 import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
 import com.padc.travelling.fragments.TourPackageFragment;
+import com.padc.travelling.fragments.TouropiaFragment;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 import com.padc.travelling.view.HighWayListViewHolder;
 import com.padc.travelling.view.HotelViewHolder;
 import com.padc.travelling.view.RestaurnatViewHolder;
 import com.padc.travelling.view.TourPackageViewHolder;
-import com.padc.travelling.fragments.AttractionPlacesFragment;
-import com.padc.travelling.fragments.RestaurantandHotelTabFragment;
-import com.padc.travelling.view.AttractionPlacesViewHolder;
-import com.padc.travelling.view.RestaurnatViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AttractionPlacesViewHolder.ControllerAttractionPlaces,
-        TourPackageViewHolder.ControllerTourPackage,
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+        AttractionPlacesViewHolder.ControllerAttractionPlaces, TourPackageViewHolder.ControllerTourPackage,
         RestaurnatViewHolder.ControllerRestaurant,
         HighWayListViewHolder.ControllerHighWayList,
-        HotelViewHolder.ControllerHotel{
+        HotelViewHolder.ControllerHotel
+{
+
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -73,6 +74,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
+    private List<AttractionPlacesVO> attractionPlacesVOList = new ArrayList<>();
 
     public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
     public static String IE_RESTAURANT_TITLE = "restauranttitle";
@@ -107,8 +109,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
 
                 try{
                     Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
@@ -154,37 +154,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.menu_attractionplaces: {
                 navigateToAttractionPlaces();
-            } break;
+                break;
+            }
 
             case R.id.menu_tourpackages: {
                 navigateToTourPackage();
-
-            } break;
+                break;
+            }
             case R.id.menu_highway: {
                 navigateToHighWay();
-            }break;
+                break;
+            }
 
             case R.id.menu_hotelandrestaurant:{
                 navigateToRestaurant();
-            }break;
+                break;
+            }
 
             case R.id.menu_feedback:{
-
-            }break;
-            case R.id.menu_aboutus:{
-
+                navigateToFeedback();
+                break;
             }
+
+            case R.id.menu_aboutus:{
+                break;
+            }
+
+            case R.id.menu_touropia:{
+                navigateToTouropia();
+                break;
+            }
+
 
         }
 
         return true;
-    }
-
-    private void navigateToHighWay() {
-        getSupportFragmentManager().
-                beginTransaction().
-                replace(R.id.fl_container, HighWayListFragment.newInstance()).
-                commit();
     }
 
 
@@ -201,6 +205,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 replace(R.id.fl_container, TourPackageFragment.newInstance()).
                 commit();
     }
+
+    private void navigateToHighWay() {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, HighWayListFragment.newInstance()).
+                commit();
+    }
+
 
     @Override
     public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
@@ -225,22 +237,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 commit();
     }
 
+    public void navigateToFeedback(){
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, FeedbackFragment.newInstace()).
+                commit();
+    }
 
-    @Override
-    public void onTapTourpackage(TourPackageVO tourPackageVO, int position) {
-
-        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
-        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackageVO.getTourpackagetitle());
-        startActivity(intent);
+    public void navigateToTouropia(){
+    getSupportFragmentManager().
+            beginTransaction().
+            replace(R.id.fl_container, TouropiaFragment.newInstance()).
+            commit();
     }
 
 
     @Override
-    public void onTapRestaurnat(RestaurantVO restaurantVO, int position) {
+    public void onTapRestaurnat(RestaurantsVO restaurantVO, int position) {
 
 //        Testing
         Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
-        intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getRestaurantTile());
+        intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getName());
         startActivity(intent);
     }
 
@@ -270,14 +287,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onTapHighWayList(HighwayCompanyVO highwayCompanyVO, int position) {
-        Intent intent = new Intent(TravellingApp.getContext(),HighWayDetailActivity.class);
+    public void onTapHotel(HotelsVO hotelVO, int position) {
+        /*Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
+        startActivity(intent);*/
+
+        Intent intent = HotelDetailActivity.newIntent(hotelVO);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onTapTourpackage(com.padc.travelling.data.vos.TourPackage tourPackage, ImageView ivTourPackage) {
+        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
+        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
         startActivity(intent);
     }
 
     @Override
-    public void onTapHotel(HotelVO hotelVO, int position) {
-        Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
+    public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
+        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO);
         startActivity(intent);
     }
 }

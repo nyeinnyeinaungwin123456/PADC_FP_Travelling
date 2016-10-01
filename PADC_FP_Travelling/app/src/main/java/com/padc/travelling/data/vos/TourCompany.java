@@ -28,7 +28,7 @@ public class TourCompany {
     private List<String> phoneNumbers = new ArrayList<String>();
     @SerializedName("location")
     @Expose
-    private Location location;
+    private LocationVO location;
 
     /**
      * 
@@ -125,7 +125,7 @@ public class TourCompany {
      * @return
      *     The location
      */
-    public Location getLocation() {
+    public LocationVO getLocation() {
         return location;
     }
 
@@ -134,7 +134,7 @@ public class TourCompany {
      * @param location
      *     The location
      */
-    public void setLocation(Location location) {
+    public void setLocation(LocationVO location) {
         this.location = location;
     }
 

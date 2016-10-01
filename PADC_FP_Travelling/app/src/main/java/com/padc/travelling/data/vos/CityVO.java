@@ -3,41 +3,37 @@ package com.padc.travelling.data.vos;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dellpc on 24-Sep-16.
+ * Created by TY on 9/22/2016.
  */
 public class CityVO {
 
-
     @SerializedName("city-id")
-    private int cityId;
+    private long city_id;
 
     @SerializedName("name")
-    private int name;
+    private String name;
 
     @SerializedName("description")
-    private int description;
-
-    private static CityVO  objInstance;
+    private String description;
 
     public CityVO() {
     }
 
-    public static CityVO getInstance(){
-        if(objInstance == null){
-            objInstance = new CityVO();
-        }
-        return objInstance;
+    public CityVO(long city_id, String name, String description) {
+        this.city_id = city_id;
+        this.name = name;
+        this.description = description;
     }
 
-    public int getCityId() {
-        return cityId;
+    public long getCity_id() {
+        return city_id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 }

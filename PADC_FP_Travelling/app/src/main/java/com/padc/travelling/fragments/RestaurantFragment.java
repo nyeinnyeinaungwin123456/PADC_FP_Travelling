@@ -6,25 +6,34 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.RestaurantAdapter;
-import com.padc.travelling.data.vos.RestaurantVO;
+import com.padc.travelling.data.vos.RestaurantsVO;
+import com.padc.travelling.data.vos.events.DataEvent;
+import com.padc.travelling.data.vos.model.RestaurantsModel;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Nyein Nyein on 9/16/2016.
  */
 public class RestaurantFragment extends Fragment {
 
-    private List<RestaurantVO> restaurantVOList = new ArrayList<>();
-    private RecyclerView recyclerView;
+    @BindView(R.id.rv_restaurant)
+    RecyclerView recyclerView;
+
+    private List<RestaurantsVO> restaurantVOList = new ArrayList<>();
     private RestaurantAdapter restaurantAdapter;
     private RestaurnatViewHolder.ControllerRestaurant mControllerRestaurant;
 
@@ -47,26 +56,52 @@ public class RestaurantFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurant, container, false);
+        ButterKnife.bind(this, view);
 
-        prepareRestaurantData();
+        //prepareRestaurantData();
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.rv_restaurant);
+        restaurantVOList = RestaurantsModel.getInstance().getRestaurantsVOList();
+
         restaurantAdapter = new RestaurantAdapter(restaurantVOList, mControllerRestaurant);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         recyclerView.setAdapter(restaurantAdapter);
 
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus eventBus = EventBus.getDefault();
+        if (!eventBus.isRegistered(this)) {
+            eventBus.register(this);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus eventBus = EventBus.getDefault();
+        if (!eventBus.isRegistered(this)) {
+            eventBus.unregister(this);
+        }
+    }
+
+    public void onEventMainThread(DataEvent.RestaurantsDataLoadedEvent event) {
+        String extra = event.getExtraMessage();
+//        Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
+
+        Log.e("RestaurantFragment", "finish loading");
+        List<RestaurantsVO> newRestaurantsList = event.getRestaurantsList();
+        restaurantAdapter.setNewData(newRestaurantsList);
+    }
+
     public void prepareRestaurantData(){
 
-        RestaurantVO restaurantVO;
 
-        for(int i=0; i<20; i++) {
-            restaurantVO = new RestaurantVO(R.drawable.heartstream,"YKKO",R.drawable.ic_more_vert_black_24dp);
-            restaurantVOList.add(restaurantVO);
-        }
     }
 }

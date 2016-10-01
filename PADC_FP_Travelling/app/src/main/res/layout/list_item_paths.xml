@@ -1,15 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/tv_paths"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yangon-Mandalay"
-        android:textColor="@color/primary_text"
-        android:paddingTop="@dimen/medium_margin"
-        />
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_paths"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="2dp"
+    card_view:cardCornerRadius="4dp">
 
-</LinearLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_gray2"
+        >
+
+        <TextView
+            android:id="@+id/tv_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yangon"
+            android:textColor="@color/primary_text"
+            android:padding="@dimen/medium_margin"
+            />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_trending_flat_black_24dp"
+            android:layout_toRightOf="@id/tv_source"
+            android:padding="8dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mandalay"
+            android:textColor="@color/primary_text"
+            android:padding="@dimen/medium_margin"
+            android:layout_toRightOf="@id/iv_arrow"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_directions_transit_black_24dp"
+            android:layout_below="@id/tv_destination"
+            android:padding="@dimen/margin_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "7000K"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/text_black_ish"
+            android:layout_below="@id/tv_destination"
+            android:layout_toRightOf="@id/iv_price"
+            android:padding="@dimen/margin_small"
+            />
+
+        <ImageView
+            android:id="@+id/iv_clock_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_alarm_on_black_24dp"
+            android:layout_below="@id/tv_price"
+            android:padding="@dimen/margin_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_depture_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7:00 a.m"
+            android:layout_below="@id/tv_price"
+            android:textColor="@color/text_black_ish"
+            android:layout_toRightOf="@id/iv_clock_icon"
+            android:padding="@dimen/margin_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="~"
+            android:padding="@dimen/margin_small"
+            android:layout_below="@id/tv_price"
+            android:textColor="@color/text_black_ish"
+            android:layout_toRightOf="@id/tv_depture_time"
+            />
+
+        <TextView
+            android:id="@+id/tv_arrival_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9:00 p.m"
+            android:layout_below="@id/tv_price"
+            android:textColor="@color/text_black_ish"
+            android:layout_toRightOf="@id/tv_separator"
+            android:padding="@dimen/margin_small"
+            />
+
+        <ImageView
+            android:id="@+id/iv_bus_gate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_directions_transit_black_24dp"
+            android:layout_below="@id/tv_arrival_time"
+            android:padding="@dimen/margin_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_highway_gate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AungMinGalar Highway Gate"
+            android:textColor="@color/text_black_ish"
+            android:layout_below="@id/tv_arrival_time"
+            android:layout_toRightOf="@id/iv_bus_gate"
+            android:padding="@dimen/margin_small"
+            />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

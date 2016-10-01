@@ -14,21 +14,27 @@ public class SubDestination {
     @SerializedName("destination-id")
     @Expose
     private Long destinationId;
+
     @SerializedName("destination-title")
     @Expose
     private String destinationTitle;
+
     @SerializedName("sort-order")
     @Expose
     private Integer sortOrder;
+
     @SerializedName("destination-photos")
     @Expose
     private List<String> destinationPhotos = new ArrayList<String>();
+
     @SerializedName("note-to-visitor")
     @Expose
     private String noteToVisitor;
+
     @SerializedName("location")
     @Expose
-    private Location location;
+    private LocationVO location;
+
     @SerializedName("attraction-places")
     @Expose
     private List<AttractionPlace> attractionPlaces = new ArrayList<AttractionPlace>();
@@ -128,7 +134,7 @@ public class SubDestination {
      * @return
      *     The location
      */
-    public Location getLocation() {
+    public LocationVO getLocation() {
         return location;
     }
 
@@ -137,7 +143,7 @@ public class SubDestination {
      * @param location
      *     The location
      */
-    public void setLocation(Location location) {
+    public void setLocation(LocationVO location) {
         this.location = location;
     }
 
