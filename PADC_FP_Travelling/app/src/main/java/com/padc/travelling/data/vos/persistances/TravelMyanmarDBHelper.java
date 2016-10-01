@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 18;
     public static final String DATABASE_NAME = "travel.db";
 
 
@@ -238,7 +238,7 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
             TravelMyanmarContract.TourpackageEntry.COLUMN_SUBDESTINATION + " TEXT, " +
             TravelMyanmarContract.TourpackageEntry.COLUMN_TOURCOMPANY + " TEXT, " +
 
-            " UNIQUE (" + TravelMyanmarContract.TourpackageEntry.COLUMN_ID + ") ON CONFLICT IGNORE" +
+            " UNIQUE (" + TravelMyanmarContract.TourpackageEntry.COLUMN_NAME + ") ON CONFLICT IGNORE" +
             " );";
 
     private static final String SQL_CREATE_TOURPACKAGE_PHOTO_TABLE = "CREATE TABLE " + TravelMyanmarContract.TourpackagePhotoEntry.TABLE_NAME + " (" +
