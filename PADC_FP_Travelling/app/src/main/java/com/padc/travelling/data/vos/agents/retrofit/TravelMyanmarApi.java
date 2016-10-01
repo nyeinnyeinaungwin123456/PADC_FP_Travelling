@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 /**
  * Created by aung on 7/9/16.
  */
-public interface TourPackageApi {
+public interface TravelMyanmarApi {
 
     @FormUrlEncoded
     @POST(TravellingConstants.API_GET_TOURPACKAGE_LIST)
