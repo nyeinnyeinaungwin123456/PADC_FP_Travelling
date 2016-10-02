@@ -24,11 +24,11 @@ import android.widget.Toast;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.adapters.AttractionPlacesAdapter;
-import com.padc.travelling.data.vos.agents.retrofit.RetrofitDataAgent;
+import com.padc.travelling.data.agents.retrofit.RetrofitDataAgent;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
-import com.padc.travelling.data.vos.events.DataEvent;
-import com.padc.travelling.data.vos.model.AttractionsModel;
-import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.events.DataEvent;
+import com.padc.travelling.data.model.AttractionsModel;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.utils.TravellingConstants;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 

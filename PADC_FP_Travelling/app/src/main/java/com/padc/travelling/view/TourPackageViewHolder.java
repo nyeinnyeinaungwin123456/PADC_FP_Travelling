@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
+import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
 
 /**
  * Created by Nyein Nyein on 9/11/2016.
@@ -51,6 +53,7 @@ public class TourPackageViewHolder extends RecyclerView.ViewHolder implements Vi
 public void bindData(TourPackage tourPackage){
     mTourPackage = tourPackage;
 
+    mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
     tvTourPackageTitle.setText(tourPackage.getPackageName());
 //    tvPrice.setText(tourPackage.getEstimatePricePerPerson());
 //    tvTodayDays.setText(tourPackage.getTotalDays());

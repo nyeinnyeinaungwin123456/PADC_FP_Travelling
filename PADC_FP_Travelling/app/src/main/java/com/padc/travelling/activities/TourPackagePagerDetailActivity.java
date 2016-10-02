@@ -23,12 +23,13 @@ import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.adapters.TourPackageImageAdapter;
 import com.padc.travelling.components.PageIndicatorView;
-import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
 
 //import com.padc.travelling.utils.GAUtils;
 
@@ -94,6 +95,11 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
         setContentView(R.layout.activity_pager_tourpackage);
         ButterKnife.bind(this,this);
 
+        mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvTotalDays,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvTourpackageDesc,mmtext.TEXT_UNICODE,true,true);
+
         setSupportActionBar(toolbarPackage);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -102,6 +108,8 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
         }
 
         mTourpackageName = getIntent().getStringExtra(IE_TOURPACKAGE_TITLE);
+
+        mmtext.isTextZawGyiProbably(mTourpackageName);
 
 //        Bundle bundle = getIntent().getExtras();
 //        if(bundle !=null) {

@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import com.padc.travelling.R;
 import com.padc.travelling.adapters.HotelAdapter;
 import com.padc.travelling.data.vos.HotelsVO;
-import com.padc.travelling.data.vos.events.DataEvent;
-import com.padc.travelling.data.vos.model.HotelsModel;
+import com.padc.travelling.data.events.DataEvent;
+import com.padc.travelling.data.model.HotelsModel;
 import com.padc.travelling.view.HotelViewHolder;
 
 import java.util.ArrayList;

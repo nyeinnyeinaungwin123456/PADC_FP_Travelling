@@ -31,5 +31,9 @@ Relish the multitude of flavours at our variety of restaurants in Yangon. Savour
 
     <string name="hotel"> ဟိုတယ္မ်ား </string>
     <string name="action_send_email"> Send Email </string>
+    <string name="addtoplan"> စားမဲ့အစီအစဥ္ </string>
+    <string name="favourites"> အႀကိဳက္ဆံုး </string>
+    <string name="share"> မွ်ေ၀မယ္ </string>
+    <string name="call"> ဖုန္းေခၚမယ္ </string>
 
 </resources>

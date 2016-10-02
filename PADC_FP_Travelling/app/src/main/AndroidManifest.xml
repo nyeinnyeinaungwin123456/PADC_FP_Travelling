@@ -55,7 +55,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <provider
-            android:name="com.padc.travelling.data.vos.persistances.TravelMyanmarProvider"
+            android:name=".data.persistances.TravelMyanmarProvider"
             android:authorities="com.padc.travelling"
             android:exported="false"
             android:syncable="true" />

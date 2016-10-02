@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
 
 import java.util.ArrayList;
 

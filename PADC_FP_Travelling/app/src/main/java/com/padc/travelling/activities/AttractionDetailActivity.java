@@ -25,11 +25,12 @@ import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
-import com.padc.travelling.data.vos.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
 
 public class AttractionDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -73,6 +74,9 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
         setContentView(R.layout.activity_attraction_detail);
         ButterKnife.bind(this,this);
         setSupportActionBar(mToolbar);
+
+        mmtext.prepareView(TravellingApp.getContext(),tvToolbarAttraction,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
 
 
         final ActionBar actionBar = getSupportActionBar();
