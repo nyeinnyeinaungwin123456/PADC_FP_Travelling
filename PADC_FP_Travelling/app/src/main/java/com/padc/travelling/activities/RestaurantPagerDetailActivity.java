@@ -78,10 +78,15 @@ public class RestaurantPagerDetailActivity extends BaseActivity implements Loade
         mmtext.isTextZawGyiProbably(String.valueOf(R.string.share));
         mmtext.isTextZawGyiProbably(String.valueOf(R.string.call));
 
-        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvPlaces,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvAddress,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvTime,mmtext.TEXT_UNICODE,true,true);
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.price));
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.address));
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.place));
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.time));
+
+//        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvPlaces,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvAddress,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvTime,mmtext.TEXT_UNICODE,true,true);
 
         setSupportActionBar(toolbarRestaurant);
         final ActionBar actionBar = getSupportActionBar();

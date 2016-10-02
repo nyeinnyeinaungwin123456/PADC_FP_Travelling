@@ -15,6 +15,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -192,7 +193,8 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
 //        tvPlaces.setText(tourpackage.getPackageName());
 
 
-        String imageUrl = TravellingConstants.IMAGE_ROOT_ATTRACTION + attractionplaces.getPlaceImage()[0];
+        String imageUrl = attractionplaces.getPlaceImage()[0];
+        Log.d("attract image", imageUrl);
         Glide.with(ivAttraction.getContext())
                 .load(imageUrl)
                 .centerCrop()

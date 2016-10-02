@@ -405,26 +405,26 @@ public class TravelMyanmarProvider extends ContentProvider {
             }
 
 
-//            //HOTEL
-//            case HOTEL: {
-//                long _id = db.insert(TravelMyanmarContract.HotelEntry.TABLE_NAME, null, contentValues);
-//                if (_id > 0) {
-//                    insertedUri = TravelMyanmarContract.HotelEntry.buildHotelUri(_id);
-//                } else {
-//                    throw new SQLException("Failed to insert row into " + uri);
-//                }
-//                break;
-//            }
-//            case HOTEL_PHOTO: {
-//                long _id = db.insert(TravelMyanmarContract.HotelPhotosEntry.TABLE_NAME, null, contentValues);
-//                if (_id > 0) {
-//                    insertedUri = TravelMyanmarContract.HotelPhotosEntry.buildHotelPhotoUri(_id);
-//                } else {
-//                    throw new SQLException("Failed to insert row into " + uri);
-//                }
-//                break;
-//            }
-//
+            //HOTEL
+            case HOTEL: {
+                long _id = db.insert(TravelMyanmarContract.HotelEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.HotelEntry.buildHotelUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case HOTEL_PHOTO: {
+                long _id = db.insert(TravelMyanmarContract.HotelPhotosEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.HotelPhotosEntry.buildHotelPhotoUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+
 //            case HOTEL_PHONE: {
 //                long _id = db.insert(TravelMyanmarContract.HotelPhoneEntry.TABLE_NAME, null, contentValues);
 //                if (_id > 0) {
@@ -434,27 +434,47 @@ public class TravelMyanmarProvider extends ContentProvider {
 //                }
 //                break;
 //            }
-//
-//            //HIGHWAY
-//            case HIGHWAY: {
-//                long _id = db.insert(TravelMyanmarContract.HighwayBusEntry.TABLE_NAME, null, contentValues);
-//                if (_id > 0) {
-//                    insertedUri = TravelMyanmarContract.HighwayBusEntry.buildHighwayUri(_id);
-//                } else {
-//                    throw new SQLException("Failed to insert row into " + uri);
-//                }
-//                break;
-//            }
-//            case HIGHWAY_PHOTO: {
-//                long _id = db.insert(TravelMyanmarContract.HighwayPhotoEntry.TABLE_NAME, null, contentValues);
-//                if (_id > 0) {
-//                    insertedUri = TravelMyanmarContract.HighwayPhotoEntry.buildHighwayPhotoUri(_id);
-//                } else {
-//                    throw new SQLException("Failed to insert row into " + uri);
-//                }
-//                break;
-//            }
-//
+
+            //HOTEL
+            case RESTAURANT: {
+                long _id = db.insert(TravelMyanmarContract.RestaurantEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.RestaurantEntry.buildRestaurantUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case RESTAURANT_PHOTO: {
+                long _id = db.insert(TravelMyanmarContract.RestaurantPhotoEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.RestaurantPhotoEntry.buildRestaurantPhotoUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+
+            //HIGHWAY
+            case HIGHWAY: {
+                long _id = db.insert(TravelMyanmarContract.HighwayBusEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.HighwayBusEntry.buildHighwayUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case HIGHWAY_PHOTO: {
+                long _id = db.insert(TravelMyanmarContract.HighwayPhotoEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TravelMyanmarContract.HighwayPhotoEntry.buildHighwayPhotoUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+
 //            case HIGHWAY_PHONE: {
 //                long _id = db.insert(TravelMyanmarContract.HighwayPhoneEntry.TABLE_NAME, null, contentValues);
 //                if (_id > 0) {
@@ -583,15 +603,19 @@ public class TravelMyanmarProvider extends ContentProvider {
         uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_ATTRACTION, ATTRACTION);
         uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_ATTRACTION_IMAGES, ATTRACTION_IMAGE);
 
-//        //HOTEL
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL, HOTEL);
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL_PHOTOS, HOTEL_PHOTO);
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL_PHONE, HOTEL_PHONE);
-//
-//        //HIGHWAY
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS, HIGHWAY);
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS_PHOTOS, HIGHWAY_PHOTO);
-//        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS_PHONE, HIGHWAY_PHONE);
+        //RESTAURANT
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_RESTAURANT, RESTAURANT);
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_RESTAURANT_PHOTOS, RESTAURANT_PHOTO);
+
+        //HOTEL
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL, HOTEL);
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL_PHOTOS, HOTEL_PHOTO);
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HOTEL_PHONE, HOTEL_PHONE);
+
+        //HIGHWAY
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS, HIGHWAY);
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS_PHOTOS, HIGHWAY_PHOTO);
+        uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_HIGHWAYBUS_PHONE, HIGHWAY_PHONE);
 
         //TOURPACKAGE
         uriMatcher.addURI(TravelMyanmarContract.CONTENT_AUTHORITY, TravelMyanmarContract.PATH_TOURPACKAGE, TOURPACKAGE);
@@ -612,19 +636,19 @@ public class TravelMyanmarProvider extends ContentProvider {
             case ATTRACTION_IMAGE:
                 return TravelMyanmarContract.AttractionImageEntry.TABLE_NAME;
 
-//            //HOTEL
-//            case HOTEL:
-//                return TravelMyanmarContract.HotelEntry.TABLE_NAME;
-//            case HOTEL_PHOTO:
-//                return TravelMyanmarContract.HotelPhotosEntry.TABLE_NAME;
+            //HOTEL
+            case HOTEL:
+                return TravelMyanmarContract.HotelEntry.TABLE_NAME;
+            case HOTEL_PHOTO:
+                return TravelMyanmarContract.HotelPhotosEntry.TABLE_NAME;
 //            case HOTEL_PHONE:
 //                return TravelMyanmarContract.HotelPhoneEntry.TABLE_NAME;
-//
-//            //HIGHWAY
-//            case HIGHWAY:
-//                return TravelMyanmarContract.HighwayBusEntry.TABLE_NAME;
-//            case HIGHWAY_PHOTO:
-//                return TravelMyanmarContract.HighwayPhotoEntry.TABLE_NAME;
+
+            //HIGHWAY
+            case HIGHWAY:
+                return TravelMyanmarContract.HighwayBusEntry.TABLE_NAME;
+            case HIGHWAY_PHOTO:
+                return TravelMyanmarContract.HighwayPhotoEntry.TABLE_NAME;
 //            case HIGHWAY_PHONE:
 //                return TravelMyanmarContract.HighwayPhoneEntry.TABLE_NAME;
 
