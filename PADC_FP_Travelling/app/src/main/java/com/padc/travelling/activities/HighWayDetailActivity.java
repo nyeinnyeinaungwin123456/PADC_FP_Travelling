@@ -68,7 +68,6 @@ public class HighWayDetailActivity extends AppCompatActivity {
     }
 
     public void bindData(){
-
         String imageUrl = mBusComponiesVO.getPhotos()[0];
         Log.d("Img", " " + imageUrl);
 

@@ -27,7 +27,6 @@ import android.widget.ImageView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
@@ -51,14 +50,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 //import com.padc.travelling.fragments.AttractionPlacesFragment;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
         AttractionPlacesViewHolder.ControllerAttractionPlaces, TourPackageViewHolder.ControllerTourPackage,
         RestaurnatViewHolder.ControllerRestaurant,
         HighWayListViewHolder.ControllerHighWayList,
-        HotelViewHolder.ControllerHotel
-{
+        HotelViewHolder.ControllerHotel {
 
 
     @BindView(R.id.drawer_layout)
@@ -75,33 +74,34 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
-    private List<AttractionPlacesVO> attractionPlacesVOList = new ArrayList<>();
+    private List<AttractionPlaces> attractionPlacesVOList = new ArrayList<>();
 
-    public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
+    public static final String IE_TOURPACKAGE_NAME = "tourpackagename";
+    public static final String IE_ATTRACTIONPLACES_NAME = "attractionplacesname";
     public static String IE_RESTAURANT_TITLE = "restauranttitle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
 
-        String strings[] = {"ေျမပံုလမ္းညႊန္","အေသးစိတ္ၾကည့္ရန္"};
+        String strings[] = {"ေျမပံုလမ္းညႊန္", "အေသးစိတ္ၾကည့္ရန္"};
         adpSetting = new ArrayAdapter<String>(HomeActivity.this,
                 android.R.layout.simple_list_item_1, strings);
 
         setSupportActionBar(toolbar);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
 
             navigateToAttractionPlaces();
         }
@@ -111,11 +111,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             @Override
             public void onClick(View view) {
 
-                try{
+                try {
                     Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
                     startActivity(intent);
-                }catch(ActivityNotFoundException e){
-                e.printStackTrace();
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -151,7 +151,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         drawerLayout.closeDrawer(GravityCompat.START);
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
 
             case R.id.menu_attractionplaces: {
                 navigateToAttractionPlaces();
@@ -167,40 +167,38 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             }
 
-            case R.id.menu_hotelandrestaurant:{
+            case R.id.menu_hotelandrestaurant: {
                 navigateToRestaurant();
                 break;
             }
 
-            case R.id.menu_feedback:{
+            case R.id.menu_feedback: {
                 navigateToFeedback();
                 break;
             }
 
-            case R.id.menu_aboutus:{
+            case R.id.menu_aboutus: {
                 break;
             }
 
-            case R.id.menu_touropia:{
+            case R.id.menu_touropia: {
                 navigateToTouropia();
                 break;
             }
-
-
         }
 
         return true;
     }
 
 
-    private void navigateToAttractionPlaces(){
+    private void navigateToAttractionPlaces() {
         getSupportFragmentManager().
                 beginTransaction().
                 replace(R.id.fl_container, AttractionPlacesFragment.newInstance()).
                 commit();
     }
 
-    private void navigateToTourPackage(){
+    private void navigateToTourPackage() {
         getSupportFragmentManager().
                 beginTransaction().
                 replace(R.id.fl_container, TourPackageFragment.newInstance()).
@@ -215,13 +213,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-//    @Override
-//    public void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position) {
-//        Intent intent = AttractionDetailActivity.newIntent();
-//        startActivity(intent);
-//
-//    }
-
 //    //TODO to add in favourit
 //    @Override
 //    public void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite) {
@@ -231,50 +222,49 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 //        iv_fovourite.setImageResource(R.drawable.ic_favorite_black_24dp);
 //    }
 
-    public void navigateToRestaurant(){
+    public void navigateToRestaurant() {
         getSupportFragmentManager().
                 beginTransaction().
                 replace(R.id.fl_container, RestaurantandHotelTabFragment.newInstance()).
                 commit();
     }
 
-    public void navigateToFeedback(){
+    public void navigateToFeedback() {
         getSupportFragmentManager().
                 beginTransaction().
                 replace(R.id.fl_container, FeedbackFragment.newInstace()).
                 commit();
     }
 
-    public void navigateToTouropia(){
-    getSupportFragmentManager().
-            beginTransaction().
-            replace(R.id.fl_container, TouropiaFragment.newInstance()).
-            commit();
+    public void navigateToTouropia() {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fl_container, TouropiaFragment.newInstance()).
+                commit();
     }
 
 
     @Override
     public void onTapRestaurnat(RestaurantsVO restaurantVO, int position) {
-
-//        Testing
-        Intent intent = new Intent(TravellingApp.getContext(),RestaurantPagerDetailActivity.class);
-        intent.putExtra(IE_RESTAURANT_TITLE,restaurantVO.getName());
+        //        Testing
+        Intent intent = new Intent(TravellingApp.getContext(), RestaurantPagerDetailActivity.class);
+        intent.putExtra(IE_RESTAURANT_TITLE, restaurantVO.getName());
         startActivity(intent);
     }
 
     @Override
     public void onTapSetting(ImageView ivsetting) {
 
-        Log.d("ImageView", "is : "+ivsetting);
-       final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        Log.d("ImageView", "is : " + ivsetting);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
 //        builder.setAdapter(adpSetting)
-                builder.setAdapter(adpSetting, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d("OnClick","OnClick is : "+i);
+        builder.setAdapter(adpSetting, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d("OnClick", "OnClick is : " + i);
 //                    TODO
-                    }
-                });
+            }
+        });
 
         AlertDialog dialog = builder.create();
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -288,43 +278,29 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    public void onTapHotel(HotelsVO hotelVO, int position) {
-        /*Intent intent = new Intent(TravellingApp.getContext(),HotelDetailActivity.class);
-        startActivity(intent);*/
-
-        Intent intent = HotelDetailActivity.newIntent(hotelVO);
-        startActivity(intent);
-    }
-
-
-//    @Override
-//    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
+    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
 //        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
-//        intent.putExtra(IE_TOURPACKAGE_TITLE, tourPackage.getPackageName());
-//        startActivity(intent);
-//    }
-
-    @Override
-    public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
-        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO);
+        Intent intent = TourPackagePagerDetailActivity.newIntent(tourPackage.getPackageName());
+//        intent.putExtra(IE_TOURPACKAGE_NAME, tourPackage.getPackageName());
         startActivity(intent);
     }
 
     @Override
     public void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction) {
         Intent intent = AttractionDetailActivity.newIntent(attractionPlaces.getPlaceTitle());
-//        intent.putExtra(IE_ATTRACTIONPLACES_NAME,attractionPlaces.getPlaceTitle());
+        intent.putExtra(IE_ATTRACTIONPLACES_NAME, attractionPlaces.getPlaceTitle());
         startActivity(intent);
-
-
     }
 
     @Override
-    public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
-//        Intent intent = new Intent(TravellingApp.getContext(), TourPackagePagerDetailActivity.class);
-        Intent intent = TourPackagePagerDetailActivity.newIntent(tourPackage.getPackageName());
-//        intent.putExtra(IE_TOURPACKAGE_NAME, tourPackage.getPackageName());
+    public void onTapHighWayList(BusComponiesVO highwayCompanyVO, int position) {
+        Intent intent = HighWayDetailActivity.newIntent(highwayCompanyVO);
         startActivity(intent);
+    }
 
+    @Override
+    public void onTapHotel(HotelsVO hotelVO, int position) {
+        Intent intent = HotelDetailActivity.newIntent(hotelVO);
+        startActivity(intent);
     }
 }

@@ -24,8 +24,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
