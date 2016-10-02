@@ -2,13 +2,16 @@ package com.padc.travelling.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,15 +21,22 @@ import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.adapters.TourPackageDetailAdapter;
+import com.padc.travelling.adapters.TourPackageImageAdapter;
+import com.padc.travelling.components.PageIndicatorView;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
+import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
+
+//import com.padc.travelling.utils.GAUtils;
 
 /**
  * Created by Nyein Nyein on 9/13/2016.
  */
-public class TourPackagePagerDetailActivity extends AppCompatActivity {
+public class TourPackagePagerDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.toolbar_tourpackage)
     Toolbar toolbarPackage;
@@ -34,10 +44,36 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
     @BindView(R.id.tv_tourpackage_title)
     TextView tvTourPackageTitle;
 
+//    @BindView(R.id.iv_tourpackagedetail)
+//    ImageView ivTourpackageDetail;
+
+    @BindView(R.id.tv_price)
+    TextView tvPrice;
+
+    @BindView(R.id.tv_totaldays)
+    TextView tvTotalDays;
+
+    @BindView(R.id.tv_places)
+    TextView tvPlaces;
+
+//    @BindView(R.id.tv_address)
+//    TextView tvAddress;
+
+    @BindView(R.id.pi_tourpackage_image_slider)
+    PageIndicatorView piTourpackageImgSlider;
+
+    @BindView(R.id.pager_tourpackage_images)
+    ViewPager pagerTourpackageImg;
+
+    @BindView(R.id.tv_tourpackagedesc)
+    TextView tvTourpackageDesc;
+
     @BindView(R.id.btn_call)
     Button btnCall;
 
     ArrayAdapter<String> adpPhone ;
+    private String mTourpackageName;
+    private TourPackage mTourpackage;
 
 //    public static String temp = tvTourPackageTitle.getText().toString();
 
@@ -59,6 +95,11 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pager_tourpackage);
         ButterKnife.bind(this,this);
 
+        mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvTotalDays,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvTourpackageDesc,mmtext.TEXT_UNICODE,true,true);
+
         setSupportActionBar(toolbarPackage);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -66,16 +107,22 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle !=null) {
-            String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_TOURPACKAGE_TITLE);
-            tvTourPackageTitle.setText(tourpackagetitle);
-        }
+        mTourpackageName = getIntent().getStringExtra(IE_TOURPACKAGE_TITLE);
 
-        TourPackageDetailAdapter tourPackageDetailAdapter = new TourPackageDetailAdapter();
-        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_tourpackage);
-        viewPager.setAdapter(tourPackageDetailAdapter);
-        viewPager.setCurrentItem(0);
+        mmtext.isTextZawGyiProbably(mTourpackageName);
+
+//        Bundle bundle = getIntent().getExtras();
+//        if(bundle !=null) {
+//            String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_TOURPACKAGE_NAME);
+//        tvTourPackageTitle.setText(tourpackagetitle);
+//        }
+
+        getSupportLoaderManager().initLoader(TravellingConstants.TOURPACKAGE_DETAIL_LOADER, null, this);
+
+//        TourPackageImageAdapter tourPackageDetailAdapter = new TourPackageImageAdapter();
+//        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_tourpackage);
+//        viewPager.setAdapter(tourPackageDetailAdapter);
+//        viewPager.setCurrentItem(0);
 
         String strings [] = {"09799718769", "09449249546", "09973436843"};
         adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
@@ -109,5 +156,82 @@ public class TourPackagePagerDetailActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this,
+                TravelMyanmarContract.TourpackageEntry.buildTourpackageUriWithName(mTourpackageName),
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data != null && data.moveToFirst()) {
+            mTourpackage = TourPackage.parseFromCursor(data);
+            mTourpackage.setPhotos(TourPackage.loadTourPackagePhotobyName(mTourpackage.getPackageName()));
+
+            bindData(mTourpackage);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
+    private void bindData(TourPackage tourpackage) {
+
+        tvTourpackageDesc.setText(tourpackage.getDescription());
+        tvTourPackageTitle.setText(mTourpackageName);
+        tvPrice.setText(String.valueOf(tourpackage.getEstimatePricePerPerson()));
+        tvTotalDays.setText(tourpackage.getTotalDays());
+        tvPlaces.setText(tourpackage.getPackageName());
+
+        /*
+        String imageUrl = MyanmarAttractionsConstants.IMAGE_ROOT_DIR + attraction.getImages()[0];
+        Glide.with(ivAttraction.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.stock_photo_placeholder)
+                .error(R.drawable.stock_photo_placeholder)
+                .into(ivAttraction);
+                */
+
+        piTourpackageImgSlider.setNumPage(tourpackage.getPhotos().length);
+
+        TourPackageImageAdapter pagerAdapter = new TourPackageImageAdapter(tourpackage.getPhotos());
+        pagerTourpackageImg.setAdapter(pagerAdapter);
+        pagerTourpackageImg.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+//                GAUtils.getInstance().sendAppAction(GAUtils.ACTION_SWIPE_IMAGE_VIEW_PAGER,
+//                        mAttractionTitle);
+
+                piTourpackageImgSlider.setCurrentPage(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+//        collapsingToolbar.setTitle(mAttractionTitle);
     }
 }

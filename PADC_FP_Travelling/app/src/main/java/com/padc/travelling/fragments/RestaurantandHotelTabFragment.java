@@ -14,6 +14,7 @@ import com.padc.travelling.adapters.RestaurantandHotelPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
 
 /**
  * Created by Nyein Nyein on 9/15/2016.
@@ -40,9 +41,12 @@ public class RestaurantandHotelTabFragment extends Fragment {
         restaurantandHotelPagerAdapter = new RestaurantandHotelPagerAdapter(getActivity().getSupportFragmentManager());
 
         restaurantandHotelPagerAdapter.addTab(RestaurantFragment.newInstance(),getString(R.string.restaurant));
+
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.restaurant));
         //        TODO
 //        to add hotel fragment
         restaurantandHotelPagerAdapter.addTab(HotelFragment.newInstance(),getString(R.string.hotel));
+        mmtext.isTextZawGyiProbably(String.valueOf(R.string.hotel));
     }
 
     @Nullable

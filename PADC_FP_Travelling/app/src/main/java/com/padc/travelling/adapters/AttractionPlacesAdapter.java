@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.AttractionPlacesVO;
+//import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.view.AttractionPlacesViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,21 +20,21 @@ import java.util.List;
 public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlacesViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<AttractionPlacesVO> mAttractionPlacesVOList;
+    private List<AttractionPlaces> mAttractionPlacesVOList = new ArrayList<>();
     private AttractionPlacesViewHolder.ControllerAttractionPlaces mControllerAttractionPlaces;
-    View view;
+//    View view;
 
-    public AttractionPlacesAdapter(List<AttractionPlacesVO> attractionPlacesVOList, AttractionPlacesViewHolder.ControllerAttractionPlaces controllerAttractionPlaces) {
+    public AttractionPlacesAdapter(List<AttractionPlaces> attractionPlacesVOList, AttractionPlacesViewHolder.ControllerAttractionPlaces controllerAttractionPlaces) {
 
         mInflater = LayoutInflater.from(TravellingApp.getContext());
-        mAttractionPlacesVOList = attractionPlacesVOList;
+        mAttractionPlacesVOList = new ArrayList<>();
         mControllerAttractionPlaces = controllerAttractionPlaces;
     }
 
     @Override
     public AttractionPlacesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-         view = mInflater.inflate(R.layout.list_item_attractionplaces, parent, false);
+        View view = mInflater.inflate(R.layout.list_item_attractionplaces, parent, false);
 //        CardView cardView = (CardView)view.findViewById(R.id.cardview);
 //        cardView.setCardBackgroundColor(Color.TRANSPARENT);
 
@@ -52,11 +54,17 @@ public class AttractionPlacesAdapter extends RecyclerView.Adapter<AttractionPlac
 
     @Override
     public int getItemCount() {
+        if (mAttractionPlacesVOList == null) {
+            return 0;
+        }
+
         return mAttractionPlacesVOList.size();
     }
 
-    public void setNewData(List<AttractionPlacesVO> attractionPlacesVOList){
-        mAttractionPlacesVOList = attractionPlacesVOList;
+    public void setNewData(List<AttractionPlaces> attractionPlacesVOList){
+        mAttractionPlacesVOList.clear();
+        mAttractionPlacesVOList.addAll(attractionPlacesVOList);
+//        mAttractionPlacesVOList = attractionPlacesVOList;
         notifyDataSetChanged();
 
     }

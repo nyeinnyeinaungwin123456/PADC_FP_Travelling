@@ -5,54 +5,69 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.data.vos.AttractionPlacesVO;
+import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mm.technomation.mmtext.mmtext;
 
 /**
  * Created by Nyein Nyein on 9/7/2016.
  */
 public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    @BindView(R.id.iv_subattraction)
-    ImageView ivSubAttraction;
+    @BindView(R.id.iv_attraction)
+    ImageView ivAttraction;
 
-    @BindView(R.id.tv_attractionsubtitle)
-    TextView tvAttractionSubTitle;
+    @BindView(R.id.tv_attractiontitle)
+    TextView tvAttractionTitle;
 
-    @BindView(R.id.tv_attractionsubdesc)
-    TextView tvAttractionSubDesc;
+    @BindView(R.id.tv_attractiondesc)
+    TextView tvAttractionDesc;
 
-    AttractionPlacesVO mAttractionPlacesVO;
+    AttractionPlaces mAttractionPlaces;
     ControllerAttractionPlaces mControllerAttractionPlaces;
 
     public AttractionPlacesViewHolder(View itemView, ControllerAttractionPlaces controllerAttractionPlaces) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
+        mmtext.prepareView(TravellingApp.getContext(),tvAttractionTitle,mmtext.TEXT_UNICODE,true,true);
+        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
+
         itemView.setOnClickListener(this);
         mControllerAttractionPlaces = controllerAttractionPlaces;
     }
 
 
-    public void bindData(AttractionPlacesVO attractionPlacesVO){
-        mAttractionPlacesVO = attractionPlacesVO;
-        ivSubAttraction.setImageResource(attractionPlacesVO.getSubtitle1photo());
-        tvAttractionSubTitle.setText(attractionPlacesVO.getSubtitle());
-        tvAttractionSubDesc.setText(attractionPlacesVO.getSubtitle1desc());
+    public void bindData(AttractionPlaces attractionPlaces){
+        mAttractionPlaces = attractionPlaces;
+//        ivSubAttraction.setImageResource(attractionPlaces.getPlaceImage());
+        tvAttractionTitle.setText(attractionPlaces.getPlaceTitle());
+        tvAttractionDesc.setText(attractionPlaces.getPlaceDesc());
+
+        String imageUrl = attractionPlaces.getPlaceImage()[0];
+        Glide.with(ivAttraction.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(ivAttraction);
+
 
     }
 
     @Override
     public void onClick(View view) {
-        mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, getPosition());
+        mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlaces, ivAttraction);
 //        mControllerAttractionPlaces.onTapAttractionPlaces(mAttractionPlacesVO, mAttractionPlacesVO.getFavourite());
     }
 
     public interface ControllerAttractionPlaces{
-        void onTapAttractionPlaces(AttractionPlacesVO attractionPlacesVO, int position);
+        void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction);
 //        void onTapFavouriteImage(AttractionPlacesVO attractionPlacesVO, int favourite);
     }
 }
