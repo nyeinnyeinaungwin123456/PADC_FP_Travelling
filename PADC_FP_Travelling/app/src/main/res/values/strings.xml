@@ -35,5 +35,9 @@ Relish the multitude of flavours at our variety of restaurants in Yangon. Savour
     <string name="favourites"> အႀကိဳက္ဆံုး </string>
     <string name="share"> မွ်ေ၀မယ္ </string>
     <string name="call"> ဖုန္းေခၚမယ္ </string>
+    <string name="time"> မနက္ ၉ နာရီမွ ည ၉ နာရီထိ </string>
+    <string name="price"> ၂၀၀၀၀ က်ပ္ </string>
+    <string name="address"> အမွတ္ (၁၀)၊ ရတနာလမ္း၊ ေျမနီကုန္း၊ စမ္းေခ်ာင္း။ </string>
+    <string name="place"> ရန္ကုန္ </string>
 
 </resources>

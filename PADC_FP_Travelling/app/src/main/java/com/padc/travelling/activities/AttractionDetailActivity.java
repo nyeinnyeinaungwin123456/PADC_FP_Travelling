@@ -15,6 +15,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,8 +25,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
+import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
@@ -192,7 +193,8 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
 //        tvPlaces.setText(tourpackage.getPackageName());
 
 
-        String imageUrl = TravellingConstants.IMAGE_ROOT_ATTRACTION + attractionplaces.getPlaceImage()[0];
+        String imageUrl = attractionplaces.getPlaceImage()[0];
+        Log.d("attract image", imageUrl);
         Glide.with(ivAttraction.getContext())
                 .load(imageUrl)
                 .centerCrop()
