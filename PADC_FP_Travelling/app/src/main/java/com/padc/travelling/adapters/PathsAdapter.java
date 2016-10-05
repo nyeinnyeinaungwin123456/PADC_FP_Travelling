@@ -41,4 +41,12 @@ public class PathsAdapter extends RecyclerView.Adapter<PathsViewHolder> {
     public int getItemCount() {
         return mRoutesVOList.size();
     }
+
+    public void setNewData(List<RoutesVO> routeVOList){
+        mRoutesVOList.clear();
+        mRoutesVOList.addAll(routeVOList);
+//        mAttractionPlacesVOList = attractionPlacesVOList;
+        notifyDataSetChanged();
+
+    }
 }

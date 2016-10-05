@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -66,8 +65,8 @@ public class HotelDetailActivity extends AppCompatActivity{
 
     public void bindData() {
         tvHotelNameDetail.setText(mHotelVO.getHotel_name());
-        tvHotelDetailAddress.setText(mHotelVO.getLocationVO().getAddress());
-        tvHotelDetailPhone.setText(mHotelVO.getPhoneNumbers()[0]);
+//        tvHotelDetailAddress.setText(mHotelVO.getLocationVO().getAddress());
+//        tvHotelDetailPhone.setText(mHotelVO.getPhoneNumbers()[0]);
         tvHotelDesc.setText(mHotelVO.getDescription());
 
         String imageUrl = mHotelVO.getPhotos()[0];

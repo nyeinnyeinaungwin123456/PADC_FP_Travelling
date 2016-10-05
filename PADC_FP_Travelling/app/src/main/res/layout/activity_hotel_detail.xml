@@ -60,7 +60,7 @@
                 android:background="@android:color/transparent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-                <TextView
+                <com.padc.travelling.components.MMTextView
                     android:id="@+id/tv_hotel_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_medium_2">
 
-            <TextView
+            <com.padc.travelling.components.MMTextView
                 android:id="@+id/tv_hotel_name_deatil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:src="@drawable/ic_home_black_24dp"
                 />
 
-            <TextView
+            <com.padc.travelling.components.MMTextView
                 android:id="@+id/tv_hotel_detail_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                 android:layout_below="@id/iv_location_icon_hotel_detail"
                 />
 
-            <TextView
+            <com.padc.travelling.components.MMTextView
                 android:id="@+id/tv_hotel_detail_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                 android:layout_below="@id/tv_hotel_detail_address"
                 />
 
-            <Button
+            <com.padc.travelling.components.MMButton
                 android:id="@+id/btn_hotel_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                 android:layout_below="@id/tv_hotel_detail_phone"
                 android:layout_marginLeft="32dp"/>
 
-            <TextView
+            <com.padc.travelling.components.MMTextView
                 android:id="@+id/tv_hotel_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

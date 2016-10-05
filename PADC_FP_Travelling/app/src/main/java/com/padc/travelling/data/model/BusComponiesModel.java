@@ -1,7 +1,8 @@
 package com.padc.travelling.data.model;
 
-import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.events.DataEvent;
+import com.padc.travelling.data.vos.BusComponiesVO;
+import com.padc.travelling.data.vos.RoutesVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class BusComponiesModel extends BaseModel{
     public static final String BROADCAST_DATA_LOADED = "BROADCAST_DATA_LOADED";
 
     public List<BusComponiesVO> busComponiesVOList;
+    public List<RoutesVO> routeVOList;
     private static BusComponiesModel busComponiesModel;
 
     public BusComponiesModel() {
@@ -36,6 +38,18 @@ public class BusComponiesModel extends BaseModel{
         return busComponiesVOList;
     }
 
+    public void setStoredData(List<BusComponiesVO> buscompanyList) {
+        busComponiesVOList = buscompanyList;
+    }
+
+    public List<RoutesVO> getRoutesVOList() {
+        return routeVOList;
+    }
+
+    public void setStoredDataRoute(List<RoutesVO> routeList) {
+        routeVOList = routeList;
+    }
+
     public void notifyErrorInLoadingBusComponies(String message) {
 
     }
@@ -45,8 +59,20 @@ public class BusComponiesModel extends BaseModel{
         //Notify that the data is ready - using LocalBroadcast
 
         busComponiesVOList = mBusComponiesVOList;
-        broadcastBusComponiesLoadedWithEventBus();
+        BusComponiesVO.saveBusCompany(busComponiesVOList);
+//        broadcastBusComponiesLoadedWithEventBus();
     }
+
+//    public List<BusComponiesVO> notifyBusComponiesLoadedForDetail(List<BusComponiesVO> mBusComponiesVOList) {
+//
+//        //Notify that the data is ready - using LocalBroadcast
+//
+//        busComponiesVOList = mBusComponiesVOList;
+//        BusComponiesVO.saveBusCompany(busComponiesVOList);
+//
+//        return busComponiesVOList;
+////        broadcastBusComponiesLoadedWithEventBus();
+//    }
 
     private void broadcastBusComponiesLoadedWithEventBus() {
 

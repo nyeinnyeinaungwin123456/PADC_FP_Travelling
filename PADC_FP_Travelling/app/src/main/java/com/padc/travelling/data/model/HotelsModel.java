@@ -1,7 +1,7 @@
 package com.padc.travelling.data.model;
 
-import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.events.DataEvent;
+import com.padc.travelling.data.vos.HotelsVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,10 @@ public class HotelsModel extends BaseModel {
         return hotelsVOList;
     }
 
+    public void setStoredData(List<HotelsVO> hotelList) {
+        hotelsVOList = hotelList;
+    }
+
     public HotelsVO getHotelsByName(String hotelsName) {
         for (HotelsVO hotels : hotelsVOList) {
             if (hotels.getHotel_name().equals(hotelsName)) {
@@ -49,17 +53,19 @@ public class HotelsModel extends BaseModel {
 
     }
 
-    public void notifyHotelsLoaded(List<HotelsVO> hotelsList) {
-        //Notify that the data is ready - using LocalBroadcast
-        hotelsVOList = hotelsList;
-        broadcastAttractionLoadedWithEventBus();
-    }
 
     /*private void broadcastAttractionLoadedWithLocalBroadcastManager() {
         Intent intent = new Intent(BROADCAST_DATA_LOADED);
         intent.putExtra("key-for-extra", "extra-in-broadcast");
         LocalBroadcastManager.getInstance(TravellingApp.getContext()).sendBroadcast(intent);
     }*/
+
+    public void notifyHotelsLoaded(List<HotelsVO> hotelList) {
+        //Notify that the data is ready - using LocalBroadcast
+        hotelsVOList = hotelList;
+        HotelsVO.saveHotels(hotelsVOList);
+
+    }
 
     private void broadcastAttractionLoadedWithEventBus() {
         EventBus.getDefault().post(new DataEvent.HotelsDataLoadedEvent("extra-in-broadcast", hotelsVOList));

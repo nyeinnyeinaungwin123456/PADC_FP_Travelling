@@ -73,7 +73,7 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/margin_medium_2">
 
-                <TextView
+                <com.padc.travelling.components.MMTextView
                     android:id="@+id/tv_highway_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                     android:src="@drawable/ic_home_black_24dp"
                     />
 
-                <TextView
+                <com.padc.travelling.components.MMTextView
                     android:id="@+id/tv_highway_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                     android:layout_below="@id/iv_location_icon_highway"
                     />
 
-                <TextView
+                <com.padc.travelling.components.MMTextView
                     android:id="@+id/tv_hotel_detail_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                     android:layout_below="@id/iv_phone_icon"
                     android:background="@color/divider"/>
 
-                <TextView
+                <com.padc.travelling.components.MMTextView
                     android:id="@+id/tv_available_paths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

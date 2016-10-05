@@ -12,26 +12,26 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.adapters.ImageAdapter;
+import com.padc.travelling.components.PageIndicatorView;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mm.technomation.mmtext.mmtext;
+//import mm.technomation.mmtext.mmtext;
 
 public class AttractionDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -44,14 +44,17 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
     @BindView(R.id.appbar)
     AppBarLayout mAppBar;
 
-    @BindView(R.id.iv_attraction)
-    ImageView ivAttraction;
+//    @BindView(R.id.iv_attraction)
+//    ImageView ivAttraction;
 
-//    @BindView(R.id.tv_attraction_title)
-//    TextView tvAttractionTitle;
+    @BindView(R.id.pager_attraction_images)
+    ViewPager pagerAttraction;
 
     @BindView(R.id.tv_attraction_desc)
     TextView tvAttractionDesc;
+
+    @BindView(R.id.pi_attraction_image_slider)
+    PageIndicatorView piAttraction;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbar;
@@ -76,8 +79,8 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
         ButterKnife.bind(this,this);
         setSupportActionBar(mToolbar);
 
-        mmtext.prepareView(TravellingApp.getContext(),tvToolbarAttraction,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvToolbarAttraction,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
 
 
         final ActionBar actionBar = getSupportActionBar();
@@ -193,39 +196,39 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
 //        tvPlaces.setText(tourpackage.getPackageName());
 
 
-        String imageUrl = attractionplaces.getPlaceImage()[0];
-        Log.d("attract image", imageUrl);
-        Glide.with(ivAttraction.getContext())
-                .load(imageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-                .into(ivAttraction);
+//        String imageUrl = attractionplaces.getPlaceImage()[0];
+//        Log.d("attract image", imageUrl);
+//        Glide.with(ivAttraction.getContext())
+//                .load(imageUrl)
+//                .centerCrop()
+//                .placeholder(R.drawable.placeholder)
+//                .error(R.drawable.placeholder)
+//                .into(ivAttraction);
 
 
-//        piTourpackageImgSlider.setNumPage(tourpackage.getPhotos().length);
-//
-//        TourPackageImageAdapter pagerAdapter = new TourPackageImageAdapter(tourpackage.getPhotos());
-//        pagerTourpackageImg.setAdapter(pagerAdapter);
-//        pagerTourpackageImg.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-////                GAUtils.getInstance().sendAppAction(GAUtils.ACTION_SWIPE_IMAGE_VIEW_PAGER,
-////                        mAttractionTitle);
-//
-//                piTourpackageImgSlider.setCurrentPage(position);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        piAttraction.setNumPage(attractionplaces.getPlaceImage().length);
+
+        ImageAdapter pagerAdapter = new ImageAdapter(attractionplaces.getPlaceImage());
+        pagerAttraction.setAdapter(pagerAdapter);
+        pagerAttraction.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+//                GAUtils.getInstance().sendAppAction(GAUtils.ACTION_SWIPE_IMAGE_VIEW_PAGER,
+//                        mAttractionTitle);
+
+                piAttraction.setCurrentPage(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         mCollapsingToolbar.setTitle(mAttractionTitle);
     }

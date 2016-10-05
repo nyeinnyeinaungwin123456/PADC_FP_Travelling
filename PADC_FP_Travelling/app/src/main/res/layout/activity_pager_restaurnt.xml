@@ -20,7 +20,7 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
-            <TextView
+            <com.padc.travelling.components.MMTextView
                 android:id="@+id/tv_restaurant_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

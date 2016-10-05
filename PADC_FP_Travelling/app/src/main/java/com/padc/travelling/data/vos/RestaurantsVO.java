@@ -137,7 +137,7 @@ public class RestaurantsVO {
         }
 
         Context context = TravellingApp.getContext();
-        int insertCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.TourpackagePhotoEntry.CONTENT_URI, restaurantImagesCVs);
+        int insertCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.RestaurantPhotoEntry.CONTENT_URI, restaurantImagesCVs);
 
         Log.d(TravellingApp.TAG, "Bulk inserted into attraction_images table : " + insertCount);
     }

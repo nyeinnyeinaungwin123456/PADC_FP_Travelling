@@ -19,7 +19,7 @@
             android:scaleType="centerCrop" />
 
 
-        <TextView
+        <com.padc.travelling.components.MMTextView
             android:id="@+id/tv_bus_name"
             android:layout_width="160dp"
             android:layout_height="wrap_content"

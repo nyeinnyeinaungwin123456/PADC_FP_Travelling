@@ -228,7 +228,7 @@ public class TourPackage {
         cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_NAME, packageName);
         cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC, description);
         cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_TOTALDAY, totalDays);
-        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE, estimatePricePerPerson);
+        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_PRICE, estimatePricePerPerson.toString());
 //        cv.put(TravelMyanmarContract.TourpackageEntry.COLUMN_DESC, description);
         return cv;
     }

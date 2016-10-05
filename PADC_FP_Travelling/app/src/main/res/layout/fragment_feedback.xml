@@ -12,7 +12,7 @@
       android:background="@color/white_full"
       android:layout_margin="@dimen/fab_margin">
 
-      <EditText
+      <com.padc.travelling.components.MMEditText
           android:id="@+id/et_sendsuggestion"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
           android:layout_marginTop="@dimen/margin_extralarge"
           android:background="@color/accent_dark"/>
 
-      <Button
+      <com.padc.travelling.components.MMButton
           android:id="@+id/btn_send"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

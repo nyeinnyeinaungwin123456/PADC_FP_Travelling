@@ -38,7 +38,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout="@layout/fragment_attractionplaces" />
 
-    <TextView
+    <com.padc.travelling.components.MMTextView
         android:id="@+id/tv_search_travel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         android:fitsSystemWindows="true"
         app:itemIconTint="@drawable/check_state_color"
         app:itemTextColor="@drawable/check_state_color"
-        app:itemTextAppearance="@dimen/text_regular"
+        app:itemTextAppearance="@dimen/text_small"
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/left_menu_home" />
 

@@ -31,6 +31,7 @@ import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
+import com.padc.travelling.data.vos.RoutesVO;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
@@ -76,6 +77,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
     private List<AttractionPlacesVO> attractionPlacesVOList = new ArrayList<>();
+    RoutesVO routesVO;
 
     public static final String IE_TOURPACKAGE_TITLE = "tourpackagetitle";
     public static String IE_RESTAURANT_TITLE = "restauranttitle";
@@ -306,7 +308,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
-        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO);
+        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO.getName());
+        intent.putExtra("routeVO", routesVO);
         startActivity(intent);
     }
 

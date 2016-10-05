@@ -1,11 +1,16 @@
 package com.padc.travelling.activities;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
@@ -22,10 +27,11 @@ import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
 import com.padc.travelling.adapters.PathsAdapter;
+import com.padc.travelling.data.model.BusComponiesModel;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.BusComponiesVO;
-import com.padc.travelling.data.vos.HighwayCompanyVO;
 import com.padc.travelling.data.vos.RoutesVO;
-import com.padc.travelling.data.vos.TicketingOutletsVO;
+import com.padc.travelling.utils.TravellingConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +39,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HighWayDetailActivity extends AppCompatActivity {
+public class HighWayDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.iv_highway_image_detail)
     ImageView ivHighwayImageDetail;
@@ -47,29 +53,37 @@ public class HighWayDetailActivity extends AppCompatActivity {
     @BindView(R.id.tv_hotel_detail_phone)
     TextView tvHotelDetailPhone;
 
-
-
     @BindView(R.id.rv_paths)
     RecyclerView rvPaths;
 
     @BindView(R.id.toolbar_highway)
     Toolbar toolbar;
 
-    private static BusComponiesVO mBusComponiesVO;
+    @BindView(R.id.tv_available_paths)
+    TextView tvAvailablePath;
+
+    @BindView(R.id.collapsing_toolbar_highway)
+    CollapsingToolbarLayout mCollapsing;
+
     private ShareActionProvider mShareActionProvider;
+    private String mHighwayTitle;
+    private BusComponiesVO mBusCompany;
 
     private List<RoutesVO> routesVOList = new ArrayList<>();
     private PathsAdapter pathsAdapter;
 
-    public static Intent newIntent(BusComponiesVO busComponiesVO) {
-        mBusComponiesVO = busComponiesVO;
+    private static BusComponiesModel busComponiesModel;
+    private  static final String IE_HIGHWAYBUS_TITLE = "bustitle";
+
+    public static Intent newIntent(String bustitle) {
         Intent intent = new Intent(TravellingApp.getContext(), HighWayDetailActivity.class);
+        intent.putExtra(IE_HIGHWAYBUS_TITLE, bustitle);
         return intent;
     }
 
-    public void bindData(){
+    public void bindData(BusComponiesVO buscompanyVO){
 
-        String imageUrl = mBusComponiesVO.getPhotos()[0];
+        String imageUrl = buscompanyVO.getPhotos()[0];
         Log.d("Img", " " + imageUrl);
 
         Glide.with(ivHighwayImageDetail.getContext())
@@ -79,15 +93,38 @@ public class HighWayDetailActivity extends AppCompatActivity {
                 .error(R.drawable.placeholder)
                 .into(ivHighwayImageDetail);
 
-        tvHighwayName.setText(mBusComponiesVO.getName());
-        tvHotelDetailPhone.setText(mBusComponiesVO.getTicketingOutletsVOs()[0].getPhone_numbers()[0].toString());
+        tvHighwayName.setText(buscompanyVO.getName());
+//        tvHotelDetailPhone.setText(buscompanyVO.getTicketingOutletsVOs()[0].getPhone_numbers()[0].toString());
 
-        //routesVOList =  mBusComponiesVO.getRoutesVOs();
+//        routesVOList =  mBusComponiesVO.getRoutesVOs();
 
-        RoutesVO[] data = mBusComponiesVO.getRoutesVOs();
+//        Intent intent = getIntent();
+//        RoutesVO route = (RoutesVO) intent.getSerializableExtra("routeVO");
+//        List<BusComponiesVO> buscompanyList = BusComponiesModel.getInstance().getBusComponiesVOList();
+
+//        BusComponiesModel.getInstance().notifyBusComponiesLoaded(busComponiesModel.notifyBusComponiesLoadedForDetail(buscompanyList));
+//
+//        PathsAdapter pathsAdapter = new PathsAdapter(BusComponiesModel.getInstance().getRoutesVOList());
+//        List<RoutesVO> routeList = BusComponiesModel.getInstance().getRoutesVOList();
+//        pathsAdapter.setNewData(routeList);
+//
+//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+//        rvPaths.setLayoutManager(layoutManager);
+//        rvPaths.setAdapter(pathsAdapter);
+
+        RoutesVO[] data = buscompanyVO.getRoutesVOs();
         for(int i=0;i<data.length;i++){
             routesVOList.add(data[i]);
         }
+
+        PathsAdapter pathsAdapter = new PathsAdapter(routesVOList);
+        pathsAdapter.setNewData(routesVOList);
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),1);
+        rvPaths.setLayoutManager(layoutManager);
+        rvPaths.setAdapter(pathsAdapter);
+
+        mCollapsing.setTitle(mHighwayTitle);
 
     }
 
@@ -95,7 +132,7 @@ public class HighWayDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_way_detail);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this, this);
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();
@@ -104,7 +141,10 @@ public class HighWayDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        bindData();
+        mHighwayTitle = getIntent().getStringExtra(IE_HIGHWAYBUS_TITLE);
+        getSupportLoaderManager().initLoader(TravellingConstants.BUSCOMPANY_DETAIL_LOADER, null, this);
+
+//        bindData();
 
         pathsAdapter = new PathsAdapter(routesVOList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TravellingApp.getContext());
@@ -121,6 +161,12 @@ public class HighWayDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit);
     }
 
     @Override
@@ -152,5 +198,31 @@ public class HighWayDetailActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this,
+                TravelMyanmarContract.HighwayBusEntry.buildHighwayUriWithName(mHighwayTitle),
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data != null && data.moveToFirst()) {
+            mBusCompany = BusComponiesVO.parseFromCursor(data);
+            mBusCompany.setPhotos(BusComponiesVO.loadBusCompanyPhotosByName(mBusCompany.getName()));
+
+            bindData(mBusCompany);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }

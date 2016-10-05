@@ -55,7 +55,7 @@
                     android:layout_marginTop="65dp"
                     android:ems="10" />
 
-                <Button
+                <com.padc.travelling.components.MMButton
                     android:id="@+id/btnclearsearch"
                     android:layout_width="25dp"
                     android:layout_height="25dp"

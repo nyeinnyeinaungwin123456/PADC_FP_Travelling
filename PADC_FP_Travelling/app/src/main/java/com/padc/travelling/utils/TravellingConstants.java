@@ -29,6 +29,10 @@ public class TravellingConstants {
     public static final int ATTRACTION_DETAIL_LOADER = 3;
     public static final int TOURPACKAGE_DETAIL_LOADER = 4;
     public static final int RESTAURANT_DETAIL_LOADER = 5;
+    public static final int RESTAURANT_LIST_LOADER = 6;
+    public static final int HOTEL_LIST_LOADER = 7;
+    public static final int BUSCOMPANY_LIST_LOADER = 8;
+    public static final int BUSCOMPANY_DETAIL_LOADER = 9;
 
 
 }
