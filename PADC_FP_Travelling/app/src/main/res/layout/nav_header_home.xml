@@ -18,7 +18,7 @@
         <!--android:layout_marginBottom="@dimen/nav_image_height"-->
         <!--android:src="@drawable/ic_flight_takeoff_black_24dp" />-->
 
-    <TextView
+    <com.padc.travelling.components.MMTextView
         android:id="@+id/tv_headertitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

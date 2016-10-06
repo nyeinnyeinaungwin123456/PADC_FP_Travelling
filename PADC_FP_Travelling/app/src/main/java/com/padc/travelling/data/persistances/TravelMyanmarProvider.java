@@ -775,6 +775,8 @@ public class TravelMyanmarProvider extends ContentProvider {
                 return TravelMyanmarContract.StartDestinationEntry.TABLE_NAME;
             case HIGHWAY_ENDDESTINATION:
                 return TravelMyanmarContract.EndDestinationEntry.TABLE_NAME;
+            case HIGHWAY_ROUTE:
+                return TravelMyanmarContract.HighwayRouteEntry.TABLE_NAME;
 
             //RESTAURANT
             case RESTAURANT:

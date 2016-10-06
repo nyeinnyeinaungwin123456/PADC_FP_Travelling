@@ -22,7 +22,7 @@ import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mm.technomation.mmtext.mmtext;
+//import mm.technomation.mmtext.mmtext;
 
 /**
  * Created by Nyein Nyein on 9/13/2016.
@@ -73,15 +73,15 @@ public class RestaurantPagerDetailActivity extends BaseActivity implements Loade
         setContentView(R.layout.activity_detailrestaurant);
         ButterKnife.bind(this,this);
 
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.addtoplan));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.favourites));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.share));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.call));
-
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.price));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.address));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.place));
-        mmtext.isTextZawGyiProbably(String.valueOf(R.string.time));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.addtoplan));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.favourites));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.share));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.call));
+//
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.price));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.address));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.place));
+//        mmtext.isTextZawGyiProbably(String.valueOf(R.string.time));
 
 //        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
 //        mmtext.prepareView(TravellingApp.getContext(),tvPlaces,mmtext.TEXT_UNICODE,true,true);
@@ -102,7 +102,7 @@ public class RestaurantPagerDetailActivity extends BaseActivity implements Loade
         }
 
         mRestaurantName = getIntent().getStringExtra(IE_RESTAURANT_TITLE);
-        mmtext.isTextZawGyiProbably(mRestaurantName);
+//        mmtext.isTextZawGyiProbably(mRestaurantName);
         getSupportLoaderManager().initLoader(TravellingConstants.RESTAURANT_DETAIL_LOADER, null, this);
 
     }

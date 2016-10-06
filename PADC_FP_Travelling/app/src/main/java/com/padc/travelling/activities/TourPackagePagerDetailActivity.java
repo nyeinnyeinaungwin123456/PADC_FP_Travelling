@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -17,11 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
-import com.padc.travelling.adapters.TourPackageImageAdapter;
+import com.padc.travelling.adapters.ImageAdapter;
 import com.padc.travelling.components.PageIndicatorView;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
@@ -38,14 +40,14 @@ import butterknife.ButterKnife;
  */
 public class TourPackagePagerDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    @BindView(R.id.toolbar_tourpackage)
+    @BindView(R.id.toolbar)
     Toolbar toolbarPackage;
 
-    @BindView(R.id.tv_tourpackage_title)
+    @BindView(R.id.tv_toolbar_tourpackage)
     TextView tvTourPackageTitle;
 
-//    @BindView(R.id.iv_tourpackagedetail)
-//    ImageView ivTourpackageDetail;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbar;
 
     @BindView(R.id.tv_price)
     TextView tvPrice;
@@ -62,7 +64,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
     @BindView(R.id.pi_tourpackage_image_slider)
     PageIndicatorView piTourpackageImgSlider;
 
-    @BindView(R.id.pager_tourpackage_images)
+    @BindView(R.id.pager_tourpackae_images)
     ViewPager pagerTourpackageImg;
 
     @BindView(R.id.tv_tourpackagedesc)
@@ -95,11 +97,6 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
         setContentView(R.layout.activity_pager_tourpackage);
         ButterKnife.bind(this,this);
 
-//        mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
-//        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
-//        mmtext.prepareView(TravellingApp.getContext(),tvTotalDays,mmtext.TEXT_UNICODE,true,true);
-//        mmtext.prepareView(TravellingApp.getContext(),tvTourpackageDesc,mmtext.TEXT_UNICODE,true,true);
-
         setSupportActionBar(toolbarPackage);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -109,20 +106,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
 
         mTourpackageName = getIntent().getStringExtra(IE_TOURPACKAGE_TITLE);
 
-//        mmtext.isTextZawGyiProbably(mTourpackageName);
-
-//        Bundle bundle = getIntent().getExtras();
-//        if(bundle !=null) {
-//            String tourpackagetitle = (String)bundle.getString(HomeActivity.IE_TOURPACKAGE_NAME);
-//        tvTourPackageTitle.setText(tourpackagetitle);
-//        }
-
         getSupportLoaderManager().initLoader(TravellingConstants.TOURPACKAGE_DETAIL_LOADER, null, this);
-
-//        TourPackageImageAdapter tourPackageDetailAdapter = new TourPackageImageAdapter();
-//        ViewPager viewPager = (ViewPager)findViewById(R.id.pager_tourpackage);
-//        viewPager.setAdapter(tourPackageDetailAdapter);
-//        viewPager.setCurrentItem(0);
 
         String strings [] = {"09799718769", "09449249546", "09973436843"};
         adpPhone = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, strings);
@@ -193,7 +177,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
     private void bindData(TourPackage tourpackage) {
 
         tvTourpackageDesc.setText(tourpackage.getDescription());
-        tvTourPackageTitle.setText(mTourpackageName);
+//        tvTourPackageTitle.setText(mTourpackageName);
         tvPrice.setText(String.valueOf(tourpackage.getEstimatePricePerPerson()));
         tvTotalDays.setText(tourpackage.getTotalDays());
         tvPlaces.setText(tourpackage.getPackageName());
@@ -210,7 +194,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
 
         piTourpackageImgSlider.setNumPage(tourpackage.getPhotos().length);
 
-        TourPackageImageAdapter pagerAdapter = new TourPackageImageAdapter(tourpackage.getPhotos());
+        ImageAdapter pagerAdapter = new ImageAdapter(tourpackage.getPhotos());
         pagerTourpackageImg.setAdapter(pagerAdapter);
         pagerTourpackageImg.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -232,6 +216,6 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
             }
         });
 
-//        collapsingToolbar.setTitle(mAttractionTitle);
+        collapsingToolbar.setTitle(mTourpackageName);
     }
 }

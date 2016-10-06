@@ -7,12 +7,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.padc.travelling.R;
-import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mm.technomation.mmtext.mmtext;
+//import mm.technomation.mmtext.mmtext;
 
 /**
  * Created by Nyein Nyein on 9/7/2016.
@@ -35,8 +34,8 @@ public class AttractionPlacesViewHolder extends RecyclerView.ViewHolder implemen
         super(itemView);
         ButterKnife.bind(this, itemView);
 
-        mmtext.prepareView(TravellingApp.getContext(),tvAttractionTitle,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvAttractionTitle,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
 
         itemView.setOnClickListener(this);
         mControllerAttractionPlaces = controllerAttractionPlaces;

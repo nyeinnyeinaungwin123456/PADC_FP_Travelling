@@ -27,9 +27,11 @@ import android.widget.ImageView;
 
 import com.padc.travelling.R;
 import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
 import com.padc.travelling.data.vos.RestaurantsVO;
+import com.padc.travelling.data.vos.RoutesVO;
 import com.padc.travelling.data.vos.attractionplaces.AttractionPlaces;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
 import com.padc.travelling.fragments.AttractionPlacesFragment;
@@ -74,7 +76,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     private ShareActionProvider mShareActionProvider;
     ArrayAdapter<String> adpSetting;
-    private List<AttractionPlaces> attractionPlacesVOList = new ArrayList<>();
+    private List<AttractionPlacesVO> attractionPlacesVOList = new ArrayList<>();
+    RoutesVO routesVO;
 
     public static final String IE_TOURPACKAGE_NAME = "tourpackagename";
     public static final String IE_ATTRACTIONPLACES_NAME = "attractionplacesname";
@@ -283,7 +286,16 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         Intent intent = TourPackagePagerDetailActivity.newIntent(tourPackage.getPackageName());
 //        intent.putExtra(IE_TOURPACKAGE_NAME, tourPackage.getPackageName());
         startActivity(intent);
+
     }
+
+
+//    @Override
+//    public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
+//        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO.getName());
+//        intent.putExtra("routeVO", routesVO);
+//        startActivity(intent);
+//    }
 
     @Override
     public void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction) {
@@ -293,10 +305,12 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    public void onTapHighWayList(BusComponiesVO highwayCompanyVO, int position) {
-        Intent intent = HighWayDetailActivity.newIntent(highwayCompanyVO);
+    public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
+        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO.getName());
+        intent.putExtra("routeVO", routesVO);
         startActivity(intent);
     }
+
 
     @Override
     public void onTapHotel(HotelsVO hotelVO, int position) {

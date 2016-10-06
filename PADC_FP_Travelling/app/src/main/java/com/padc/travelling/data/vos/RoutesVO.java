@@ -1,11 +1,21 @@
 package com.padc.travelling.data.vos;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
+import com.padc.travelling.TravellingApp;
+import com.padc.travelling.data.persistances.TravelMyanmarContract;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by TY on 9/22/2016.
  */
-public class RoutesVO {
+public class RoutesVO implements Serializable{
 
     @SerializedName("route_id")
     private int route_id;
@@ -68,4 +78,99 @@ public class RoutesVO {
     public MidPointsVO[] getMidPointsVOs() {
         return midPointsVOs;
     }
+
+    public void setRoute_id(int route_id) {
+        this.route_id = route_id;
+    }
+
+    public void setRoute_title(String route_title) {
+        this.route_title = route_title;
+    }
+
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setStartDestinationVO(StartDestinationVO startDestinationVO) {
+        this.startDestinationVO = startDestinationVO;
+    }
+
+    public void setEndDestinationVO(EndDestinationVO endDestinationVO) {
+        this.endDestinationVO = endDestinationVO;
+    }
+
+    public void setMidPointsVOs(MidPointsVO[] midPointsVOs) {
+        this.midPointsVOs = midPointsVOs;
+    }
+
+    public static void saveRoutes(List<RoutesVO> routeList) {
+        Context context = TravellingApp.getContext();
+        ContentValues[] routeCVs = new ContentValues[routeList.size()];
+        for (int index = 0; index < routeList.size(); index++) {
+            RoutesVO route = routeList.get(index);
+            routeCVs[index] = route.parseToContentValues();
+
+            //Bulk insert into attraction_images.
+//            AttractionPlaces.saveAttractionImages(attraction.getPlaceTitle(), attraction.getPlaceImage());
+        }
+
+        //Bulk insert into attractions.
+        int insertedCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.HighwayRouteEntry.CONTENT_URI, routeCVs);
+
+        Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
+    }
+
+//    private static void saveAttractionImages(String title, String[] images) {
+//        ContentValues[] attractionImagesCVs = new ContentValues[images.length];
+//        for (int index = 0; index < images.length; index++) {
+//            String image = images[index];
+//
+//            ContentValues cv = new ContentValues();
+//            cv.put(TravelMyanmarContract.AttractionImageEntry.COLUMN_ATTRACTION_TITLE, title);
+//            cv.put(TravelMyanmarContract.AttractionImageEntry.COLUMN_IMAGE, image);
+//
+//            attractionImagesCVs[index] = cv;
+//        }
+//
+//        Context context = TravellingApp.getContext();
+//        int insertCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.AttractionImageEntry.CONTENT_URI, attractionImagesCVs);
+//
+//        Log.d(TravellingApp.TAG, "Bulk inserted into attraction_images table : " + insertCount);
+//    }
+
+    private ContentValues parseToContentValues() {
+        ContentValues cv = new ContentValues();
+        cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME, route_title);
+        cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE, price);
+
+        return cv;
+    }
+
+    public static RoutesVO parseFromCursor(Cursor data) {
+        RoutesVO route = new RoutesVO();
+        route.route_title = data.getString(data.getColumnIndex(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME));
+        route.price = data.getInt(data.getColumnIndex(TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE));
+        return route;
+    }
+
+//    public static StartDestinationVO loadStartDestinationbyName(String name) {
+//        Context context = TravellingApp.getContext();
+//        StartDestinationVO start = new StartDestinationVO();
+//
+//        Cursor cursor = context.getContentResolver().query(TravelMyanmarContract.StartDestinationEntry.buildStartDestinationUriWithName(name),
+//                null, null, null, null);
+//
+//        if(cursor != null && cursor.moveToFirst()) {
+//            do {
+//                start.(cursor.getString(cursor.getColumnIndex(TravelMyanmarContract.StartDestinationEntry.COLUMN_HIGHWAY_NAME)));
+//            } while (cursor.moveToNext());
+//        }
+//
+//
+//        return start;
+//    }
 }

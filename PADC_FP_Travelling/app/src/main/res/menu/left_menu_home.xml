@@ -42,15 +42,15 @@
             android:title="@string/feedback"/>
     </group>
 
-    <group android:id="@+id/group7"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_favourite"
-            android:icon="@drawable/ic_favorite_primarydark_24dp"
-            android:title="@string/favourite"/>
-    </group>
+    <!--<group android:id="@+id/group7"-->
+        <!--android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/menu_favourite"-->
+            <!--android:icon="@drawable/ic_favorite_primarydark_24dp"-->
+            <!--android:title="@string/favourite"/>-->
+    <!--</group>-->
 
-    <group android:id="@+id/group8"
+    <group android:id="@+id/group7"
         android:checkableBehavior="single">
         <item
             android:id="@+id/menu_aboutus"
@@ -59,7 +59,7 @@
 
     </group>
 
-    <group android:id="@+id/group9"
+    <group android:id="@+id/group8"
         android:checkableBehavior="single">
         <item
             android:id="@+id/menu_touropia"

@@ -10,11 +10,12 @@ import com.padc.travelling.utils.ScreenUtils;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 
+//import xyz.aungpyaephyo.padc.myanmarattractions.utils.ScreenUtils;
+
 /**
- * Created by TY on 9/15/2016.
+ * Page Indicator View of the View Pager Screen Slider.
  */
 public class PageIndicatorView extends View {
-
     private final String VIEW_TAG = "PageIndicatorView";
 
     private final int WHITE_COLOR = 0xFFFFFFFF;
@@ -29,19 +30,16 @@ public class PageIndicatorView extends View {
     private int numPage;
 
     public PageIndicatorView(Context context) {
-        super(context);
+        super(context, null);
 
         this.init();
     }
 
     public PageIndicatorView(Context context, AttributeSet attrs) {
+        //this(context, attrs, R.attr.vpiCirclePageIndicatorStyle);
         super(context, attrs);
 
-    }
-
-    public PageIndicatorView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-
+        this.init();
     }
 
     private void init() {
@@ -103,8 +101,14 @@ public class PageIndicatorView extends View {
         setMeasuredDimension(newWidth, newHeight);
     }
 
+    /**
+     * Determines the width of this view
+     *
+     * @param measureSpec
+     *            A measureSpec packed into an int
+     * @return The width of the view, honoring constraints from measureSpec
+     */
     private int measureLong(int measureSpec) {
-
         int result;
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
@@ -124,6 +128,13 @@ public class PageIndicatorView extends View {
         return result;
     }
 
+    /**
+     * Determines the height of this view
+     *
+     * @param measureSpec
+     *            A measureSpec packed into an int
+     * @return The height of the view, honoring constraints from measureSpec
+     */
     private int measureShort(int measureSpec) {
         int result;
         int specMode = MeasureSpec.getMode(measureSpec);
@@ -143,6 +154,7 @@ public class PageIndicatorView extends View {
         return result;
     }
 
+    //public method
     public void setNumPage(int num) {
         this.numPage = num;
         this.invalidate();
@@ -152,4 +164,5 @@ public class PageIndicatorView extends View {
         this.currentPage = currentNum;
         this.invalidate();
     }
+
 }

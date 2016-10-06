@@ -46,8 +46,8 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public void bindData(HotelsVO hotelVO) {
         mHotelVO = hotelVO;
         tvHotelName.setText(mHotelVO.getHotel_name());
-        tvHotelAddress.setText(mHotelVO.getLocationVO().getAddress());
-        tvHotelPhone.setText(mHotelVO.getPhoneNumbers()[0]);
+//        tvHotelAddress.setText(mHotelVO.getLocationVO().getAddress());
+//        tvHotelPhone.setText(mHotelVO.getPhoneNumbers()[0]);
 
         String imageUrl = mHotelVO.getPhotos()[0];
         Log.d("Img", " " + imageUrl);

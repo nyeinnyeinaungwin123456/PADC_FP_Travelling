@@ -261,6 +261,7 @@ public class TravelMyanmarContract {
         public static final String TABLE_NAME = "highway_routes";
 
         public static final String COLUMN_HIGHWAY_NAME = "companyname";
+        public static final String COLUMN_ROUTE = "routes";
         public static final String COLUMN_PRICE = "price";
 //        public static final RoutesVO COLUMN_ROUTE = 0;
 //        public static final String COLUMN_STARTDESTINATION = "startdestination";
@@ -569,7 +570,7 @@ public class TravelMyanmarContract {
         public static final String COLUMN_ID = "packageid";
         public static final String COLUMN_NAME = "packagename";
         public static final String COLUMN_DESC = "description";
-        public static final String COLUMN_PRICE = "estimateprice";
+        public static final String COLUMN_PRICE = "price";
         public static final String COLUMN_TOTALDAY = "totaldays";
         public static final String COLUMN_SUBDESTINATION = "subdestinations";
         public static final String COLUMN_TOURCOMPANY = "tourcompany";

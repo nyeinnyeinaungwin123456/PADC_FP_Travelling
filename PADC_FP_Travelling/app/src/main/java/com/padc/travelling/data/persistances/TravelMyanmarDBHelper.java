@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 61;
+    private static final int DATABASE_VERSION = 60;
     public static final String DATABASE_NAME = "travel.db";
 
 
@@ -92,7 +92,7 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_HIGHWAY_ROUTE_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayRouteEntry.TABLE_NAME + " (" +
             TravelMyanmarContract.HighwayRouteEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME + " TEXT, " +
             TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE + " TEXT NOT NULL, " +
 
             " UNIQUE (" + TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
