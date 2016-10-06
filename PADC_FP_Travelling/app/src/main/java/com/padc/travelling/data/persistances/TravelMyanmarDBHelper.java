@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 35;
+    private static final int DATABASE_VERSION = 59;
     public static final String DATABASE_NAME = "travel.db";
 
 
