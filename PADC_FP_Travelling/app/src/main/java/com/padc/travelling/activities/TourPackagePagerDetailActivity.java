@@ -29,7 +29,7 @@ import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mm.technomation.mmtext.mmtext;
+//import mm.technomation.mmtext.mmtext;
 
 //import com.padc.travelling.utils.GAUtils;
 
@@ -95,10 +95,10 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
         setContentView(R.layout.activity_pager_tourpackage);
         ButterKnife.bind(this,this);
 
-        mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvTotalDays,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvTourpackageDesc,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvTourPackageTitle,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvPrice,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvTotalDays,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvTourpackageDesc,mmtext.TEXT_UNICODE,true,true);
 
         setSupportActionBar(toolbarPackage);
         final ActionBar actionBar = getSupportActionBar();
@@ -109,7 +109,7 @@ public class TourPackagePagerDetailActivity extends BaseActivity implements Load
 
         mTourpackageName = getIntent().getStringExtra(IE_TOURPACKAGE_TITLE);
 
-        mmtext.isTextZawGyiProbably(mTourpackageName);
+//        mmtext.isTextZawGyiProbably(mTourpackageName);
 
 //        Bundle bundle = getIntent().getExtras();
 //        if(bundle !=null) {

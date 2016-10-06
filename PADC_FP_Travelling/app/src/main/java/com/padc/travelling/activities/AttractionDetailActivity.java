@@ -31,7 +31,7 @@ import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mm.technomation.mmtext.mmtext;
+//import mm.technomation.mmtext.mmtext;
 
 public class AttractionDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -76,8 +76,8 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
         ButterKnife.bind(this,this);
         setSupportActionBar(mToolbar);
 
-        mmtext.prepareView(TravellingApp.getContext(),tvToolbarAttraction,mmtext.TEXT_UNICODE,true,true);
-        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvToolbarAttraction,mmtext.TEXT_UNICODE,true,true);
+//        mmtext.prepareView(TravellingApp.getContext(),tvAttractionDesc,mmtext.TEXT_UNICODE,true,true);
 
 
         final ActionBar actionBar = getSupportActionBar();
@@ -173,7 +173,7 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-            mAttractionPlaces = AttractionPlaces.parseFromCursor(data);
+                                                mAttractionPlaces = AttractionPlaces.parseFromCursor(data);
             mAttractionPlaces.setPlaceImage(AttractionPlaces.loadAttractionImagesByTitle(mAttractionPlaces.getPlaceTitle()));
 
             bindData(mAttractionPlaces);

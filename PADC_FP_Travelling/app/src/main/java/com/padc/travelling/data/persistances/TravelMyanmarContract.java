@@ -22,17 +22,21 @@ public class TravelMyanmarContract {
     //HOTEL
     public static final String PATH_HOTEL = "hotels";
     public static final String PATH_HOTEL_PHOTOS = "hotels_photos";
-    public static final String PATH_HOTEL_PHONE = "hotels_phone";
+//    public static final String PATH_HOTEL_PHONE = "hotels_phone";
 
     //HIGHWAY BUSES
     public static final String PATH_HIGHWAYBUS = "highwaybus";
     public static final String PATH_HIGHWAYBUS_PHOTOS = "highwaybus_photos";
+    public static final String PATH_HIGHWAYBUS_OUTLET = "highway_outlets";
+    public static final String PATH_HIGHWAYBUS_ROUTES = "highway_route";
     public static final String PATH_HIGHWAYBUS_PHONE = "highway_phone";
+    public static final String PATH_STARTDESTINATION = "startdestination";
+    public static final String PATH_ENDDESTINATION = "enddestination";
 
     //RESTAURANT
     public static final String PATH_RESTAURANT = "restaurant";
     public static final String PATH_RESTAURANT_PHOTOS = "restaurant_photos";
-    public static final String PATH_RESTAURANT_OFFDAY = "off_days";
+//    public static final String PATH_RESTAURANT_OFFDAY = "off_days";
 
     //TOUR PACKAGE
     public static final String PATH_TOURPACKAGE = "tourpackage";
@@ -157,7 +161,7 @@ public class TravelMyanmarContract {
 
         public static final String TABLE_NAME = "highwaybus";
 
-        public static final String COLUMN_ID = "companyid";
+//        public static final String COLUMN_ID = "companyid";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_DESC = "description";
         public static final String COLUMN_TICKETOUTLET = "ticketingoutlets";
@@ -168,14 +172,14 @@ public class TravelMyanmarContract {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
-        public static Uri buildHighwayUriWithId(String highwayId) {
+        public static Uri buildHighwayUriWithName(String highwayName) {
             //content://xyz.aungpyaephyo.padc.myanmarattractions/attractions?title="Yangon"
             return CONTENT_URI.buildUpon()
-                    .appendQueryParameter(COLUMN_ID, highwayId)
+                    .appendQueryParameter(COLUMN_NAME, highwayName)
                     .build();
         }
 
-        public static String getIdFromParam(Uri uri) {
+        public static String getNameFromParam(Uri uri) {
             return uri.getQueryParameter(COLUMN_NAME);
         }
     }
@@ -212,6 +216,74 @@ public class TravelMyanmarContract {
         }
     }
 
+    public static final class HighwayOutletEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_HIGHWAYBUS_OUTLET).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHWAYBUS_OUTLET;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHWAYBUS_OUTLET;
+
+        public static final String TABLE_NAME = "highway_outlets";
+
+        public static final String COLUMN_HIGHWAY_NAME = "companyname";
+        public static final String COLUMN_AGENTNAME = "agentnames";
+
+        public static Uri buildHighwayOutletUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static Uri buildHighwayOutletUriWithName(String highwayName) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, highwayName)
+                    .build();
+        }
+
+        public static String getHighwayNameFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_HIGHWAY_NAME);
+        }
+    }
+
+    public static final class HighwayRouteEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_HIGHWAYBUS_ROUTES).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHWAYBUS_ROUTES;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHWAYBUS_ROUTES;
+
+        public static final String TABLE_NAME = "highway_routes";
+
+        public static final String COLUMN_HIGHWAY_NAME = "companyname";
+        public static final String COLUMN_PRICE = "price";
+//        public static final RoutesVO COLUMN_ROUTE = 0;
+//        public static final String COLUMN_STARTDESTINATION = "startdestination";
+//        public static final String COLUMN_ENDDESTINATION = "enddestination";
+
+
+        public static Uri buildHighwayRouteUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static Uri buildHighwayRouteUriWithName(String highwayName) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, highwayName)
+                    .build();
+        }
+
+        public static String getHighwayNameFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_HIGHWAY_NAME);
+        }
+    }
+
     public static final class HighwayPhoneEntry implements BaseColumns {
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_HIGHWAYBUS_PHONE).build();
@@ -225,17 +297,84 @@ public class TravelMyanmarContract {
         public static final String TABLE_NAME = "highway_phone";
 
         public static final String COLUMN_HIGHWAY_NAME = "companyname";
-        public static final String COLUMN_PHONE = "phonenumbers";
+        public static final String COLUMN_PHONE = "phone";
+
 
         public static Uri buildHighwayPhoneUri(long id) {
             //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
-        public static Uri buildHighwayPhoneUriWithName(String hotelName) {
+        public static Uri buildHighwayPhoneUriWithName(String highwayName) {
             //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
             return CONTENT_URI.buildUpon()
-                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, hotelName)
+                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, highwayName)
+                    .build();
+        }
+
+        public static String getHighwayNameFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_HIGHWAY_NAME);
+        }
+    }
+
+    public static final class StartDestinationEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_STARTDESTINATION).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_STARTDESTINATION;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_STARTDESTINATION;
+
+        public static final String TABLE_NAME = "highway_startdestination";
+
+        public static final String COLUMN_HIGHWAY_NAME = "companyname";
+        public static final String COLUMN_STARTDESTINATION = "startdestination";
+
+
+        public static Uri buildStartDestinationUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static Uri buildStartDestinationUriWithName(String startdestinationName) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, startdestinationName)
+                    .build();
+        }
+
+        public static String getHighwayNameFromParam(Uri uri) {
+            return uri.getQueryParameter(COLUMN_HIGHWAY_NAME);
+        }
+    }
+
+    public static final class EndDestinationEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ENDDESTINATION).build();
+
+        public static final String DIR_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ENDDESTINATION;
+
+        public static final String ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ENDDESTINATION;
+
+        public static final String TABLE_NAME = "highway_enddestination";
+
+        public static final String COLUMN_HIGHWAY_NAME = "companyname";
+        public static final String COLUMN_ENDDESTINATION = "enddestination";
+
+
+        public static Uri buildEndDestinationUri(long id) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static Uri buildEndDestinationUriWithName(String enddestinationName) {
+            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+            return CONTENT_URI.buildUpon()
+                    .appendQueryParameter(COLUMN_HIGHWAY_NAME, enddestinationName)
                     .build();
         }
 
@@ -276,7 +415,7 @@ public class TravelMyanmarContract {
                     .build();
         }
 
-        public static String getIdFromParam(Uri uri) {
+        public static String getNameFromParam(Uri uri) {
             return uri.getQueryParameter(COLUMN_NAME);
         }
     }
@@ -313,37 +452,37 @@ public class TravelMyanmarContract {
         }
     }
 
-    public static final class RestaurantOffdayEntry implements BaseColumns {
-        public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendPath(PATH_RESTAURANT_OFFDAY).build();
-
-        public static final String DIR_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_RESTAURANT_OFFDAY;
-
-        public static final String ITEM_TYPE =
-                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_RESTAURANT_OFFDAY;
-
-        public static final String TABLE_NAME = "restaurant_offday";
-
-        public static final String COLUMN_RESTAURANT_ID = "restaurant_id";
-        public static final String COLUMN_OFFDAY = "phone_numbers";
-
-        public static Uri buildRestaurantOffdayUri(long id) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
-
-        public static Uri buildRestaurantOffdayUriWithId(String hotelId) {
-            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
-            return CONTENT_URI.buildUpon()
-                    .appendQueryParameter(COLUMN_RESTAURANT_ID, hotelId)
-                    .build();
-        }
-
-        public static String getRestaurantIdFromParam(Uri uri) {
-            return uri.getQueryParameter(COLUMN_RESTAURANT_ID);
-        }
-    }
+//    public static final class RestaurantOffdayEntry implements BaseColumns {
+//        public static final Uri CONTENT_URI =
+//                BASE_CONTENT_URI.buildUpon().appendPath(PATH_RESTAURANT_OFFDAY).build();
+//
+//        public static final String DIR_TYPE =
+//                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_RESTAURANT_OFFDAY;
+//
+//        public static final String ITEM_TYPE =
+//                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_RESTAURANT_OFFDAY;
+//
+//        public static final String TABLE_NAME = "restaurant_offday";
+//
+//        public static final String COLUMN_RESTAURANT_ID = "restaurant_id";
+//        public static final String COLUMN_OFFDAY = "phone_numbers";
+//
+//        public static Uri buildRestaurantOffdayUri(long id) {
+//            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images/1
+//            return ContentUris.withAppendedId(CONTENT_URI, id);
+//        }
+//
+//        public static Uri buildRestaurantOffdayUriWithId(String hotelId) {
+//            //content://xyz.aungpyaephyo.padc.myanmarattractions/attraction_images?attraction_title=Yangon
+//            return CONTENT_URI.buildUpon()
+//                    .appendQueryParameter(COLUMN_RESTAURANT_ID, hotelId)
+//                    .build();
+//        }
+//
+//        public static String getRestaurantIdFromParam(Uri uri) {
+//            return uri.getQueryParameter(COLUMN_RESTAURANT_ID);
+//        }
+//    }
 
 
     //For Attraction Places

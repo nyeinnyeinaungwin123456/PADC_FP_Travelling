@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 60;
+    private static final int DATABASE_VERSION = 61;
     public static final String DATABASE_NAME = "travel.db";
 
 
@@ -64,9 +64,9 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
     //HIGHWAY TABLE
     private static final String SQL_CREATE_HIGHWAY_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayBusEntry.TABLE_NAME + " (" +
             TravelMyanmarContract.HighwayBusEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TravelMyanmarContract.HighwayBusEntry.COLUMN_ID + " TEXT, " +
+//            TravelMyanmarContract.HighwayBusEntry.COLUMN_ID + " TEXT, " +
             TravelMyanmarContract.HighwayBusEntry.COLUMN_NAME + " TEXT NOT NULL, " +
-            TravelMyanmarContract.HighwayBusEntry.COLUMN_DESC + " TEXT NOT NULL, " +
+            TravelMyanmarContract.HighwayBusEntry.COLUMN_DESC + " TEXT, " +
             TravelMyanmarContract.HighwayBusEntry.COLUMN_TICKETOUTLET + " TEXT, " +
             TravelMyanmarContract.HighwayBusEntry.COLUMN_ROUTE + " TEXT, " +
 
@@ -82,25 +82,56 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
             TravelMyanmarContract.HighwayPhotoEntry.COLUMN_PHOTOS + ") ON CONFLICT IGNORE" +
             " );";
 
-//    private static final String SQL_CREATE_HIGHWAY_PHONE_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayPhoneEntry.TABLE_NAME + " (" +
-//            TravelMyanmarContract.HighwayPhoneEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//            TravelMyanmarContract.HighwayPhoneEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
-//            TravelMyanmarContract.HighwayPhoneEntry.COLUMN_PHONE + " TEXT NOT NULL, " +
-//
-//            " UNIQUE (" + TravelMyanmarContract.HighwayPhoneEntry.COLUMN_HIGHWAY_NAME + ", " +
-//            TravelMyanmarContract.HotelPhoneEntry.COLUMN_PHONE + ") ON CONFLICT IGNORE" +
-//            " );";
+    private static final String SQL_CREATE_HIGHWAY_OUTLET_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayOutletEntry.TABLE_NAME + " (" +
+            TravelMyanmarContract.HighwayOutletEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TravelMyanmarContract.HighwayOutletEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.HighwayOutletEntry.COLUMN_AGENTNAME + " TEXT NOT NULL, " +
+
+            " UNIQUE (" + TravelMyanmarContract.HighwayOutletEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
+            " );";
+
+    private static final String SQL_CREATE_HIGHWAY_ROUTE_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayRouteEntry.TABLE_NAME + " (" +
+            TravelMyanmarContract.HighwayRouteEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE + " TEXT NOT NULL, " +
+
+            " UNIQUE (" + TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
+            " );";
+
+    private static final String SQL_CREATE_HIGHWAY_PHONE_TABLE = "CREATE TABLE " + TravelMyanmarContract.HighwayPhoneEntry.TABLE_NAME + " (" +
+            TravelMyanmarContract.HighwayPhoneEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TravelMyanmarContract.HighwayPhoneEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.HighwayPhoneEntry.COLUMN_PHONE + " TEXT NOT NULL, " +
+
+            " UNIQUE (" + TravelMyanmarContract.HighwayPhoneEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
+            " );";
+
+    private static final String SQL_CREATE_HIGHWAY_STARTDESTINATION_TABLE = "CREATE TABLE " + TravelMyanmarContract.StartDestinationEntry.TABLE_NAME + " (" +
+            TravelMyanmarContract.StartDestinationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TravelMyanmarContract.StartDestinationEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.StartDestinationEntry.COLUMN_STARTDESTINATION + " TEXT NOT NULL, " +
+
+            " UNIQUE (" + TravelMyanmarContract.StartDestinationEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
+            " );";
+
+    private static final String SQL_CREATE_HIGHWAY_ENDDESTINATION_TABLE = "CREATE TABLE " + TravelMyanmarContract.EndDestinationEntry.TABLE_NAME + " (" +
+            TravelMyanmarContract.EndDestinationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TravelMyanmarContract.EndDestinationEntry.COLUMN_HIGHWAY_NAME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.EndDestinationEntry.COLUMN_ENDDESTINATION + " TEXT NOT NULL, " +
+
+            " UNIQUE (" + TravelMyanmarContract.EndDestinationEntry.COLUMN_HIGHWAY_NAME + ") ON CONFLICT IGNORE" +
+            " );";
 
 
     //RESTAURNAT TABLE
     private static final String SQL_CREATE_RESTAURANT_TABLE = "CREATE TABLE " + TravelMyanmarContract.RestaurantEntry.TABLE_NAME + " (" +
             TravelMyanmarContract.RestaurantEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TravelMyanmarContract.RestaurantEntry.COLUMN_ID + " TEXT NOT NULL, " +
+            TravelMyanmarContract.RestaurantEntry.COLUMN_ID + " TEXT, " +
             TravelMyanmarContract.RestaurantEntry.COLUMN_NAME + " TEXT NOT NULL, " +
             TravelMyanmarContract.RestaurantEntry.COLUMN_DESC + " TEXT NOT NULL, " +
-            TravelMyanmarContract.RestaurantEntry.COLUMN_NOTE + " TEXT NOT NULL, " +
-            TravelMyanmarContract.RestaurantEntry.COLUMN_LOCATION + " TEXT NOT NULL, " +
-            TravelMyanmarContract.RestaurantEntry.COLUMN_OPTIME + " TEXT NOT NULL, " +
+            TravelMyanmarContract.RestaurantEntry.COLUMN_NOTE + " TEXT, " +
+            TravelMyanmarContract.RestaurantEntry.COLUMN_LOCATION + " TEXT, " +
+            TravelMyanmarContract.RestaurantEntry.COLUMN_OPTIME + " TEXT, " +
 
             " UNIQUE (" + TravelMyanmarContract.RestaurantEntry.COLUMN_ID + ") ON CONFLICT IGNORE" +
             " );";
@@ -114,14 +145,14 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
             TravelMyanmarContract.RestaurantPhotoEntry.COLUMN_PHOTOS + ") ON CONFLICT IGNORE" +
             " );";
 
-    private static final String SQL_CREATE_RESTAURANT_OFFDAY_TABLE = "CREATE TABLE " + TravelMyanmarContract.RestaurantOffdayEntry.TABLE_NAME + " (" +
-            TravelMyanmarContract.RestaurantOffdayEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_RESTAURANT_ID + " TEXT NOT NULL, " +
-            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_OFFDAY + " TEXT NOT NULL, " +
-
-            " UNIQUE (" + TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_RESTAURANT_ID + ", " +
-            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_OFFDAY + ") ON CONFLICT IGNORE" +
-            " );";
+//    private static final String SQL_CREATE_RESTAURANT_OFFDAY_TABLE = "CREATE TABLE " + TravelMyanmarContract.RestaurantOffdayEntry.TABLE_NAME + " (" +
+//            TravelMyanmarContract.RestaurantOffdayEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_RESTAURANT_ID + " TEXT NOT NULL, " +
+//            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_OFFDAY + " TEXT NOT NULL, " +
+//
+//            " UNIQUE (" + TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_RESTAURANT_ID + ", " +
+//            TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_OFFDAY + ") ON CONFLICT IGNORE" +
+//            " );";
 
 
     //TOURPACKAGE TABLE
@@ -167,12 +198,16 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
         //HIGHWAY
         sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_PHOTO_TABLE);
-//        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_PHONE_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_OUTLET_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_ROUTE_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_PHONE_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_STARTDESTINATION_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_HIGHWAY_ENDDESTINATION_TABLE);
 
         //RESTAURANT
         sqLiteDatabase.execSQL(SQL_CREATE_RESTAURANT_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RESTAURANT_PHOTO_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_RESTAURANT_OFFDAY_TABLE);
+//        sqLiteDatabase.execSQL(SQL_CREATE_RESTAURANT_OFFDAY_TABLE);
 
 
         //TOURPACKAGE
@@ -199,11 +234,15 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
         //HIGHWAY
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.HighwayPhotoEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.HighwayPhoneEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.HighwayOutletEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.HighwayRouteEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.HighwayBusEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.StartDestinationEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.EndDestinationEntry.TABLE_NAME);
 
         //RESTAURANT
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.RestaurantPhotoEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.RestaurantOffdayEntry.TABLE_NAME);
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.RestaurantOffdayEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TravelMyanmarContract.RestaurantEntry.TABLE_NAME);
 
         //TOURPACKAGE
