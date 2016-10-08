@@ -12,6 +12,7 @@ import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.RestaurantsVO;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,13 +21,13 @@ import java.util.List;
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<RestaurantsVO> mRestaurantVOList;
+    private List<RestaurantsVO> mRestaurantVOList = new ArrayList<>();
     private RestaurnatViewHolder.ControllerRestaurant mControllerRestaurant;
 
-    public RestaurantAdapter(List<RestaurantsVO> mRestaurantVOList, RestaurnatViewHolder.ControllerRestaurant controllerRestaurant) {
+    public RestaurantAdapter(List<RestaurantsVO> restaurantVOList, RestaurnatViewHolder.ControllerRestaurant controllerRestaurant) {
         mInflater = LayoutInflater.from(TravellingApp.getContext());
-        this.mRestaurantVOList = mRestaurantVOList;
-        this.mControllerRestaurant = controllerRestaurant;
+        mRestaurantVOList = new ArrayList<>();
+        mControllerRestaurant = controllerRestaurant;
     }
 
     @Override
@@ -43,7 +44,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder
 
     public void setNewData(List<RestaurantsVO> restaurantsVOList){
         mRestaurantVOList.clear();
-        mRestaurantVOList = restaurantsVOList;
+//        mRestaurantVOList = restaurantsVOList;
+        mRestaurantVOList.addAll(restaurantsVOList);
         notifyDataSetChanged();
 
     }
@@ -55,6 +57,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurnatViewHolder
 
     @Override
     public int getItemCount() {
+
+        if (mRestaurantVOList == null) {
+            return 0;
+        }
         return mRestaurantVOList.size();
     }
 }

@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 74;
+
     public static final String DATABASE_NAME = "travel.db";
 
 
@@ -133,7 +134,7 @@ public class TravelMyanmarDBHelper extends SQLiteOpenHelper {
             TravelMyanmarContract.RestaurantEntry.COLUMN_LOCATION + " TEXT, " +
             TravelMyanmarContract.RestaurantEntry.COLUMN_OPTIME + " TEXT, " +
 
-            " UNIQUE (" + TravelMyanmarContract.RestaurantEntry.COLUMN_ID + ") ON CONFLICT IGNORE" +
+            " UNIQUE (" + TravelMyanmarContract.RestaurantEntry.COLUMN_NAME + ") ON CONFLICT IGNORE" +
             " );";
 
     private static final String SQL_CREATE_RESTAURANT_PHOTO_TABLE = "CREATE TABLE " + TravelMyanmarContract.RestaurantPhotoEntry.TABLE_NAME + " (" +

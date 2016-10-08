@@ -30,6 +30,7 @@ import com.padc.travelling.data.events.DataEvent;
 import com.padc.travelling.data.model.RestaurantsModel;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.RestaurantsVO;
+import com.padc.travelling.utils.NetworkUtils;
 import com.padc.travelling.utils.TravellingConstants;
 import com.padc.travelling.view.RestaurnatViewHolder;
 
@@ -104,7 +105,13 @@ public class RestaurantFragment extends Fragment implements LoaderManager.Loader
             @Override
             public void onRefresh() {
 
-                RetrofitDataAgent.getInstance().loadRestaurants();
+                if(NetworkUtils.isOnline(TravellingApp.getContext())) {
+                    RetrofitDataAgent.getInstance().loadRestaurants();
+                    refreshRestaurant.setRefreshing(false);
+                }
+                else {
+                    refreshRestaurant.setRefreshing(false);
+                }
             }
         });
 
@@ -142,6 +149,7 @@ public class RestaurantFragment extends Fragment implements LoaderManager.Loader
     }
 
     public void onEventMainThread(DataEvent.RestaurantsDataLoadedEvent event) {
+        refreshRestaurant.setRefreshing(false);
         String extra = event.getExtraMessage();
 //        Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
         refreshRestaurant.setRefreshing(false);

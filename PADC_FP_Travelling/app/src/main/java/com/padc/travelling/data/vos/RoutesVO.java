@@ -38,6 +38,8 @@ public class RoutesVO implements Serializable{
     @SerializedName("mid-points")
     private MidPointsVO[] midPointsVOs;
 
+
+
     public RoutesVO() {
     }
 
@@ -127,6 +129,7 @@ public class RoutesVO implements Serializable{
 
         Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
     }
+
 
     private ContentValues parseToContentValues() {
         BusComponiesVO buscompany = new BusComponiesVO();

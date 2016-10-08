@@ -31,6 +31,8 @@ import com.padc.travelling.utils.TravellingConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+//import android.support.v4.app.LoaderManager;
 //import mm.technomation.mmtext.mmtext;
 
 public class AttractionDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -92,6 +94,7 @@ public class AttractionDetailActivity extends BaseActivity implements LoaderMana
         mAttractionTitle = getIntent().getStringExtra(IE_ATTRACTION_TITLE);
         getSupportLoaderManager().initLoader(TravellingConstants.ATTRACTION_DETAIL_LOADER, null, this);
 
+//        getLoaderManager().initLoader(TravellingConstants.ATTRACTION_DETAIL_LOADER, null, this);
 //        Bundle bundle = getIntent().getExtras();
 //        if(bundle !=null) {
 //            String attactionplacesname = (String)bundle.getString(HomeActivity.IE_ATTRACTIONPLACES_NAME);
