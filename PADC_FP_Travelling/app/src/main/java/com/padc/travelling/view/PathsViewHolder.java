@@ -1,6 +1,5 @@
 package com.padc.travelling.view;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -43,10 +42,10 @@ public class PathsViewHolder extends RecyclerView.ViewHolder  {
 
         mRoutesVO = routesVO;
 
-        tvSoruce.setText(mRoutesVO.getStartDestinationVO().getDestination_title());
-        tvDestination.setText(mRoutesVO.getEndDestinationVO().getDestination_title());
-        tvDeptureTime.setText(mRoutesVO.getStartDestinationVO().getTimeMakersVO().getDeparture_time());
-        tvArrivalTime.setText(mRoutesVO.getEndDestinationVO().getTimeMakersVO().getArrival_time());
+//        tvSoruce.setText(mRoutesVO.getStartDestinationVO().getDestination_title());
+//        tvDestination.setText(mRoutesVO.getEndDestinationVO().getDestination_title());
+//        tvDeptureTime.setText(mRoutesVO.getStartDestinationVO().getTimeMakersVO().getDeparture_time());
+//        tvArrivalTime.setText(mRoutesVO.getEndDestinationVO().getTimeMakersVO().getArrival_time());
         tvPrice.setText(Integer.toString(mRoutesVO.getPrice()));
 
     }

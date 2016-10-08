@@ -12,8 +12,6 @@ import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Route;
-
 /**
  * Created by TY on 9/22/2016.
  */
@@ -119,7 +117,7 @@ public class BusComponiesVO {
             //Bulk insert into attraction_images.
             BusComponiesVO.saveBusCompanyImages(buscompany.getName(), buscompany.getPhotos());
 //            BusComponiesVO.saveRoute(buscompany.getName(), buscompany.getRoutesVOs());
-            route.saveRoutes(routesVOList);
+            route.saveRoutes(buscompany.getName(),routesVOList);
         }
 
         //Bulk insert into attractions.
@@ -203,21 +201,27 @@ public class BusComponiesVO {
         return imageArray;
     }
 
-    public static String[] loadRouteByName(String name) {
+    public static RoutesVO[] loadRouteByName(String name) {
         Context context = TravellingApp.getContext();
-        ArrayList<String> route = new ArrayList<>();
+//        ArrayList<RoutesVO> routeArray = new ArrayList<>();
 
         Cursor cursor = context.getContentResolver().query(TravelMyanmarContract.HighwayRouteEntry.buildHighwayRouteUriWithName(name),
                 null, null, null, null);
 
+        RoutesVO[] routesArray = new RoutesVO[cursor.getCount()];
+        int i = 0;
         if(cursor != null && cursor.moveToFirst()) {
             do {
-                route.add(cursor.getString(cursor.getColumnIndex(TravelMyanmarContract.HighwayRouteEntry.COLUMN_ROUTE)));
+//                route.add(cursor.getString(cursor.getColumnIndex(TravelMyanmarContract.HighwayRouteEntry.COLUMN_ROUTE)));
+                RoutesVO tempRoute = RoutesVO.parseFromCursor(cursor);
+//                routeArray.add(tempRoute);
+                routesArray[i] = tempRoute;
+                i++;
             } while (cursor.moveToNext());
         }
 
-        String[] routeArray = new String[route.size()];
-        route.toArray(routeArray);
-        return routeArray;
+//        Arrays.
+
+        return routesArray;
     }
 }
