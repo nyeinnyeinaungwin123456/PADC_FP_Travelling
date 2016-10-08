@@ -18,8 +18,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.padc.travelling.R;
+import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
@@ -107,12 +109,14 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             @Override
             public void onClick(View view) {
 
-                try {
-                    Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
-                    startActivity(intent);
-                } catch (ActivityNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Toast.makeText(TravellingApp.getContext(),"Serach Activity",Toast.LENGTH_SHORT).show();
+
+                //try {
+                //    Intent intent = new Intent(getBaseContext(), CustomSearchActivity.class);
+                //    startActivity(intent);
+                //} catch (ActivityNotFoundException e) {
+                //    e.printStackTrace();
+                //}
             }
         });
     }
