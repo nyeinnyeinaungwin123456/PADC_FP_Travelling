@@ -29,6 +29,7 @@ import com.padc.travelling.data.events.DataEvent;
 import com.padc.travelling.data.model.TourPackageModel;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.tourpackageVOs.TourPackage;
+import com.padc.travelling.utils.NetworkUtils;
 import com.padc.travelling.utils.TravellingConstants;
 import com.padc.travelling.view.TourPackageViewHolder;
 
@@ -100,7 +101,13 @@ public class TourPackageFragment extends Fragment implements LoaderManager.Loade
             @Override
             public void onRefresh() {
 
-                RetrofitDataAgent.getInstance().loadTourPackage();
+                if(NetworkUtils.isOnline(TravellingApp.getContext())) {
+                    RetrofitDataAgent.getInstance().loadTourPackage();
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+                else {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
         });
 

@@ -62,10 +62,10 @@ public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     @Override
     public void onClick(View v) {
-        mControllerHotel.onTapHotel(mHotelVO,getPosition());
+        mControllerHotel.onTapHotel(mHotelVO,ivHotelImage);
     }
 
     public interface ControllerHotel{
-        void onTapHotel(HotelsVO hotelVO, int position);
+        void onTapHotel(HotelsVO hotelVO, ImageView ivHotelImage);
     }
 }

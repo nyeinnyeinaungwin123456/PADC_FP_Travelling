@@ -29,6 +29,7 @@ import com.padc.travelling.data.events.DataEvent;
 import com.padc.travelling.data.model.HotelsModel;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.HotelsVO;
+import com.padc.travelling.utils.NetworkUtils;
 import com.padc.travelling.utils.TravellingConstants;
 import com.padc.travelling.view.HotelViewHolder;
 
@@ -98,7 +99,13 @@ public class HotelFragment extends Fragment implements LoaderManager.LoaderCallb
             @Override
             public void onRefresh() {
 
-                RetrofitDataAgent.getInstance().loadHotels();
+                if(NetworkUtils.isOnline(TravellingApp.getContext())) {
+                    RetrofitDataAgent.getInstance().loadHotels();
+                    refreshHotel.setRefreshing(false);
+                }
+                else {
+                    refreshHotel.setRefreshing(false);
+                }
             }
         });
 

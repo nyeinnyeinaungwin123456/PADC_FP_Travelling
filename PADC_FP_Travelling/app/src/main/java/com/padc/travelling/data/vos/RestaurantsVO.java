@@ -131,7 +131,7 @@ public class RestaurantsVO {
 
             ContentValues cv = new ContentValues();
             cv.put(TravelMyanmarContract.RestaurantPhotoEntry.COLUMN_RESTAURANT_NAME, name);
-            cv.put(TravelMyanmarContract.TourpackagePhotoEntry.COLUMN_PHOTOS, image);
+            cv.put(TravelMyanmarContract.RestaurantPhotoEntry.COLUMN_PHOTOS, image);
 
             restaurantImagesCVs[index] = cv;
         }

@@ -38,6 +38,8 @@ public class RoutesVO implements Serializable{
     @SerializedName("mid-points")
     private MidPointsVO[] midPointsVOs;
 
+
+
     public RoutesVO() {
     }
 
@@ -124,6 +126,30 @@ public class RoutesVO implements Serializable{
         Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
     }
 
+
+    //new SaveRoute
+
+    public static void saveRoute(String name, List<RoutesVO> routeList, Integer price) {
+        Context context = TravellingApp.getContext();
+        ContentValues[] routeCVs = new ContentValues[routeList.size()];
+        for (int index = 0; index < routeList.size(); index++) {
+            RoutesVO route = routeList.get(index);
+
+            ContentValues cv = new ContentValues();
+            cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME, name);
+            cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE, price);
+
+            routeCVs[index] = route.parseToContentValues();
+
+            //Bulk insert into attraction_images.
+//            AttractionPlaces.saveAttractionImages(attraction.getPlaceTitle(), attraction.getPlaceImage());
+        }
+
+        //Bulk insert into attractions.
+        int insertedCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.HighwayRouteEntry.CONTENT_URI, routeCVs);
+
+        Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
+    }
 //    private static void saveAttractionImages(String title, String[] images) {
 //        ContentValues[] attractionImagesCVs = new ContentValues[images.length];
 //        for (int index = 0; index < images.length; index++) {

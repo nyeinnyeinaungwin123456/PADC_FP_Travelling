@@ -127,8 +127,8 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
 //        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),1);
 //        rvPaths.setLayoutManager(layoutManager);
 //        rvPaths.setAdapter(pathsAdapter);
-
-        mCollapsing.setTitle(mHighwayTitle);
+//
+//        mCollapsing.setTitle(mHighwayTitle);
 
     }
 
