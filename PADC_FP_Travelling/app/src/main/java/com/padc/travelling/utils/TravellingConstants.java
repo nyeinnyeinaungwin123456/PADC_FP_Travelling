@@ -6,7 +6,7 @@ package com.padc.travelling.utils;
 public class TravellingConstants {
 
     //Loader ID
-    public static final int HOTEL_DETAIL_LOADER = 2;
+
     public static final String IMAGE_ROOT_TOURPACKAGE = "http://aungpyaephyo.xyz/padc-fp/travel-guide/";
     public static final String IMAGE_ROOT_RESTAURANT = "http://aungpyaephyo.xyz/padc-fp/travel-guide/";
     public static final String TOURPACKAGE_BASE_URL = "http://aungpyaephyo.xyz/padc-fp/travel-guide/";
@@ -33,6 +33,7 @@ public class TravellingConstants {
     public static final int HOTEL_LIST_LOADER = 7;
     public static final int BUSCOMPANY_LIST_LOADER = 8;
     public static final int BUSCOMPANY_DETAIL_LOADER = 9;
+    public static final int HOTEL_DETAIL_LOADER = 10;
 
 
 }

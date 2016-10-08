@@ -27,6 +27,9 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
     @BindView(R.id.iv_setting)
     ImageView ivSetting;
 
+    @BindView(R.id.tv_restaturantprice)
+    TextView tvRestaurantPrice;
+
     RestaurantsVO mRestaurantVO;
     ControllerRestaurant mControllerRestaurant;
 
@@ -44,6 +47,7 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
 
         mRestaurantVO = restaurantVO;
         tvRestaurantName.setText(restaurantVO.getName());
+//        tvRestaurantPrice.setText(restaurantVO.get);
 
         String imageUrl = mRestaurantVO.getPhotos()[0];
         Log.d("Img", " " + imageUrl);
@@ -62,17 +66,17 @@ public class RestaurnatViewHolder extends RecyclerView.ViewHolder implements Vie
     @Override
     public void onClick(View view) {
 
-        if(view instanceof ImageView){
-            mControllerRestaurant.onTapSetting(ivSetting);
-
-            }else {
-            mControllerRestaurant.onTapRestaurnat(mRestaurantVO, getPosition());
-        }
+//        if(view instanceof ImageView){
+//            mControllerRestaurant.onTapSetting(ivSetting);
+//
+//            }else {
+            mControllerRestaurant.onTapRestaurnat(mRestaurantVO, ivRestaurant);
+//        }
         }
 
 
     public interface ControllerRestaurant{
-        void onTapRestaurnat(RestaurantsVO restaurantVO, int position);
-        void onTapSetting(ImageView ivsetting);
+        void onTapRestaurnat(RestaurantsVO restaurantVO, ImageView ivRestaurant);
+//        void onTapSetting(ImageView ivsetting);
     }
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -32,6 +31,7 @@ import com.padc.travelling.data.model.BusComponiesModel;
 import com.padc.travelling.data.persistances.TravelMyanmarContract;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.RoutesVO;
+import com.padc.travelling.utils.NetworkUtils;
 import com.padc.travelling.utils.TravellingConstants;
 import com.padc.travelling.view.HighWayListViewHolder;
 
@@ -96,15 +96,17 @@ public class HighWayListFragment extends Fragment implements LoaderManager.Loade
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                RetrofitDataAgent.getInstance().loadBusComponies();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 2000);
+                if(NetworkUtils.isOnline(TravellingApp.getContext())) {
+                    RetrofitDataAgent.getInstance().loadBusComponies();
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+                else {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
         });
+
+
         return rootView;
     }
 
@@ -150,7 +152,7 @@ public class HighWayListFragment extends Fragment implements LoaderManager.Loade
     }
 
     public void onEventMainThread(DataEvent.BusComponiesDataLoadedEvent event) {
-        //layout.setRefreshing(false);
+        swipeRefreshLayout.setRefreshing(false);
         String extra = event.getExtraMessage();
 //        Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
 

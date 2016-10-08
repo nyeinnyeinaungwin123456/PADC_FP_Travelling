@@ -44,18 +44,29 @@
         android:layout_gravity="right"
         android:layout_marginTop="@dimen/fab_margin" />
 
-    <RatingBar
-        android:id="@+id/rating"
+    <com.padc.travelling.components.MMTextView
+        android:id="@+id/tv_restaturantprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="?android:attr/ratingBarStyleSmall"
-        android:numStars="5"
-        android:stepSize="0.1"
-        android:isIndicator="true"
-        android:backgroundTintMode="add"
-        android:layout_below="@+id/tv_restaturantname"
+        android:text="5000 MMK"
         android:layout_toRightOf="@+id/iv_restaturant"
-        android:layout_marginTop="@dimen/fab_margin" />
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_below="@+id/tv_restaturantname"
+        android:textColor="@color/text_black_ish"
+        android:maxLines="1"/>
+
+    <!--<RatingBar-->
+        <!--android:id="@+id/rating"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--style="?android:attr/ratingBarStyleSmall"-->
+        <!--android:numStars="5"-->
+        <!--android:stepSize="0.1"-->
+        <!--android:isIndicator="true"-->
+        <!--android:backgroundTintMode="add"-->
+        <!--android:layout_below="@+id/tv_restaturantname"-->
+        <!--android:layout_toRightOf="@+id/iv_restaturant"-->
+        <!--android:layout_marginTop="@dimen/fab_margin" />-->
 
     <View
         android:id="@+id/view"
