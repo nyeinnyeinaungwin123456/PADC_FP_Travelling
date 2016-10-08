@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -176,30 +177,22 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_attraction_detail, menu);
 
-        MenuItem shareItem = menu.findItem(R.id.action_share);
-
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(createShareIntent());
-        }
-
-        return true;
-    }
-
-    private static Intent createShareIntent(){
-        Intent myShareIntent = new Intent(Intent.ACTION_SEND);
-        myShareIntent.setType("text*//*");
-        myShareIntent.putExtra(Intent.EXTRA_TEXT, "Hello Share Action Provider!");
-        return myShareIntent;
+        return super.onCreateOptionsMenu(menu);
     }
 
     //back button action
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-        {
-            finish();
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.action_share:
+                sendViaShareIntent(mBusCompany.getDescription());
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

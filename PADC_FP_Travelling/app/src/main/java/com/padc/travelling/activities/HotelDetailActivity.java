@@ -147,10 +147,15 @@ public class HotelDetailActivity extends BaseActivity implements LoaderManager.L
     //back button action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-        {
-            finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.action_share:
+                sendViaShareIntent(mHotelVO.getDescription());
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -158,21 +163,7 @@ public class HotelDetailActivity extends BaseActivity implements LoaderManager.L
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_attraction_detail, menu);
 
-        MenuItem shareItem = menu.findItem(R.id.action_share);
-
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(createShareIntent());
-        }
-
-        return true;
-    }
-
-    private static Intent createShareIntent(){
-        Intent myShareIntent = new Intent(Intent.ACTION_SEND);
-        myShareIntent.setType("text*//*");
-        myShareIntent.putExtra(Intent.EXTRA_TEXT, "Hello Share Action Provider!");
-        return myShareIntent;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

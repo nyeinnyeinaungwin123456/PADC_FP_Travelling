@@ -14,6 +14,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.padc.travelling.R;
@@ -32,6 +34,9 @@ import butterknife.ButterKnife;
  * Created by Nyein Nyein on 9/13/2016.
  */
 public class RestaurantPagerDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    @BindView(R.id.btn_share)
+    Button btnShare;
 
     @BindView(R.id.toolbar_restaurant)
     Toolbar toolbarRestaurant;
@@ -95,7 +100,6 @@ public class RestaurantPagerDetailActivity extends BaseActivity implements Loade
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
         mRestaurantName = getIntent().getStringExtra(IE_RESTAURANT_TITLE);
         getSupportLoaderManager().initLoader(TravellingConstants.RESTAURANT_DETAIL_LOADER, null, this);
         if(!getSupportLoaderManager().getLoader(TravellingConstants.RESTAURANT_DETAIL_LOADER).isReset()) {
@@ -110,6 +114,13 @@ public class RestaurantPagerDetailActivity extends BaseActivity implements Loade
                     //write your code here
                     //mToolbar.setTitle("Mandalay");
                 }
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendViaShareIntent(mRestaurant.getName());
             }
         });
 
