@@ -3,6 +3,7 @@ package com.padc.travelling.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
@@ -30,14 +31,9 @@ public class HotelDetailActivity extends AppCompatActivity{
     /*@BindView(R.id.pager_hotel_images)
     ViewPager pagerHotelImages;*/
 
-    @BindView(R.id.tv_hotel_title)
-    TextView tvHotelTitle;
 
     @BindView(R.id.iv_hotel_image_detail)
     ImageView ivHotelImageDetail;
-
-    @BindView(R.id.tv_hotel_name_deatil)
-    TextView tvHotelNameDetail;
 
     @BindView(R.id.tv_hotel_detail_address)
     TextView tvHotelDetailAddress;
@@ -54,6 +50,9 @@ public class HotelDetailActivity extends AppCompatActivity{
     @BindView(R.id.appbar_hotel)
     AppBarLayout appbarHotel;
 
+    @BindView(R.id.collapsing_toolbar_hotel)
+    CollapsingToolbarLayout mCollaspingToolbar;
+
     private static HotelsVO mHotelVO;
     private ShareActionProvider mShareActionProvider;
 
@@ -64,7 +63,7 @@ public class HotelDetailActivity extends AppCompatActivity{
     }
 
     public void bindData() {
-        tvHotelNameDetail.setText(mHotelVO.getHotel_name());
+        //tvHotelNameDetail.setText(mHotelVO.getHotel_name());
 //        tvHotelDetailAddress.setText(mHotelVO.getLocationVO().getAddress());
 //        tvHotelDetailPhone.setText(mHotelVO.getPhoneNumbers()[0]);
         tvHotelDesc.setText(mHotelVO.getDescription());
@@ -79,6 +78,10 @@ public class HotelDetailActivity extends AppCompatActivity{
                 .error(R.drawable.placeholder)
                 .into(ivHotelImageDetail);
 
+        mCollaspingToolbar.setTitle(mHotelVO.getHotel_name());
+
+        //tvHotelDetailAddress.setText(mHotelVO.getLocationVO().getAddress());
+        //tvHotelDetailPhone.setText(mHotelVO.getPhoneNumbers()[0]);
 
     }
 
@@ -89,17 +92,6 @@ public class HotelDetailActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        appbarHotel.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                    tvHotelTitle.setText(mHotelVO.getHotel_name());
-                    Toast.makeText(TravellingApp.getContext(),"collapsed",Toast.LENGTH_SHORT).show();
-                }else if(verticalOffset == 0){
-                    Toast.makeText(TravellingApp.getContext(),"expand",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         bindData();
 

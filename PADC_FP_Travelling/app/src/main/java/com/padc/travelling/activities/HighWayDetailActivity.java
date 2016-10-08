@@ -43,14 +43,11 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
     @BindView(R.id.iv_highway_image_detail)
     ImageView ivHighwayImageDetail;
 
-    @BindView(R.id.tv_highway_name)
-    TextView tvHighwayName;
-
     @BindView(R.id.tv_highway_address)
     TextView tvHighwayAddress;
 
-    @BindView(R.id.tv_hotel_detail_phone)
-    TextView tvHotelDetailPhone;
+    @BindView(R.id.tv_highway_detail_phone)
+    TextView tvHighWayDetailPhone;
 
     @BindView(R.id.rv_paths)
     RecyclerView rvPaths;
@@ -97,7 +94,7 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
                 .error(R.drawable.placeholder)
                 .into(ivHighwayImageDetail);
 
-        tvHighwayName.setText(buscompanyVO.getName());
+        //tvHighwayName.setText(buscompanyVO.getName());
 //        tvHotelDetailPhone.setText(buscompanyVO.getTicketingOutletsVOs()[0].getPhone_numbers()[0].toString());
 
 //        routesVOList =  mBusComponiesVO.getRoutesVOs();
@@ -130,6 +127,8 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
 
         mCollapsing.setTitle(mHighwayTitle);
 
+        //tvHighwayAddress.setText(buscompanyVO.getTicketingOutletsVOs()[0].getLocationVO().getAddress());
+        //tvHighWayDetailPhone.setText(buscompanyVO.getTicketingOutletsVOs()[0].getPhone_numbers()[0]);
     }
 
     @Override

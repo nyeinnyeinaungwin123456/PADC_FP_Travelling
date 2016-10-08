@@ -60,16 +60,6 @@
                 android:background="@android:color/transparent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-                <com.padc.travelling.components.MMTextView
-                    android:id="@+id/tv_hotel_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:textSize="@dimen/screen_title_size"
-                    android:text="Mandalay"
-                    android:textStyle="bold"
-                    android:textColor="@color/white_full"/>
-
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -86,20 +76,10 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_medium_2">
 
-            <com.padc.travelling.components.MMTextView
-                android:id="@+id/tv_hotel_name_deatil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sedona"
-                android:textSize="@dimen/text_heading_1x"
-                android:textStyle="bold"
-                />
-
             <ImageView
                 android:id="@+id/iv_location_icon_hotel_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_hotel_name_deatil"
                 android:paddingLeft="8dp"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingBottom="@dimen/margin_small"
@@ -117,7 +97,6 @@
                 android:textSize="@dimen/text_regular"
                 android:paddingLeft="8dp"
                 android:layout_toRightOf="@id/iv_location_icon_hotel_detail"
-                android:layout_below="@id/tv_hotel_name_deatil"
                 />
 
             <ImageView

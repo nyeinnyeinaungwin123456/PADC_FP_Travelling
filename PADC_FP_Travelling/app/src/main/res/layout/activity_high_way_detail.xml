@@ -73,20 +73,10 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/margin_medium_2">
 
-                <com.padc.travelling.components.MMTextView
-                    android:id="@+id/tv_highway_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="JJ Express"
-                    android:textSize="@dimen/text_heading_1x"
-                    android:textStyle="bold"
-                    />
-
                 <ImageView
                     android:id="@+id/iv_location_icon_highway"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_highway_name"
                     android:paddingLeft="8dp"
                     android:paddingTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_small"
@@ -104,7 +94,6 @@
                     android:textSize="@dimen/text_regular"
                     android:paddingLeft="8dp"
                     android:layout_toRightOf="@id/iv_location_icon_highway"
-                    android:layout_below="@id/tv_highway_name"
                     />
 
                 <ImageView
@@ -119,7 +108,7 @@
                     />
 
                 <com.padc.travelling.components.MMTextView
-                    android:id="@+id/tv_hotel_detail_phone"
+                    android:id="@+id/tv_highway_detail_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
