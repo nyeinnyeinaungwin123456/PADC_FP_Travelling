@@ -109,12 +109,16 @@ public class RoutesVO implements Serializable{
         this.midPointsVOs = midPointsVOs;
     }
 
-    public static void saveRoutes(List<RoutesVO> routeList) {
+    public static void saveRoutes(String name, List<RoutesVO> routeList) {
         Context context = TravellingApp.getContext();
         ContentValues[] routeCVs = new ContentValues[routeList.size()];
         for (int index = 0; index < routeList.size(); index++) {
             RoutesVO route = routeList.get(index);
-            routeCVs[index] = route.parseToContentValues();
+
+            ContentValues cv = route.parseToContentValues();
+            cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME,name);
+
+            routeCVs[index] = cv;
 
             //Bulk insert into attraction_images.
 //            AttractionPlaces.saveAttractionImages(attraction.getPlaceTitle(), attraction.getPlaceImage());
@@ -126,51 +130,11 @@ public class RoutesVO implements Serializable{
         Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
     }
 
-
-    //new SaveRoute
-
-    public static void saveRoute(String name, List<RoutesVO> routeList, Integer price) {
-        Context context = TravellingApp.getContext();
-        ContentValues[] routeCVs = new ContentValues[routeList.size()];
-        for (int index = 0; index < routeList.size(); index++) {
-            RoutesVO route = routeList.get(index);
-
-            ContentValues cv = new ContentValues();
-            cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME, name);
-            cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE, price);
-
-            routeCVs[index] = route.parseToContentValues();
-
-            //Bulk insert into attraction_images.
-//            AttractionPlaces.saveAttractionImages(attraction.getPlaceTitle(), attraction.getPlaceImage());
-        }
-
-        //Bulk insert into attractions.
-        int insertedCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.HighwayRouteEntry.CONTENT_URI, routeCVs);
-
-        Log.d(TravellingApp.TAG, "Bulk inserted into attraction table : " + insertedCount);
-    }
-//    private static void saveAttractionImages(String title, String[] images) {
-//        ContentValues[] attractionImagesCVs = new ContentValues[images.length];
-//        for (int index = 0; index < images.length; index++) {
-//            String image = images[index];
-//
-//            ContentValues cv = new ContentValues();
-//            cv.put(TravelMyanmarContract.AttractionImageEntry.COLUMN_ATTRACTION_TITLE, title);
-//            cv.put(TravelMyanmarContract.AttractionImageEntry.COLUMN_IMAGE, image);
-//
-//            attractionImagesCVs[index] = cv;
-//        }
-//
-//        Context context = TravellingApp.getContext();
-//        int insertCount = context.getContentResolver().bulkInsert(TravelMyanmarContract.AttractionImageEntry.CONTENT_URI, attractionImagesCVs);
-//
-//        Log.d(TravellingApp.TAG, "Bulk inserted into attraction_images table : " + insertCount);
-//    }
 
     private ContentValues parseToContentValues() {
+        BusComponiesVO buscompany = new BusComponiesVO();
         ContentValues cv = new ContentValues();
-        cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME, route_title);
+        cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_HIGHWAY_NAME,buscompany.getName());
         cv.put(TravelMyanmarContract.HighwayRouteEntry.COLUMN_PRICE, price);
 
         return cv;

@@ -11,6 +11,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
@@ -78,10 +79,6 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
         return intent;
     }
 
-//<<<<<<< 68f48b21a7de47676c57ccec9aa9ecf15faa032f
-//    public void bindData(){
-//        String imageUrl = mBusComponiesVO.getPhotos()[0];
-//=======
     public void bindData(BusComponiesVO buscompanyVO){
 
         String imageUrl = buscompanyVO.getPhotos()[0];
@@ -105,27 +102,21 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
 //        List<BusComponiesVO> buscompanyList = BusComponiesModel.getInstance().getBusComponiesVOList();
 
 //        BusComponiesModel.getInstance().notifyBusComponiesLoaded(busComponiesModel.notifyBusComponiesLoadedForDetail(buscompanyList));
-//
-//        PathsAdapter pathsAdapter = new PathsAdapter(BusComponiesModel.getInstance().getRoutesVOList());
-//        List<RoutesVO> routeList = BusComponiesModel.getInstance().getRoutesVOList();
-//        pathsAdapter.setNewData(routeList);
-//
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
-//        rvPaths.setLayoutManager(layoutManager);
-//        rvPaths.setAdapter(pathsAdapter);
 
-//        RoutesVO[] data = buscompanyVO.getRoutesVOs();
-//        for(int i=0;i<data.length;i++){
-//            routesVOList.add(data[i]);
-//        }
-//
-//        PathsAdapter pathsAdapter = new PathsAdapter(routesVOList);
+        List<RoutesVO> routesVOList = new ArrayList<>();
+        RoutesVO[] data = buscompanyVO.getRoutesVOs();
+        for(int i=0;i<data.length;i++){
+            routesVOList.add(data[i]);
+        }
+
+        PathsAdapter pathsAdapter = new PathsAdapter(routesVOList);
 //        pathsAdapter.setNewData(routesVOList);
-//
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),1);
-//        rvPaths.setLayoutManager(layoutManager);
-//        rvPaths.setAdapter(pathsAdapter);
-//
+
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),1);
+        rvPaths.setLayoutManager(layoutManager);
+        rvPaths.setAdapter(pathsAdapter);
+
         mCollapsing.setTitle(mHighwayTitle);
 
         //tvHighwayAddress.setText(buscompanyVO.getTicketingOutletsVOs()[0].getLocationVO().getAddress());
@@ -212,7 +203,7 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
         if (data != null && data.moveToFirst()) {
             mBusCompany = BusComponiesVO.parseFromCursor(data);
             mBusCompany.setPhotos(BusComponiesVO.loadBusCompanyPhotosByName(mBusCompany.getName()));
-
+            mBusCompany.setRoutesVOs(BusComponiesVO.loadRouteByName(mBusCompany.getName()));
             bindData(mBusCompany);
         }
     }
