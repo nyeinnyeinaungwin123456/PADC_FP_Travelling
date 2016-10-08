@@ -55,8 +55,8 @@ public class TravelMyanmarProvider extends ContentProvider {
     public static final int RESTAURANT_PHOTO = 1400;
     public static final int RESTAURANT_OFFDAY = 1500;
 
-    private static final String sRestaurantIdSelection = TravelMyanmarContract.RestaurantEntry.COLUMN_ID + " = ?";
-    private static final String sRestaurantPhotoSelectionWithId = TravelMyanmarContract.RestaurantPhotoEntry.COLUMN_RESTAURANT_NAME + " = ?";
+    private static final String sRestaurantNameSelection = TravelMyanmarContract.RestaurantEntry.COLUMN_NAME + " = ?";
+    private static final String sRestaurantPhotoSelectionWithName = TravelMyanmarContract.RestaurantPhotoEntry.COLUMN_RESTAURANT_NAME + " = ?";
 //    private static final String sRestaurantOffdaySelectionWithId = TravelMyanmarContract.RestaurantOffdayEntry.COLUMN_RESTAURANT_ID + " = ?";
 
     //TOURPACKAGE
@@ -271,10 +271,10 @@ public class TravelMyanmarProvider extends ContentProvider {
 
             //RESTAURANT
             case RESTAURANT:
-                String restaurantId = TravelMyanmarContract.RestaurantEntry.getNameFromParam(uri);
-                if (!TextUtils.isEmpty(restaurantId)) {
-                    selection = sRestaurantIdSelection;
-                    selectionArgs = new String[]{restaurantId};
+                String restaurantName = TravelMyanmarContract.RestaurantEntry.getNameFromParam(uri);
+                if (!TextUtils.isEmpty(restaurantName)) {
+                    selection = sRestaurantNameSelection;
+                    selectionArgs = new String[]{restaurantName};
                 }
                 queryCursor = mTravelMyanmarDBHelper.getReadableDatabase().query(TravelMyanmarContract.RestaurantEntry.TABLE_NAME,
                         projection,
@@ -286,10 +286,10 @@ public class TravelMyanmarProvider extends ContentProvider {
                 break;
 
             case RESTAURANT_PHOTO:
-                String restaurantphotoId = TravelMyanmarContract.RestaurantPhotoEntry.getRestaurantNameFromParam(uri);
-                if (restaurantphotoId != null) {
-                    selection = sRestaurantPhotoSelectionWithId;
-                    selectionArgs = new String[]{restaurantphotoId};
+                String restaurantphotoName = TravelMyanmarContract.RestaurantPhotoEntry.getRestaurantNameFromParam(uri);
+                if (restaurantphotoName != null) {
+                    selection = sRestaurantPhotoSelectionWithName;
+                    selectionArgs = new String[]{restaurantphotoName};
                 }
                 queryCursor = mTravelMyanmarDBHelper.getReadableDatabase().query(TravelMyanmarContract.RestaurantPhotoEntry.TABLE_NAME,
                         projection,

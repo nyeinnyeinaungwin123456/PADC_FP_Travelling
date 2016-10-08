@@ -2,7 +2,6 @@ package com.padc.travelling.activities;
 
 
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,22 +10,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.padc.travelling.R;
-import com.padc.travelling.TravellingApp;
 import com.padc.travelling.data.vos.AttractionPlacesVO;
 import com.padc.travelling.data.vos.BusComponiesVO;
 import com.padc.travelling.data.vos.HotelsVO;
@@ -247,38 +240,30 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    @Override
-    public void onTapRestaurnat(RestaurantsVO restaurantVO, int position) {
-        //        Testing
-        Intent intent = new Intent(TravellingApp.getContext(), RestaurantPagerDetailActivity.class);
-        intent.putExtra(IE_RESTAURANT_TITLE, restaurantVO.getName());
-        startActivity(intent);
-    }
-
-    @Override
-    public void onTapSetting(ImageView ivsetting) {
-
-        Log.d("ImageView", "is : " + ivsetting);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-//        builder.setAdapter(adpSetting)
-        builder.setAdapter(adpSetting, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d("OnClick", "OnClick is : " + i);
-//                    TODO
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
-
-        wmlp.gravity = Gravity.TOP | Gravity.RIGHT;
-        wmlp.x = 100;   //x position
-        wmlp.y = 100;
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.show();
-    }
+//    @Override
+//    public void onTapSetting(ImageView ivsetting) {
+//
+//        Log.d("ImageView", "is : " + ivsetting);
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+////        builder.setAdapter(adpSetting)
+//        builder.setAdapter(adpSetting, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                Log.d("OnClick", "OnClick is : " + i);
+////                    TODO
+//            }
+//        });
+//
+//        AlertDialog dialog = builder.create();
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
+//
+//        wmlp.gravity = Gravity.TOP | Gravity.RIGHT;
+//        wmlp.x = 100;   //x position
+//        wmlp.y = 100;
+////        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        dialog.show();
+//    }
 
     @Override
     public void onTapTourpackage(TourPackage tourPackage, ImageView ivTourPackage) {
@@ -290,13 +275,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-//    @Override
-//    public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
-//        Intent intent = HighWayDetailActivity.newIntent(busComponiesVO.getName());
-//        intent.putExtra("routeVO", routesVO);
-//        startActivity(intent);
-//    }
-
     @Override
     public void onTapAttractionPlaces(AttractionPlaces attractionPlaces, ImageView ivAttraction) {
         Intent intent = AttractionDetailActivity.newIntent(attractionPlaces.getPlaceTitle());
@@ -307,14 +285,22 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void onTapHighWayList(BusComponiesVO busComponiesVO, int position) {
         Intent intent = HighWayDetailActivity.newIntent(busComponiesVO.getName());
-        intent.putExtra("routeVO", routesVO);
+//        intent.putExtra("routeVO", routesVO);
         startActivity(intent);
     }
 
 
     @Override
-    public void onTapHotel(HotelsVO hotelVO, int position) {
-        Intent intent = HotelDetailActivity.newIntent(hotelVO);
+    public void onTapHotel(HotelsVO hotelVO, ImageView ivHotelImage) {
+        Intent intent = HotelDetailActivity.newIntent(hotelVO.getHotel_name());
+        intent.putExtra(IE_ATTRACTIONPLACES_NAME, hotelVO.getHotel_name());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapRestaurnat(RestaurantsVO restaurantVO, ImageView ivRestaurant) {
+        Intent intent = RestaurantPagerDetailActivity.newIntent(restaurantVO.getName());
+//        intent.putExtra(IE_RESTAURANT_TITLE, restaurantVO.getName());
         startActivity(intent);
     }
 }
