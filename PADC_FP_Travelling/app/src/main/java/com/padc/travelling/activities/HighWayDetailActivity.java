@@ -125,7 +125,7 @@ public class HighWayDetailActivity extends BaseActivity implements LoaderManager
 //        rvPaths.setLayoutManager(layoutManager);
 //        rvPaths.setAdapter(pathsAdapter);
 //
-//        mCollapsing.setTitle(mHighwayTitle);
+        mCollapsing.setTitle(mHighwayTitle);
 
         //tvHighwayAddress.setText(buscompanyVO.getTicketingOutletsVOs()[0].getLocationVO().getAddress());
         //tvHighWayDetailPhone.setText(buscompanyVO.getTicketingOutletsVOs()[0].getPhone_numbers()[0]);
